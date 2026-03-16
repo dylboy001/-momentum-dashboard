@@ -1,0 +1,36 @@
+name: Update Daily Picks
+
+on:
+  schedule:
+    # Run at 21:00 UTC (5pm ET) every weekday — after US market close
+    - cron: '0 21 * * 1-5'
+  workflow_dispatch: # Allow manual trigger from GitHub UI
+
+jobs:
+  update-picks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas numpy requests
+
+      - name: Run picks generator
+        env:
+          EODHD_API_KEY: ${{ secrets.EODHD_API_KEY }}
+        run: python scripts/v2_picks_generator.py
+
+      - name: Commit updated picks
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/picks_raw.json
+          git diff --cached --quiet || git commit -m "chore: update daily picks [skip ci]"
+          git push
