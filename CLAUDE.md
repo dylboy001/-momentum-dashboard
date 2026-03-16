@@ -772,12 +772,16 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **BTC/ETH detail pages** — scanner adds them to universe_full_data; rankings detail page handles them as direct assets (no constituent stocks)
 - **Social assets** — logo-avatar.svg + twitter-banner.png in /public; Twitter @MomentumCap_
 
+### ✅ Deployment — LIVE
+- **GitHub**: https://github.com/dylboy001/-momentum-dashboard (private repo)
+- **Vercel**: https://momentum-dashboard-three.vercel.app/ (auto-deploys on push to main)
+- **Live domain**: https://momentumcap.io (Cloudflare DNS → Vercel, configured via CF integration)
+- **GitHub Actions**: `EODHD_API_KEY` secret added — daily picks + monthly universe rebuild active
+
 ### ❌ Not Yet Implemented (Known TODOs)
 - **Stripe integration** — pricing page CTAs all link to `#`
 - **Authentication** — no login/signup (plan: Clerk). Protected routes: `/dashboard`, `/rankings/[slug]`
 - **Feature gating** — all content currently visible; intended: Free = rankings list, Pro = dashboard + detail, Premium = API
-- **Deploy to Vercel** — not yet deployed; domain momentumcap.io purchased, DNS on Cloudflare
-- **GitHub repo** — not yet pushed; needs creating before deploy
 - **Email alerts** — no email system (Pro feature)
 - **LinkedIn** — company page not created yet
 
@@ -787,7 +791,7 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - GOOGL and META appear in both XLK and XLC — this is ACCURATE (S&P 2018 reclassification), do not "fix"
 - `rankings/[slug]/page.tsx` UNIVERSE is now a fallback only — live data comes from `universe_full_data` in picks_raw.json
 - Formspree notification email is set in the **Workflow tab** of the form (not Settings tab)
-- GitHub Actions secret needed: `EODHD_API_KEY` = `6986e42b69a9d5.27218591`
+- GitHub Actions secret: `EODHD_API_KEY` = `6986e42b69a9d5.27218591` — already added
 
 ### Environment Variables
 ```bash
