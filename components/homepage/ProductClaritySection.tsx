@@ -30,7 +30,7 @@ export function ProductClaritySection() {
   return (
     <section
       ref={ref}
-      className="flex min-h-screen items-center bg-[#0c0c0c] px-8 py-24"
+      className="flex min-h-screen items-center bg-[#080808] px-8 py-24"
     >
       <div className="mx-auto w-full max-w-6xl">
 
