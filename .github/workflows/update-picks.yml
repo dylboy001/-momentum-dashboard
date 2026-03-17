@@ -36,12 +36,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Save generated file, reset to latest remote, restore, then push
+          cp data/picks_raw.json /tmp/picks_raw.json
+          git fetch origin main
+          git reset --hard origin/main
+          cp /tmp/picks_raw.json data/picks_raw.json
           git add data/picks_raw.json
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
             git commit -m "chore: update daily picks [skip ci] [vercel skip]"
-            git fetch origin main
-            git rebase origin/main
             git push origin main
           fi
