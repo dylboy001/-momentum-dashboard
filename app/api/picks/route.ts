@@ -2,29 +2,23 @@ import { NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
-// Configurable via env: PICKS_JSON_PATH
-// Falls back to checking both known output filenames
+const GITHUB_RAW_URL =
+  'https://raw.githubusercontent.com/dylboy001/-momentum-dashboard/main/data/picks_raw.json'
+
 function findPicksFile(): string | null {
   if (process.env.PICKS_JSON_PATH) {
     return fs.existsSync(process.env.PICKS_JSON_PATH)
       ? process.env.PICKS_JSON_PATH
       : null
   }
-
-  const base = path.join(process.cwd(), 'data')
   const candidates = [
-    path.join(base, 'picks_raw.json'),
-    path.join(process.cwd(), '..', 'picks_raw.json'),      // legacy local dev fallback
-    path.join(process.cwd(), '..', 'current_picks.json'),  // legacy fallback
+    path.join(process.cwd(), 'data', 'picks_raw.json'),
+    path.join(process.cwd(), '..', 'picks_raw.json'),
   ]
-
   return candidates.find((p) => fs.existsSync(p)) ?? null
 }
 
-// Normalize both script output formats into one consistent shape
 function normalize(raw: Record<string, unknown>) {
-  // Static_Universe.py uses sector_rankings / top_sectors / sector
-  // Universe_generator_dynamic.py uses theme_rankings / top_themes / theme
   const themeRankings =
     (raw.theme_rankings as [string, number][] | undefined) ??
     (raw.sector_rankings as [string, number][] | undefined) ??
@@ -40,15 +34,12 @@ function normalize(raw: Record<string, unknown>) {
   ).map((p) => ({
     ticker: p.ticker,
     name: (p.name as string | undefined) ?? '',
-    theme: p.theme ?? p.sector,   // unify field name
+    theme: p.theme ?? p.sector,
     price: p.price,
     rs_score: p.rs_score,
     volatility: p.volatility ?? null,
     weight_pct: p.weight_pct ?? 0,
   }))
-
-  const spyMomentum = (raw.spy_momentum as number | undefined) ?? null
-  const universeFullData = (raw.universe_full_data as Record<string, Record<string, unknown>[]> | undefined) ?? {}
 
   return {
     date: raw.date,
@@ -57,22 +48,39 @@ function normalize(raw: Record<string, unknown>) {
     theme_rankings: themeRankings,
     top_themes: topThemes,
     picks,
-    spy_momentum: spyMomentum,
-    universe_full_data: universeFullData,
+    spy_momentum: (raw.spy_momentum as number | undefined) ?? null,
+    universe_full_data:
+      (raw.universe_full_data as Record<string, Record<string, unknown>[]> | undefined) ?? {},
   }
 }
 
 export async function GET() {
-  const picksPath = findPicksFile()
+  // In production, fetch live from GitHub so Vercel doesn't need to redeploy for data updates
+  if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+    try {
+      const res = await fetch(GITHUB_RAW_URL, {
+        next: { revalidate: 3600 }, // cache for 1 hour — picks update once daily
+      })
+      if (!res.ok) throw new Error(`GitHub fetch failed: ${res.status}`)
+      const raw = await res.json()
+      return NextResponse.json(
+        { ...normalize(raw), last_generated: raw.date, source_file: 'picks_raw.json' },
+        { headers: { 'Cache-Control': 'no-store' } }
+      )
+    } catch (err) {
+      const message = err instanceof Error ? err.message : String(err)
+      return NextResponse.json(
+        { error: 'Failed to fetch picks from GitHub', detail: message },
+        { status: 503 }
+      )
+    }
+  }
 
+  // Local dev — read from disk
+  const picksPath = findPicksFile()
   if (!picksPath) {
     return NextResponse.json(
-      {
-        error: 'No picks file found',
-        detail:
-          'Run Universe_generator_dynamic.py or Static_Universe.py screen first. ' +
-          'Or set PICKS_JSON_PATH env variable.',
-      },
+      { error: 'No picks file found', detail: 'Run v2_picks_generator.py first.' },
       { status: 503 }
     )
   }
@@ -80,16 +88,10 @@ export async function GET() {
   try {
     const raw = JSON.parse(fs.readFileSync(picksPath, 'utf-8'))
     const stat = fs.statSync(picksPath)
-
-    const data = {
-      ...normalize(raw),
-      last_generated: stat.mtime.toISOString(),
-      source_file: path.basename(picksPath),
-    }
-
-    return NextResponse.json(data, {
-      headers: { 'Cache-Control': 'no-store' },
-    })
+    return NextResponse.json(
+      { ...normalize(raw), last_generated: stat.mtime.toISOString(), source_file: path.basename(picksPath) },
+      { headers: { 'Cache-Control': 'no-store' } }
+    )
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err)
     return NextResponse.json(
