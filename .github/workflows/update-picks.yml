@@ -41,5 +41,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: update daily picks [skip ci] [vercel skip]"
+            git fetch origin main
+            git rebase origin/main
             git push origin main
           fi
