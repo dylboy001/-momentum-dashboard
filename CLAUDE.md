@@ -133,11 +133,12 @@ GitHub Actions (Mon–Fri 5pm ET)
     ↓  fetches prices for 19 themes + ~150 constituent stocks from EODHD
     ↓  ranks themes by momentum, applies EMA 10/100 filter
     ↓
-data/picks_raw.json  ←  committed to repo by Actions
-    ↓
+data/picks_raw.json  ←  updated via GitHub Contents API (curl PUT) — NOT git commit/push
+    ↓                    commit message includes [skip ci] [vercel skip] to skip Vercel redeploy
+    ↓                    Vercel "Ignored Build Step" skips builds from github-actions[bot]
 GET /api/picks (app/api/picks/route.ts)
-    ↓  reads from path.join(process.cwd(), 'data', 'picks_raw.json')
-    ↓  falls back to ../picks_raw.json for local dev without data/ folder
+    ↓  production: fetches GitHub raw URL (repo must be public)
+    ↓  local dev: reads data/picks_raw.json, falls back to ../picks_raw.json
     ↓  normalizes field names, adds last_generated from file mtime
     ↓
 DashboardPage (app/dashboard/page.tsx)
@@ -153,9 +154,12 @@ data/universe_config.json  ←  committed to repo, read by v2_picks_generator.py
 ```
 
 ### API Route: `/api/picks`
-- Reads `data/picks_raw.json` (primary), falls back to `../picks_raw.json` for local dev
+- **Production**: fetches from GitHub raw URL (`https://raw.githubusercontent.com/dylboy001/-momentum-dashboard/main/data/picks_raw.json`) — Vercel cannot read committed files at runtime
+- **Local dev**: reads `data/picks_raw.json` then falls back to `../picks_raw.json`
+- Cache: `next: { revalidate: 300 }` (5 min) — data updates show within 5 min of scanner run
 - Configurable via `PICKS_JSON_PATH` env variable
 - Returns 503 if no file found; 500 on parse error
+- **Repo must stay PUBLIC** — raw.githubusercontent.com returns 404 for private repos without auth
 
 ### API Route: `/api/equity-curve`
 - Accepts `?mode=balanced` (default) or `?mode=growth`
@@ -463,6 +467,7 @@ useEffect(() => {
 - **Don't assume spy_momentum is always present** — it can be `null`
 - **Don't use `display: none` for mobile hiding** — use Tailwind responsive prefixes (`md:hidden`, `hidden md:flex`)
 - **Don't place ambient blobs off-center** — `left-1/3` or `left-[5%]` creates a visible purple patch on the left
+- **Don't use `bg-[#0c0c0c]` on homepage panels** — ALL homepage panels use `bg-[#080808]`, the slight difference is visible and looks wrong
 - **Don't add dot grids, violet orbs, or overflow-hidden to PageHeader** — it was removed to prevent a visual split
 - **Don't change the dashboard layout without explicit instruction** — it went through many iterations to reach its current state
 
@@ -568,7 +573,8 @@ npm start         # Start production server on port 3000
 
 ### Homepage (`app/page.tsx`)
 - **Purpose**: Marketing/acquisition page. Convinces visitors to sign up.
-- **Key components**: HeroSection → StatsSection → HowItWorksSection → CTASection
+- **Key components**: HeroSection → ProductClaritySection → StatsSection → HowItWorksSection → CTASection
+- **All 5 panels use `bg-[#080808]`** — no alternating colours, consistent dark throughout
 - **Data**: No API calls — fully static
 - **Key copy**: "Systematic Rotation Into Leading Market Assets" · "278 stocks · quarterly" · "20.01% CAGR"
 - **DO NOT include**: Individual stock picks, pricing details (that's /pricing), account login UI
@@ -748,6 +754,7 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 
 ### ✅ Implemented & Working
 - All pages: Homepage, Dashboard, Rankings, Rankings Detail, Performance, Pricing, How It Works, FAQ, Contact, Resources, Terms, Privacy
+- **ProductClaritySection** — homepage panel 2 "What is Momentum Capital?" with bold statement + 3 clarity cards (The signal / You execute / Your edge). Inserted between Hero and Stats.
 - NavBar with responsive mobile drawer
 - `/api/picks` and `/api/equity-curve` (with `?mode=balanced|growth`) API routes
 - Live dashboard with 60-second auto-refresh
@@ -769,14 +776,16 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **Email infrastructure** — contact@/sales@/privacy@ all active on Google Workspace for momentumcap.io
 - **GitHub Actions** — daily picks update + monthly universe rebuild workflows configured
 - **Dynamic universe** — `scripts/rebuild_universe.py` fetches live ETF holdings from EODHD, `scripts/v2_picks_generator.py` reads from `data/universe_config.json` if present
-- **BTC/ETH detail pages** — scanner adds them to universe_full_data; rankings detail page handles them as direct assets (no constituent stocks)
+- **BTC/ETH detail pages** — scanner adds them to universe_full_data; rankings detail page handles them as direct assets (no constituent stocks). `rs_score` = `crypto_momentum - spy_momentum` (vs SPY). Column label shows "RS vs SPY" not "RS vs Theme". Table guard uses `rows.length === 0` NOT `constituents.length === 0` (BTC/ETH have empty UNIVERSE arrays by design)
 - **Social assets** — logo-avatar.svg + twitter-banner.png in /public; Twitter @MomentumCap_
 
 ### ✅ Deployment — LIVE
-- **GitHub**: https://github.com/dylboy001/-momentum-dashboard (private repo)
+- **GitHub**: https://github.com/dylboy001/-momentum-dashboard (**public repo** — required for raw URL fetching)
 - **Vercel**: https://momentum-dashboard-three.vercel.app/ (auto-deploys on push to main)
 - **Live domain**: https://momentumcap.io (Cloudflare DNS → Vercel, configured via CF integration)
 - **GitHub Actions**: `EODHD_API_KEY` secret added — daily picks + monthly universe rebuild active
+- **Git user email must be** `dylan.ryan.97@hotmail.com` (GitHub account email) — Vercel blocks deploys from unrecognised committer emails
+- **No `gh` CLI available** in this environment — merge to main directly via git instead of creating PRs
 
 ### ❌ Not Yet Implemented (Known TODOs)
 - **Stripe integration** — pricing page CTAs all link to `#`
