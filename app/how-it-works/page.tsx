@@ -11,12 +11,12 @@ const STEPS = [
   {
     num: '01',
     title: 'Rank all 19 themes by momentum',
-    desc: 'On each rebalance the system calculates price momentum for all 19 themes (17 ETFs + BTC + ETH) — 16 weeks for Balanced mode, 26 weeks for Growth mode. An EMA 10/100 daily trend filter then screens for confirmed uptrends. These are sorted highest to lowest — the leaderboard you see in the Rankings tab.',
+    desc: 'On each rebalance the system calculates price momentum for all 19 themes (17 ETFs + BTC + ETH) — 16 weeks for Balanced mode, 26 weeks for Growth mode. A multi-factor trend confirmation filter then screens for themes in genuine uptrends only. These are sorted highest to lowest — the leaderboard you see in the Rankings tab.',
   },
   {
     num: '02',
     title: 'Select the top 1–2 themes',
-    desc: 'The top-ranked theme(s) with positive momentum become the active investment themes. If no themes pass the EMA 10/100 uptrend filter, the strategy holds cash instead of forcing a trade.',
+    desc: 'The top-ranked theme(s) with positive momentum become the active investment themes. If no themes pass the trend confirmation filter, the strategy holds cash instead of forcing a trade.',
   },
   {
     num: '03',
@@ -66,6 +66,37 @@ export default function HowItWorksPage() {
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 py-14 space-y-14">
 
+        {/* What is this? */}
+        <section>
+          <div className="mb-5">
+            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-violet-500">what you get</p>
+            <h2 className="text-2xl font-light tracking-tight text-white">A Signal Service, Not Automated Trading</h2>
+          </div>
+          <GlassCard>
+            <div className="px-6 pt-6 pb-6 space-y-0 divide-y divide-zinc-800/60">
+              {[
+                {
+                  q: 'What does Momentum Capital actually do?',
+                  a: 'Each week, the system scans 19 market themes — 17 ETFs plus BTC and ETH — ranks them by quantitative momentum, and tells you which 1–2 themes are strongest right now. You get a clear signal: what to hold, how much, and when the next rebalance is. You execute the trades yourself in your own brokerage.',
+                },
+                {
+                  q: 'Is this automated investing?',
+                  a: 'No. Momentum Capital is a research and signal service. We do the quantitative analysis — scanning, ranking, and filtering 19 themes daily. You retain full control of your capital and decide when and how to act on the signal. Think of it as having a systematic research analyst working for you.',
+                },
+                {
+                  q: 'Can I use this alongside my existing strategy?',
+                  a: 'Absolutely — many traders use Momentum Capital as quantitative confirmation alongside their own analysis. If you already trade based on technical or fundamental analysis, our momentum rankings can help you quickly identify which sectors have the strongest trend backing. It reduces the time spent scanning markets and adds a data-driven layer to your existing process.',
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="py-5 first:pt-0 last:pb-0">
+                  <p className="text-zinc-100 font-medium text-sm mb-2">{q}</p>
+                  <p className="text-zinc-400 text-sm leading-relaxed">{a}</p>
+                </div>
+              ))}
+            </div>
+          </GlassCard>
+        </section>
+
         {/* Strategy overview */}
         <section>
           <div className="mb-5">
@@ -99,7 +130,7 @@ export default function HowItWorksPage() {
           <GlassCard>
             <div className="px-6 pt-6 pb-6 space-y-4 text-sm text-zinc-300 leading-relaxed">
               <p>
-                The investable universe spans <span className="text-zinc-100 font-medium">19 themes</span>: 17 sector and commodity ETFs plus direct BTC and ETH. The EMA 10/100 daily trend filter ensures we only allocate to themes in genuine uptrends.
+                The investable universe spans <span className="text-zinc-100 font-medium">19 themes</span>: 17 sector and commodity ETFs plus direct BTC and ETH. A proprietary trend confirmation filter ensures we only allocate to themes in genuine uptrends — not just any market with recent price movement.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div>

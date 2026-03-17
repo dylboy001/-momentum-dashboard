@@ -183,6 +183,28 @@ Execution risk: Slippage, commissions, and timing differences between signal and
     sub: 'Executing trades, using the dashboard, and day-to-day questions.',
     faqs: [
       {
+        q: 'Is this automated investing, or do I trade myself?',
+        a: `Momentum Capital is a signal service — not automated investing. We do the quantitative research: scanning 19 market themes daily, ranking them by momentum, and filtering for confirmed uptrends. You receive a clear weekly signal (which 1–2 themes to hold and at what weight), and you execute the trades yourself in your own brokerage.
+
+Your capital stays in your account at all times. We never have access to it, move it, or manage it. Think of it as having a systematic research analyst working for you — the analysis is done, the decision to act is yours.`,
+      },
+      {
+        q: 'Can I use this alongside my existing trading strategy?',
+        a: `Yes — and this is one of the most common ways traders use Momentum Capital.
+
+If you already trade using technical analysis, fundamentals, or your own system, the momentum rankings act as a quantitative confirmation layer. Before entering a trade, check whether the theme ranks in the top 5 with an uptrend confirmed. If it does, you have data-driven backing for your view. If it ranks 15th of 19, you know you are fighting the macro trend.
+
+Specific use cases:
+
+Sector confirmation: You are bullish on Energy from a fundamental view. Momentum Capital ranks XLE in the top 2 with a confirmed uptrend. Your discretionary thesis and the quantitative signal agree — that is meaningful confluence.
+
+Universe filtering: Instead of scanning thousands of stocks, start with the top-ranked themes. You are already in the strongest corner of the market — then apply your own stock selection process within those themes.
+
+Time saving: The system does the broad market scan for you. What might take hours of weekly research is reduced to a 5-minute dashboard check.
+
+The strategy works as a standalone rules-based system. But the underlying signal is a legitimate analytical input regardless of how you choose to use it.`,
+      },
+      {
         q: 'How do I actually execute the trades?',
         a: `The dashboard tells you what to hold — the actual trading is done through your own brokerage account. A typical rebalance workflow:
 
