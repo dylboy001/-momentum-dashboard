@@ -59,7 +59,7 @@ export async function GET() {
   if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
     try {
       const res = await fetch(GITHUB_RAW_URL, {
-        next: { revalidate: 3600 }, // cache for 1 hour — picks update once daily
+        next: { revalidate: 300 }, // re-fetch from GitHub every 5 minutes
       })
       if (!res.ok) throw new Error(`GitHub fetch failed: ${res.status}`)
       const raw = await res.json()
