@@ -25,22 +25,23 @@ interface TooltipPayload {
 function CustomTooltip({
   active,
   payload,
+  topThemes,
 }: {
   active?: boolean
   payload?: TooltipPayload[]
+  topThemes: string[]
 }) {
   if (!active || !payload?.length) return null
   const d = payload[0]
+  const isActive = topThemes.includes(d.payload.theme)
   return (
     <div className="bg-zinc-900 border border-zinc-700 rounded-lg px-3 py-2 text-sm shadow-xl">
       <p className="text-zinc-300 font-mono font-bold">{d.payload.theme}</p>
-      <p
-        className={
-          d.value >= 0 ? 'text-emerald-400' : 'text-red-400'
-        }
-      >
-        {d.value >= 0 ? '+' : ''}
-        {d.value.toFixed(2)}% momentum
+      <p className={d.value >= 0 ? 'text-emerald-400' : 'text-red-400'}>
+        {d.value >= 0 ? '+' : ''}{d.value.toFixed(2)}% momentum
+      </p>
+      <p className={`text-xs mt-1 ${isActive ? 'text-violet-400' : 'text-zinc-500'}`}>
+        {isActive ? '✓ Selected — passed EMA trend filter' : 'Not selected — failed EMA 10/100 filter or outside top 2'}
       </p>
     </div>
   )
@@ -53,51 +54,56 @@ export function ThemeRankings({ rankings, topThemes }: ThemeRankingsProps) {
   }))
 
   return (
-    <ResponsiveContainer width="100%" height={260}>
-      <BarChart
-        data={data}
-        margin={{ top: 4, right: 8, left: 0, bottom: 4 }}
-        barCategoryGap="20%"
-      >
-        <XAxis
-          dataKey="theme"
-          tick={{ fill: '#a1a1aa', fontSize: 11, fontFamily: 'monospace' }}
-          axisLine={false}
-          tickLine={false}
-        />
-        <YAxis
-          tick={{ fill: '#71717a', fontSize: 10 }}
-          axisLine={false}
-          tickLine={false}
-          tickFormatter={(v) => `${v > 0 ? '+' : ''}${v}%`}
-          width={64}
-          label={{
-            value: '12w Momentum',
-            angle: -90,
-            position: 'insideLeft',
-            fill: '#52525b',
-            fontSize: 9,
-            style: { textAnchor: 'middle' },
-          }}
-        />
-        <Tooltip content={<CustomTooltip />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
-        <ReferenceLine y={0} stroke="#3f3f46" strokeDasharray="3 3" />
-        <Bar dataKey="momentum" radius={[3, 3, 0, 0]}>
-          {data.map((entry) => (
-            <Cell
-              key={entry.theme}
-              fill={
-                topThemes.includes(entry.theme)
-                  ? '#8b5cf6'          // violet — active position
-                  : entry.momentum >= 0
-                  ? '#10b981'          // emerald — positive
-                  : '#ef4444'          // red — negative
-              }
-              fillOpacity={topThemes.includes(entry.theme) ? 1 : 0.65}
-            />
-          ))}
-        </Bar>
-      </BarChart>
-    </ResponsiveContainer>
+    <div>
+      <ResponsiveContainer width="100%" height={260}>
+        <BarChart
+          data={data}
+          margin={{ top: 4, right: 8, left: 0, bottom: 4 }}
+          barCategoryGap="20%"
+        >
+          <XAxis
+            dataKey="theme"
+            tick={{ fill: '#a1a1aa', fontSize: 11, fontFamily: 'monospace' }}
+            axisLine={false}
+            tickLine={false}
+          />
+          <YAxis
+            tick={{ fill: '#71717a', fontSize: 10 }}
+            axisLine={false}
+            tickLine={false}
+            tickFormatter={(v) => `${v > 0 ? '+' : ''}${v}%`}
+            width={64}
+            label={{
+              value: '16w Momentum',
+              angle: -90,
+              position: 'insideLeft',
+              fill: '#52525b',
+              fontSize: 9,
+              style: { textAnchor: 'middle' },
+            }}
+          />
+          <Tooltip content={<CustomTooltip topThemes={topThemes} />} cursor={{ fill: 'rgba(255,255,255,0.04)' }} />
+          <ReferenceLine y={0} stroke="#3f3f46" strokeDasharray="3 3" />
+          <Bar dataKey="momentum" radius={[3, 3, 0, 0]}>
+            {data.map((entry) => (
+              <Cell
+                key={entry.theme}
+                fill={
+                  topThemes.includes(entry.theme)
+                    ? '#8b5cf6'
+                    : entry.momentum >= 0
+                    ? '#10b981'
+                    : '#ef4444'
+                }
+                fillOpacity={topThemes.includes(entry.theme) ? 1 : 0.65}
+              />
+            ))}
+          </Bar>
+        </BarChart>
+      </ResponsiveContainer>
+      <p className="text-xs text-zinc-600 mt-2 px-1">
+        Holdings are selected from the highest-ranked themes that also pass the EMA 10/100 daily trend filter. A theme may rank highly but be excluded if it is not in an uptrend.
+      </p>
+    </div>
   )
 }
