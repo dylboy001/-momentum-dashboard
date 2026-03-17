@@ -261,14 +261,16 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <button onClick={() => handleSort('rs_score')} className="flex items-center gap-1 ml-auto hover:text-zinc-100 transition-colors underline decoration-dotted underline-offset-2">
-                          RS vs Theme
+                          {constituents.length > 0 ? 'RS vs Theme' : 'RS vs SPY'}
                           {sortCol === 'rs_score'
                             ? sortDir === 'desc' ? <ChevronDown size={12} className="text-violet-400" /> : <ChevronUp size={12} className="text-violet-400" />
                             : <ChevronDown size={12} className="text-zinc-600" />}
                         </button>
                       </TooltipTrigger>
                       <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                        Stock&apos;s 16-week momentum minus the theme&apos;s momentum. Positive = outperforming its sector.
+                        {constituents.length > 0
+                          ? "Stock's 16-week momentum minus the theme's momentum. Positive = outperforming its sector."
+                          : "16-week momentum minus SPY's momentum. Positive = outperforming the S&P 500."}
                       </TooltipContent>
                     </Tooltip>
                   </TableHead>

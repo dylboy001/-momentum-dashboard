@@ -383,7 +383,7 @@ def generate_picks(growth_mode: bool = False) -> dict:
             universe_full_data[crypto_key] = [{
                 "ticker":     crypto_key,
                 "price":      prices[crypto_key],
-                "rs_score":   0.0,
+                "rs_score":   round(scores[crypto_key] - spy_momentum, 2) if spy_momentum is not None else 0.0,
                 "volatility": vols.get(crypto_key),
                 "selected":   crypto_key in selected_keys,
             }]
