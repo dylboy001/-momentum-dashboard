@@ -7,12 +7,12 @@ const STEPS = [
   {
     num: '1',
     title: 'Rank 19 themes by momentum',
-    desc: 'All 19 themes (17 sector/commodity ETFs + direct BTC + ETH) are ranked by 16–26 week price momentum. An EMA 10/100 daily trend filter ensures we only enter genuine uptrends.',
+    desc: 'All 19 themes (17 sector/commodity ETFs + direct BTC + ETH) are ranked by 16–26 week price momentum. A trend confirmation filter screens out themes that are not in genuine uptrends.',
   },
   {
     num: '2',
     title: 'Select top 1–2 qualifying themes',
-    desc: 'The top-ranked themes that pass the EMA 10/100 filter receive capital. Balanced mode holds 2 themes (50/50). Growth mode concentrates 100% in the single strongest theme.',
+    desc: 'The top-ranked themes that pass the trend confirmation filter receive capital. Balanced mode holds 2 themes (50/50). Growth mode concentrates 100% in the single strongest theme.',
   },
   {
     num: '3',
