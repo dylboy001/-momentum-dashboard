@@ -242,7 +242,7 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
               sorted by relative strength vs theme · live data when available
             </span>
           </div>
-          {constituents.length === 0 ? (
+          {rows.length === 0 ? (
             <p className="text-zinc-600 text-sm text-center py-8">No universe data for this theme.</p>
           ) : (
             <Table>
