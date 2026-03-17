@@ -66,35 +66,56 @@ export default function HowItWorksPage() {
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 py-14 space-y-14">
 
-        {/* What is this? */}
+        {/* What is this — bold clarity section */}
         <section>
-          <div className="mb-5">
-            <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-violet-500">what you get</p>
-            <h2 className="text-2xl font-light tracking-tight text-white">A Signal Service, Not Automated Trading</h2>
-          </div>
-          <GlassCard>
-            <div className="px-6 pt-6 pb-6 space-y-0 divide-y divide-zinc-800/60">
-              {[
-                {
-                  q: 'What does Momentum Capital actually do?',
-                  a: 'Each week, the system scans 19 market themes — 17 ETFs plus BTC and ETH — ranks them by quantitative momentum, and tells you which 1–2 themes are strongest right now. You get a clear signal: what to hold, how much, and when the next rebalance is. You execute the trades yourself in your own brokerage.',
-                },
-                {
-                  q: 'Is this automated investing?',
-                  a: 'No. Momentum Capital is a research and signal service. We do the quantitative analysis — scanning, ranking, and filtering 19 themes daily. You retain full control of your capital and decide when and how to act on the signal. Think of it as having a systematic research analyst working for you.',
-                },
-                {
-                  q: 'Can I use this alongside my existing strategy?',
-                  a: 'Absolutely — many traders use Momentum Capital as quantitative confirmation alongside their own analysis. If you already trade based on technical or fundamental analysis, our momentum rankings can help you quickly identify which sectors have the strongest trend backing. It reduces the time spent scanning markets and adds a data-driven layer to your existing process.',
-                },
-              ].map(({ q, a }) => (
-                <div key={q} className="py-5 first:pt-0 last:pb-0">
-                  <p className="text-zinc-100 font-medium text-sm mb-2">{q}</p>
-                  <p className="text-zinc-400 text-sm leading-relaxed">{a}</p>
-                </div>
-              ))}
+          {/* Big statement */}
+          <div className="border border-zinc-800 rounded-2xl overflow-hidden mb-4">
+            <div className="px-8 py-8 sm:px-10 sm:py-10">
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500 mb-4">— What this is</p>
+              <p className="text-2xl sm:text-3xl font-thin tracking-tight text-white leading-snug mb-3">
+                A weekly signal service for<br className="hidden sm:block" /> self-directed traders.
+              </p>
+              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
+                Momentum Capital scans 19 market themes every day, ranks them by quantitative momentum, and tells you which 1–2 to hold each week. <span className="text-zinc-200">You execute the trades yourself</span> in your own brokerage. Your capital stays in your account — we never touch it.
+              </p>
             </div>
-          </GlassCard>
+          </div>
+
+          {/* 3-column clarity cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            {[
+              {
+                label: 'The signal',
+                heading: 'Know what to hold',
+                body: 'Each rebalance you get a clear output: which 1–2 themes are strongest, target weights, and a countdown to the next rebalance. No interpretation needed.',
+                accent: 'border-violet-800/40 bg-violet-950/20',
+                dot: 'bg-violet-400',
+              },
+              {
+                label: 'Your control',
+                heading: 'You trade. We research.',
+                body: 'This is not a robo-advisor or managed fund. We do the quantitative work — you decide when and how to act. Full control of your capital, always.',
+                accent: 'border-zinc-800',
+                dot: 'bg-emerald-400',
+              },
+              {
+                label: 'Your edge',
+                heading: 'Standalone or confirmation',
+                body: 'Run it as a complete rules-based strategy, or use the momentum rankings as quantitative confirmation alongside your own analysis. Either way works.',
+                accent: 'border-zinc-800',
+                dot: 'bg-blue-400',
+              },
+            ].map(({ label, heading, body, accent, dot }) => (
+              <div key={label} className={`border ${accent} rounded-2xl px-5 py-5`}>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">{label}</span>
+                </div>
+                <p className="text-zinc-100 font-medium text-sm mb-2">{heading}</p>
+                <p className="text-zinc-400 text-sm leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* Strategy overview */}

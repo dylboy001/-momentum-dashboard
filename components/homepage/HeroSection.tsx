@@ -106,17 +106,9 @@ export function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8, ease: E }}
-            className="mb-3 max-w-sm text-base font-light tracking-wide text-zinc-300 sm:max-w-none sm:text-lg"
+            className="mb-10 max-w-sm text-base font-light tracking-wide text-zinc-400 sm:max-w-none sm:text-lg"
           >
             Systematic Rotation Into Leading Market Assets
-          </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.7, duration: 0.8, ease: E }}
-            className="mb-10 max-w-md text-sm font-light tracking-wide text-zinc-500 sm:max-w-xl"
-          >
-            A weekly signal service for self-directed traders — we surface the strongest market themes using quantitative analysis. You decide when to execute.
           </motion.p>
 
           <motion.div
