@@ -20,7 +20,7 @@ const ARTICLES: Article[] = [
     slug: 'momentum-trading',
     icon: TrendingUp,
     title: 'What is Momentum Trading?',
-    summary: 'Momentum investing means buying assets that are rising and selling those that are falling. Our strategy rotates across 19 themes to find the strongest uptrends.',
+    summary: 'Momentum investing means buying assets that are rising and selling those that are falling. Our strategy rotates across 19 sectors to find the strongest uptrends.',
     readTime: '4 min read',
     body: (
       <div className="space-y-4 text-sm text-zinc-400 leading-relaxed">
@@ -39,10 +39,10 @@ const ARTICLES: Article[] = [
         </p>
         <h3 className="text-zinc-200 font-medium mt-6 mb-2">How our strategy uses momentum</h3>
         <p>
-          Rather than picking individual stocks, we rotate capital at the theme level. We rank 19 broad market themes (ETFs + BTC + ETH) by their 16–26 week price momentum, then apply an EMA 10/100 trend filter to confirm the uptrend is genuine before allocating. Capital flows into the top 1–2 qualifying themes each rebalance.
+          Rather than picking individual stocks, we rotate capital at the sector level. We rank 19 broad market sectors (ETFs + BTC + ETH) by their 16–26 week price momentum, then apply an EMA 10/100 trend filter to confirm the uptrend is genuine before allocating. Capital flows into the top 1–2 qualifying sectors each rebalance.
         </p>
         <p>
-          The result is a concentrated portfolio of 1–2 high-momentum themes, rebalanced weekly (Balanced) or monthly (Growth). No discretionary guesswork — just price data, systematic rules, and discipline.
+          The result is a concentrated portfolio of 1–2 high-momentum sectors, rebalanced weekly (Balanced) or monthly (Growth). No discretionary guesswork — just price data, systematic rules, and discipline.
         </p>
       </div>
     ),
@@ -51,28 +51,28 @@ const ARTICLES: Article[] = [
     slug: 'rs-score',
     icon: BarChart2,
     title: 'How Momentum Is Scored',
-    summary: '16–26 week momentum ranks which of the 19 themes is strongest. The EMA 10/100 filter then confirms whether the trend is real. Together these two signals determine what the portfolio holds.',
+    summary: '16–26 week momentum ranks which of the 19 sectors is strongest. The EMA 10/100 filter then confirms whether the trend is real. Together these two signals determine what the portfolio holds.',
     readTime: '3 min read',
     body: (
       <div className="space-y-4 text-sm text-zinc-400 leading-relaxed">
         <p>
-          The <span className="text-zinc-200">momentum score</span> is the primary metric used to rank all 19 themes. It answers the question: which themes are showing the strongest sustained price trends right now?
+          The <span className="text-zinc-200">momentum score</span> is the primary metric used to rank all 19 sectors. It answers the question: which sectors are showing the strongest sustained price trends right now?
         </p>
         <div className="bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-300 my-4">
           Momentum Score = (Price today / Price N weeks ago) − 1  [N = 16 Balanced · 26 Growth]
         </div>
         <p>
-          A high score means the theme has been rising strongly over the past 16–26 weeks. All 19 themes are ranked by this score at each rebalance.
+          A high score means the sector has been rising strongly over the past 16–26 weeks. All 19 sectors are ranked by this score at each rebalance.
         </p>
         <h3 className="text-zinc-200 font-medium mt-6 mb-2">The EMA 10/100 trend filter</h3>
         <p>
-          A high momentum score alone isn&apos;t enough — a theme can spike briefly without being in a genuine uptrend. The filter requires:
+          A high momentum score alone isn&apos;t enough — a sector can spike briefly without being in a genuine uptrend. The filter requires:
         </p>
         <div className="bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-300 my-4">
           Price &gt; EMA(10 days) &gt; EMA(100 days)
         </div>
         <p>
-          All three aligned means the trend is confirmed on both a short (10d) and medium-term (100d) daily basis. Only themes that pass both the momentum ranking AND this filter receive capital.
+          All three aligned means the trend is confirmed on both a short (10d) and medium-term (100d) daily basis. Only sectors that pass both the momentum ranking AND this filter receive capital.
         </p>
         <h3 className="text-zinc-200 font-medium mt-6 mb-2">Why this matters for crypto</h3>
         <p>
@@ -84,13 +84,13 @@ const ARTICLES: Article[] = [
   {
     slug: 'themes',
     icon: BookOpen,
-    title: 'Theme Rankings Explained',
-    summary: 'Our 19 themes cover Tech, Energy, Commodities, and crypto (BTC + ETH). We rank by 16–26 week momentum with a trend filter to find genuine uptrends.',
+    title: 'Sector Rankings Explained',
+    summary: 'Our 19 sectors cover Tech, Energy, Commodities, and crypto (BTC + ETH). We rank by 16–26 week momentum with a trend filter to find genuine uptrends.',
     readTime: '3 min read',
     body: (
       <div className="space-y-4 text-sm text-zinc-400 leading-relaxed">
         <p>
-          The strategy organises the investable universe into <span className="text-zinc-200">19 themes</span>: 17 ETFs (equity sectors, commodities, alternatives) plus direct BTC and ETH. Each rebalance these themes are ranked by 16–26 week price return — highest to lowest. An EMA 10/100 trend filter then screens out anything not in a confirmed uptrend.
+          The strategy organises the investable universe into <span className="text-zinc-200">19 sectors</span>: 17 ETFs (equity sectors, commodities, alternatives) plus direct BTC and ETH. Each rebalance these sectors are ranked by 16–26 week price return — highest to lowest. An EMA 10/100 trend filter then screens out anything not in a confirmed uptrend.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           <div>
@@ -108,14 +108,14 @@ const ARTICLES: Article[] = [
         </div>
         <h3 className="text-zinc-200 font-medium mt-6 mb-2">Why ETFs as benchmarks?</h3>
         <p>
-          ETFs are highly liquid, transparent, and widely recognised. Using the ETF as the theme benchmark means we&apos;re measuring momentum against a real, tradeable asset — not a theoretical index. It also means any investor can verify the data independently.
+          ETFs are highly liquid, transparent, and widely recognised. Using the ETF as the sector benchmark means we&apos;re measuring momentum against a real, tradeable asset — not a theoretical index. It also means any investor can verify the data independently.
         </p>
-        <h3 className="text-zinc-200 font-medium mt-6 mb-2">Selecting the top theme(s)</h3>
+        <h3 className="text-zinc-200 font-medium mt-6 mb-2">Selecting the top sector(s)</h3>
         <p>
-          The top 1–2 themes with the highest 16–26 week momentum that also pass the EMA 10/100 trend filter receive equal capital allocation. If no themes qualify, the strategy holds cash rather than force a trade into a questionable setup.
+          The top 1–2 sectors with the highest 16–26 week momentum that also pass the EMA 10/100 trend filter receive equal capital allocation. If no sectors qualify, the strategy holds cash rather than force a trade into a questionable setup.
         </p>
         <p>
-          In Balanced mode (recommended), the top 2 qualifying themes each receive 50% of capital. In Growth mode, 100% goes to the single highest-ranked qualifying theme.
+          In Balanced mode (recommended), the top 2 qualifying sectors each receive 50% of capital. In Growth mode, 100% goes to the single highest-ranked qualifying sector.
         </p>
       </div>
     ),
@@ -132,15 +132,15 @@ const ARTICLES: Article[] = [
           Rebalancing frequency is one of the most important — and most underappreciated — decisions in any systematic strategy. Rebalance too often and you rack up transaction costs, short-term capital gains taxes, and exposure to short-term noise. Rebalance too rarely and you risk holding fading positions long after their momentum has turned.
         </p>
         <p>
-          <span className="text-zinc-200">Balanced mode rebalances weekly (every 7 days)</span> and <span className="text-zinc-200">Growth mode rebalances monthly (every 30 days)</span>. Because momentum trends are persistent, weekly rebalancing typically re-selects the same theme — keeping actual turnover lower than it sounds while catching reversals faster.
+          <span className="text-zinc-200">Balanced mode rebalances weekly (every 7 days)</span> and <span className="text-zinc-200">Growth mode rebalances monthly (every 30 days)</span>. Because momentum trends are persistent, weekly rebalancing typically re-selects the same sector — keeping actual turnover lower than it sounds while catching reversals faster.
         </p>
         <h3 className="text-zinc-200 font-medium mt-6 mb-2">What happens on rebalance day?</h3>
         <ol className="list-decimal list-inside space-y-2 text-zinc-400">
-          <li>Re-rank all 19 themes by current momentum (16w Balanced · 26w Growth)</li>
-          <li>Identify the top theme(s) with positive momentum</li>
-          <li>Apply EMA 10/100 daily filter to confirm each top theme is in a genuine uptrend</li>
-          <li>Allocate equally to top 1–2 qualifying themes (ETF or direct crypto)</li>
-          <li>Sell positions no longer in the portfolio; buy incoming themes</li>
+          <li>Re-rank all 19 sectors by current momentum (16w Balanced · 26w Growth)</li>
+          <li>Identify the top sector(s) with positive momentum</li>
+          <li>Apply EMA 10/100 daily filter to confirm each top sector is in a genuine uptrend</li>
+          <li>Allocate equally to top 1–2 qualifying sectors (ETF or direct crypto)</li>
+          <li>Sell positions no longer in the portfolio; buy incoming sectors</li>
           <li>Adjust sizing of retained positions to match new target weights (50% each)</li>
         </ol>
         <p>

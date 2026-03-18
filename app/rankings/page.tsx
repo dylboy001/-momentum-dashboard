@@ -47,7 +47,7 @@ export default function RankingsPage() {
         {/* Page header */}
         <div className="mb-8">
           <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-600 mb-2">— Rankings</p>
-          <h1 className="text-3xl font-thin tracking-tight text-white">Theme Rankings</h1>
+          <h1 className="text-3xl font-thin tracking-tight text-white">Sector Rankings</h1>
           <p className="text-zinc-400 text-sm mt-2">
             {data ? `as of ${data.date}` : 'Ranked by 16–26 week momentum'}
             {' '}· click any row to drill into constituent stocks
@@ -62,14 +62,14 @@ export default function RankingsPage() {
           {/* Table header */}
           <div className="grid grid-cols-[56px_1fr_130px_150px_160px_160px] gap-4 px-6 py-4 border-b border-zinc-800/50 bg-zinc-900/40">
             <div className="text-sm text-zinc-500 uppercase tracking-wider text-center">Rank</div>
-            <div className="text-sm text-zinc-500 uppercase tracking-wider">Theme</div>
+            <div className="text-sm text-zinc-500 uppercase tracking-wider">Sector</div>
             <div className="text-sm text-zinc-500 uppercase tracking-wider">Category</div>
             <Tooltip>
               <TooltipTrigger className="text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left">
                 Momentum
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                16-week price return of the theme&apos;s proxy ETF (e.g. BITO for Crypto, XLK for Technology). Higher = stronger trend.
+                16-week price return of the sector&apos;s proxy ETF (e.g. BITO for Crypto, XLK for Technology). Higher = stronger trend.
               </TooltipContent>
             </Tooltip>
             <Tooltip>
@@ -77,7 +77,7 @@ export default function RankingsPage() {
                 vs SPY
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                Theme momentum minus SPY&apos;s 16-week momentum. Positive = beating the market. Only shown when scanner has run recently.
+                Sector momentum minus SPY&apos;s 16-week momentum. Positive = beating the market. Only shown when scanner has run recently.
               </TooltipContent>
             </Tooltip>
             <div className="text-sm text-zinc-500 uppercase tracking-wider">Status</div>
@@ -155,14 +155,14 @@ export default function RankingsPage() {
         </GlassCard>
 
         <p className="text-center text-xs text-zinc-500 mt-6">
-          Momentum = 16-week price return of theme proxy ETF ·{' '}
+          Momentum = 16-week price return of sector proxy ETF ·{' '}
           <Link
             href="/pricing"
             className="text-violet-400 hover:text-violet-300 underline underline-offset-2 decoration-violet-500/40 hover:decoration-violet-400/70 transition-colors font-medium"
           >
             Upgrade to Pro
           </Link>
-          {' '}to see which themes are currently held
+          {' '}to see which sectors are currently held
         </p>
       </main>
     </div>

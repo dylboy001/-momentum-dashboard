@@ -102,7 +102,7 @@ export function ThemeRankings({ rankings, topThemes }: ThemeRankingsProps) {
         </BarChart>
       </ResponsiveContainer>
       <p className="text-xs text-zinc-600 mt-2 px-1">
-        Holdings are selected from the highest-ranked themes that also pass the EMA 10/100 daily trend filter. A theme may rank highly but be excluded if it is not in an uptrend.
+        Holdings are selected from the highest-ranked sectors that also pass the EMA 10/100 daily trend filter. A sector may rank highly but be excluded if it is not in an uptrend.
       </p>
     </div>
   )

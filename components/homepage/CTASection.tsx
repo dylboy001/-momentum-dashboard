@@ -76,7 +76,7 @@ export function CTASection() {
           transition={{ duration: 0.7, delay: 0.22, ease: E }}
           className="mx-auto mb-12 max-w-md text-base leading-relaxed text-zinc-400"
         >
-          The scanner runs daily. See which themes are leading the market right now.
+          The scanner runs daily. See which sectors are leading the market right now.
         </motion.p>
 
         <motion.div

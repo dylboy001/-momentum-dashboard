@@ -55,7 +55,7 @@ const STATS = [
     end: 19,
     decimals: 0,
     suffix: '',
-    label: 'Themes Tracked',
+    label: 'Sectors Tracked',
     sub: 'Equity, commodities & crypto',
   },
   {

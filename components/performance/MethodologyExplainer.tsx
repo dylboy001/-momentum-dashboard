@@ -14,12 +14,12 @@ const sections = [
     content: (
       <div className="space-y-3 text-zinc-400 text-sm leading-relaxed">
         <p>
-          Momentum is calculated as the N-week total return for each theme ETF or crypto asset,
+          Momentum is calculated as the N-week total return for each sector ETF or crypto asset,
           measured from the close N weeks ago to the most recent close.
         </p>
         <p>
-          Balanced mode uses a 16-week lookback. Growth mode uses a 26-week lookback. All 19 themes
-          are ranked by this score. The top 1–2 themes that also pass the EMA 10/100 daily trend
+          Balanced mode uses a 16-week lookback. Growth mode uses a 26-week lookback. All 19 sectors
+          are ranked by this score. The top 1–2 sectors that also pass the EMA 10/100 daily trend
           filter receive capital.
         </p>
         <p className="text-zinc-500">
@@ -41,7 +41,7 @@ const sections = [
           cadences while catching trend reversals faster.
         </p>
         <p>
-          Because momentum is persistent, the same themes are often re-selected across consecutive
+          Because momentum is persistent, the same sectors are often re-selected across consecutive
           rebalances — keeping actual turnover lower than the frequency implies.
         </p>
         <p>
@@ -59,7 +59,7 @@ const sections = [
         <ul className="space-y-2">
           <li className="flex gap-2">
             <span className="text-zinc-600 mt-0.5">·</span>
-            <span><strong className="text-zinc-300">Universe:</strong> 17 sector/commodity ETFs plus direct BTC and ETH (19 themes total). EMA 10/100 daily entry filter ensures confirmed uptrend before allocation.</span>
+            <span><strong className="text-zinc-300">Universe:</strong> 17 sector/commodity ETFs plus direct BTC and ETH (19 sectors total). EMA 10/100 daily entry filter ensures confirmed uptrend before allocation.</span>
           </li>
           <li className="flex gap-2">
             <span className="text-zinc-600 mt-0.5">·</span>
@@ -97,7 +97,7 @@ const sections = [
         </p>
         <p className="text-zinc-400">
           Momentum strategies can underperform during sharp market reversals, when previously
-          strong themes rapidly give way to laggards. This is sometimes called &quot;momentum
+          strong sectors rapidly give way to laggards. This is sometimes called &quot;momentum
           crash&quot; risk.
         </p>
         <p className="text-zinc-500 text-xs">

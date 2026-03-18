@@ -6,18 +6,18 @@ import { useRef } from 'react'
 const STEPS = [
   {
     num: '1',
-    title: 'Rank 19 themes by momentum',
-    desc: 'All 19 themes (17 sector/commodity ETFs + direct BTC + ETH) are ranked by 16–26 week price momentum. A trend confirmation filter screens out themes that are not in genuine uptrends.',
+    title: 'Rank 19 sectors by momentum',
+    desc: 'All 19 sectors (17 sector/commodity ETFs + direct BTC + ETH) are ranked by 16–26 week price momentum. A trend confirmation filter screens out sectors that are not in genuine uptrends.',
   },
   {
     num: '2',
-    title: 'Select top 1–2 qualifying themes',
-    desc: 'The top-ranked themes that pass the trend confirmation filter receive capital. Balanced mode holds 2 themes (50/50). Growth mode concentrates 100% in the single strongest theme.',
+    title: 'Select top 1–2 qualifying sectors',
+    desc: 'The top-ranked sectors that pass the trend confirmation filter receive capital. Balanced mode holds 2 sectors (50/50). Growth mode concentrates 100% in the single strongest sector.',
   },
   {
     num: '3',
     title: 'Rebalance weekly or monthly',
-    desc: 'Balanced mode rebalances every 7 days. Growth mode every 30 days. If trends are intact, the same themes are re-selected — keeping turnover low while catching reversals fast.',
+    desc: 'Balanced mode rebalances every 7 days. Growth mode every 30 days. If trends are intact, the same sectors are re-selected — keeping turnover low while catching reversals fast.',
   },
 ]
 

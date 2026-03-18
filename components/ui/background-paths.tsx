@@ -155,7 +155,7 @@ export function BackgroundPaths() {
             transition={{ delay: 1.4, duration: 0.7 }}
             className="mx-auto mb-14 max-w-[520px] text-base font-light leading-relaxed text-zinc-500"
           >
-            Dynamic momentum rotation across 19 themes (ETFs + BTC + ETH) —
+            Dynamic momentum rotation across 19 sectors (ETFs + BTC + ETH) —
             rebalanced quarterly into the strongest performers.
           </motion.p>
 

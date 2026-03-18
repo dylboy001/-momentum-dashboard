@@ -37,7 +37,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: true,
       spyPositive: true,
       better: true,
-      description: 'Bitcoin returned to a confirmed uptrend and earned portfolio allocation. Combined with commodity themes, the strategy outpaced the S&P 500 by over 15 percentage points.',
+      description: 'Bitcoin returned to a confirmed uptrend and earned portfolio allocation. Combined with commodity sectors, the strategy outpaced the S&P 500 by over 15 percentage points.',
     },
     {
       period: '2023 Recovery',
@@ -46,7 +46,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: false,
       spyPositive: true,
       better: false,
-      description: 'The AI-driven tech rally concentrated gains in a handful of mega-cap stocks. The momentum rotation held themes that lagged the narrow S&P recovery, underperforming significantly. Not all years go our way.',
+      description: 'The AI-driven tech rally concentrated gains in a handful of mega-cap stocks. The momentum rotation held sectors that lagged the narrow S&P recovery, underperforming significantly. Not all years go our way.',
     },
   ],
   growth: [
@@ -57,7 +57,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: false,
       spyPositive: false,
       better: true,
-      description: 'The EMA filter limited exposure but single-theme concentration led to a -20.2% loss — worse than Balanced. The strategy still outperformed SPY by 16+ points, but the concentrated bet amplified drawdown.',
+      description: 'The EMA filter limited exposure but single-sector concentration led to a -20.2% loss — worse than Balanced. The strategy still outperformed SPY by 16+ points, but the concentrated bet amplified drawdown.',
     },
     {
       period: '2022 Bear Market',
@@ -66,7 +66,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: false,
       spyPositive: false,
       better: true,
-      description: 'Growth mode edged out SPY by 3.6 points but still lost ground. Unlike Balanced mode (which gained +11.6% via Energy rotation), the single-theme approach missed the sector diversification benefit.',
+      description: 'Growth mode edged out SPY by 3.6 points but still lost ground. Unlike Balanced mode (which gained +11.6% via Energy rotation), the single-sector approach missed the sector diversification benefit.',
     },
     {
       period: '2024',
@@ -75,7 +75,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: true,
       spyPositive: true,
       better: false,
-      description: 'A difficult year for Growth mode. The broad equity rally and BTC bull run favoured the diversified Balanced approach. Single-theme concentration led to suboptimal positioning in this environment.',
+      description: 'A difficult year for Growth mode. The broad equity rally and BTC bull run favoured the diversified Balanced approach. Single-sector concentration led to suboptimal positioning in this environment.',
     },
     {
       period: '2023 Recovery',
@@ -84,7 +84,7 @@ const REGIMES: Record<Mode, {
       strategyPositive: false,
       spyPositive: true,
       better: false,
-      description: 'The narrow AI/mega-cap rally that drove SPY higher was not captured by momentum themes. Growth mode\'s full concentration in a single lagging theme made underperformance more pronounced than Balanced.',
+      description: 'The narrow AI/mega-cap rally that drove SPY higher was not captured by momentum sectors. Growth mode\'s full concentration in a single lagging sector made underperformance more pronounced than Balanced.',
     },
   ],
 }

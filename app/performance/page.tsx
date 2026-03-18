@@ -143,7 +143,7 @@ export default function PerformancePage() {
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-violet-400">Balanced</span>
-                  <p className="text-zinc-500 text-xs mt-0.5">Recommended · Top 2 themes · 50% each</p>
+                  <p className="text-zinc-500 text-xs mt-0.5">Recommended · Top 2 sectors · 50% each</p>
                 </div>
                 <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-violet-400 border-violet-800/60 bg-violet-950/30">
                   Pro
@@ -167,14 +167,14 @@ export default function PerformancePage() {
                   <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-zinc-600 mt-1">$10k → (19yr)</p>
                 </div>
               </div>
-              <p className="text-xs text-zinc-500 leading-relaxed">Holds the top 2 qualifying themes equally weighted. Better risk-adjusted returns, shallower drawdowns. Suitable for most investors.</p>
+              <p className="text-xs text-zinc-500 leading-relaxed">Holds the top 2 qualifying sectors equally weighted. Better risk-adjusted returns, shallower drawdowns. Suitable for most investors.</p>
             </div>
             {/* Growth */}
             <div className="border border-zinc-800 bg-zinc-900/30 rounded-2xl p-6">
               <div className="flex items-center justify-between mb-4">
                 <div>
                   <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-300">Growth</span>
-                  <p className="text-zinc-500 text-xs mt-0.5">Aggressive · Top 1 theme · 100% concentration</p>
+                  <p className="text-zinc-500 text-xs mt-0.5">Aggressive · Top 1 sector · 100% concentration</p>
                 </div>
                 <span className="text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded-full border text-zinc-400 border-zinc-700 bg-zinc-800/40">
                   Premium
@@ -198,7 +198,7 @@ export default function PerformancePage() {
                   <p className="text-[10px] font-mono uppercase tracking-[0.15em] text-zinc-600 mt-1">$10k → (19yr)</p>
                 </div>
               </div>
-              <p className="text-xs text-zinc-500 leading-relaxed">Concentrates 100% in the single strongest qualifying theme. Higher return potential but -75.9% drawdowns require strong conviction and long time horizons.</p>
+              <p className="text-xs text-zinc-500 leading-relaxed">Concentrates 100% in the single strongest qualifying sector. Higher return potential but -75.9% drawdowns require strong conviction and long time horizons.</p>
             </div>
           </div>
         </motion.div>
@@ -319,7 +319,7 @@ export default function PerformancePage() {
                 { label: 'Max Drawdown', strategy: '-46.4%', spy: '-55.2%', better: true },
                 { label: 'vs SPY (annual alpha)', strategy: '+36.92%', spy: '—', better: null },
                 { label: 'Lookback Period', strategy: '16 weeks', spy: '—', better: null },
-                { label: 'Concentration', strategy: 'Top 2 themes · 50% each', spy: '—', better: null },
+                { label: 'Concentration', strategy: 'Top 2 sectors · 50% each', spy: '—', better: null },
                 { label: 'Entry Filter', strategy: 'EMA 10/100 uptrend', spy: '—', better: null },
                 { label: 'Rebalance Cadence', strategy: 'Weekly (7 days)', spy: '—', better: null },
               ] : [
@@ -328,7 +328,7 @@ export default function PerformancePage() {
                 { label: 'Max Drawdown', strategy: '-75.9%', spy: '-55.2%', better: false },
                 { label: 'vs SPY (annual alpha)', strategy: '+50.54%', spy: '—', better: null },
                 { label: 'Lookback Period', strategy: '26 weeks', spy: '—', better: null },
-                { label: 'Concentration', strategy: 'Top 1 theme · 100%', spy: '—', better: null },
+                { label: 'Concentration', strategy: 'Top 1 sector · 100%', spy: '—', better: null },
                 { label: 'Entry Filter', strategy: 'EMA 10/100 uptrend', spy: '—', better: null },
                 { label: 'Rebalance Cadence', strategy: 'Monthly (30 days)', spy: '—', better: null },
               ]).map((row) => (

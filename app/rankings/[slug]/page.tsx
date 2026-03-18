@@ -216,7 +216,7 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
                   Strategy trades <span className="font-mono text-violet-300">{theme}</span> ETF directly
                 </p>
                 <p className="text-xs text-zinc-500 mt-0.5">
-                  Individual stocks below are shown for reference — useful for spotting what&apos;s leading within the theme. The portfolio holds the ETF, not these stocks.
+                  Individual stocks below are shown for reference — useful for spotting what&apos;s leading within the sector. The portfolio holds the ETF, not these stocks.
                 </p>
               </>
             ) : (
@@ -239,11 +239,11 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
               {constituents.length > 0 ? 'Sector Stocks · Momentum Reference' : 'Direct Asset · Live Price'}
             </span>
             <span className="font-mono text-[11px] text-zinc-600">
-              sorted by relative strength vs theme · live data when available
+              sorted by relative strength vs sector · live data when available
             </span>
           </div>
           {rows.length === 0 ? (
-            <p className="text-zinc-600 text-sm text-center py-8">No universe data for this theme.</p>
+            <p className="text-zinc-600 text-sm text-center py-8">No universe data for this sector.</p>
           ) : (
             <Table>
               <TableHeader>
@@ -261,7 +261,7 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
                     <Tooltip>
                       <TooltipTrigger asChild>
                         <button onClick={() => handleSort('rs_score')} className="flex items-center gap-1 ml-auto hover:text-zinc-100 transition-colors underline decoration-dotted underline-offset-2">
-                          {constituents.length > 0 ? 'RS vs Theme' : 'RS vs SPY'}
+                          {constituents.length > 0 ? 'RS vs Sector' : 'RS vs SPY'}
                           {sortCol === 'rs_score'
                             ? sortDir === 'desc' ? <ChevronDown size={12} className="text-violet-400" /> : <ChevronUp size={12} className="text-violet-400" />
                             : <ChevronDown size={12} className="text-zinc-600" />}
@@ -269,7 +269,7 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
                       </TooltipTrigger>
                       <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
                         {constituents.length > 0
-                          ? "Stock's 16-week momentum minus the theme's momentum. Positive = outperforming its sector."
+                          ? "Stock's 16-week momentum minus the sector's momentum. Positive = outperforming its sector."
                           : "16-week momentum minus SPY's momentum. Positive = outperforming the S&P 500."}
                       </TooltipContent>
                     </Tooltip>

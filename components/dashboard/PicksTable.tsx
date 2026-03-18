@@ -71,10 +71,10 @@ export function PicksTable({ picks }: PicksTableProps) {
           <TableHead className="text-zinc-400 font-medium">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help">
-                Theme <Info size={11} className="text-zinc-600" />
+                Sector <Info size={11} className="text-zinc-600" />
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                Sector/theme classification (Tech, Energy, Silver, etc.)
+                Sector classification (Tech, Energy, Silver, etc.)
               </TooltipContent>
             </Tooltip>
           </TableHead>
@@ -94,7 +94,7 @@ export function PicksTable({ picks }: PicksTableProps) {
                 RS Score <Info size={11} className="text-zinc-600" />
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                Relative Strength — how much the stock outperforms its theme. Higher = stronger.
+                Relative Strength — how much the stock outperforms its sector. Higher = stronger.
               </TooltipContent>
             </Tooltip>
           </TableHead>

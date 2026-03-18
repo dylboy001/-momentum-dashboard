@@ -9,7 +9,7 @@ const CARDS = [
   {
     num: '01',
     heading: 'The signal',
-    body: 'Every week, we tell you which 1–2 market themes have the strongest momentum. Clear output: what to hold, at what weight, and when to rebalance next.',
+    body: 'Every week, we tell you which 1–2 market sectors have the strongest momentum. Clear output: what to hold, at what weight, and when to rebalance next.',
   },
   {
     num: '02',
@@ -51,7 +51,7 @@ export function ProductClaritySection() {
             Weekly rotation signals<br />for self-directed traders.
           </h2>
           <p className="text-base text-zinc-400 leading-relaxed max-w-xl">
-            We scan 19 market themes daily using quantitative momentum analysis and tell you which ones are strongest right now.{' '}
+            We scan 19 market sectors daily using quantitative momentum analysis and tell you which ones are strongest right now.{' '}
             <span className="text-zinc-200">You execute in your own account.</span>{' '}
             Not a fund. Not a robo-advisor. A systematic signal service that does the research so you don&apos;t have to.
           </p>

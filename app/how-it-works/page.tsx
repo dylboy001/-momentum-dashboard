@@ -10,37 +10,37 @@ import { Badge } from '@/components/ui/badge';
 const STEPS = [
   {
     num: '01',
-    title: 'Rank all 19 themes by momentum',
-    desc: 'On each rebalance the system calculates price momentum for all 19 themes (17 ETFs + BTC + ETH) — 16 weeks for Balanced mode, 26 weeks for Growth mode. A multi-factor trend confirmation filter then screens for themes in genuine uptrends only. These are sorted highest to lowest — the leaderboard you see in the Rankings tab.',
+    title: 'Rank all 19 sectors by momentum',
+    desc: 'On each rebalance the system calculates price momentum for all 19 sectors (17 ETFs + BTC + ETH) — 16 weeks for Balanced mode, 26 weeks for Growth mode. A multi-factor trend confirmation filter then screens for sectors in genuine uptrends only. These are sorted highest to lowest — the leaderboard you see in the Rankings tab.',
   },
   {
     num: '02',
-    title: 'Select the top 1–2 themes',
-    desc: 'The top-ranked theme(s) with positive momentum become the active investment themes. If no themes pass the trend confirmation filter, the strategy holds cash instead of forcing a trade.',
+    title: 'Select the top 1–2 sectors',
+    desc: 'The top-ranked sector(s) with positive momentum become the active investment sectors. If no sectors pass the trend confirmation filter, the strategy holds cash instead of forcing a trade.',
   },
   {
     num: '03',
     title: 'Allocate to ETF or direct crypto',
-    desc: 'Each winning theme is held via its ETF directly (e.g. XLK for Technology, GLD for Gold). Crypto themes (BTC, ETH) are held as direct assets — not futures or proxies.',
+    desc: 'Each winning sector is held via its ETF directly (e.g. XLK for Technology, GLD for Gold). Crypto sectors (BTC, ETH) are held as direct assets — not futures or proxies.',
   },
   {
     num: '04',
-    title: 'Equal-weight between themes',
-    desc: 'In Balanced mode, each of the top 2 themes receives 50% of capital. In Growth mode, 100% goes to the single strongest qualifying theme.',
+    title: 'Equal-weight between sectors',
+    desc: 'In Balanced mode, each of the top 2 sectors receives 50% of capital. In Growth mode, 100% goes to the single strongest qualifying sector.',
   },
   {
     num: '05',
     title: 'Rebalance on schedule',
-    desc: 'Balanced mode rebalances weekly (every 7 days). Growth mode rebalances monthly (every 30 days). At rebalance, the full process repeats — themes are re-ranked, winners are re-selected, and the portfolio is updated accordingly.',
+    desc: 'Balanced mode rebalances weekly (every 7 days). Growth mode rebalances monthly (every 30 days). At rebalance, the full process repeats — sectors are re-ranked, winners are re-selected, and the portfolio is updated accordingly.',
   },
 ];
 
 const METRICS = [
-  { label: 'Themes tracked', value: '19', note: '17 ETFs + BTC + ETH' },
+  { label: 'Sectors tracked', value: '19', note: '17 ETFs + BTC + ETH' },
   { label: 'Momentum lookback', value: '16–26 weeks', note: 'Balanced: 16w · Growth: 26w' },
   { label: 'Rebalance frequency', value: 'Weekly / Monthly', note: 'Balanced: 7d · Growth: 30d' },
-  { label: 'Typical positions', value: '1–2', note: 'Top 1–2 themes, equal weight' },
-  { label: 'Position sizing', value: '50 / 50', note: 'Equal-weight between themes' },
+  { label: 'Typical positions', value: '1–2', note: 'Top 1–2 sectors, equal weight' },
+  { label: 'Position sizing', value: '50 / 50', note: 'Equal-weight between sectors' },
   { label: '19-year CAGR', value: '47.72%', note: 'vs 10.80% SPY (2006–2025)' },
   { label: 'Sharpe ratio', value: '1.163', note: 'Risk-adjusted performance' },
   { label: 'Max drawdown', value: '-46.4%', note: 'Worst peak-to-trough loss' },
@@ -61,7 +61,7 @@ export default function HowItWorksPage() {
       <PageHeader
         tag="— Process"
         title="How It Works"
-        sub="A systematic, rules-based momentum strategy that rotates capital into the strongest market themes weekly or monthly. No discretionary guesswork — just price data, math, and discipline."
+        sub="A systematic, rules-based momentum strategy that rotates capital into the strongest market sectors weekly or monthly. No discretionary guesswork — just price data, math, and discipline."
       />
 
       <main className="relative z-10 max-w-4xl mx-auto px-6 py-14 space-y-14">
@@ -76,7 +76,7 @@ export default function HowItWorksPage() {
                 A weekly signal service for<br className="hidden sm:block" /> self-directed traders.
               </p>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-                Momentum Capital scans 19 market themes every day, ranks them by quantitative momentum, and tells you which 1–2 to hold each week. <span className="text-zinc-200">You execute the trades yourself</span> in your own brokerage. Your capital stays in your account — we never touch it.
+                Momentum Capital scans 19 market sectors every day, ranks them by quantitative momentum, and tells you which 1–2 to hold each week. <span className="text-zinc-200">You execute the trades yourself</span> in your own brokerage. Your capital stays in your account — we never touch it.
               </p>
             </div>
           </div>
@@ -87,7 +87,7 @@ export default function HowItWorksPage() {
               {
                 label: 'The signal',
                 heading: 'Know what to hold',
-                body: 'Each rebalance you get a clear output: which 1–2 themes are strongest, target weights, and a countdown to the next rebalance. No interpretation needed.',
+                body: 'Each rebalance you get a clear output: which 1–2 sectors are strongest, target weights, and a countdown to the next rebalance. No interpretation needed.',
                 accent: 'border-violet-800/40 bg-violet-950/20',
                 dot: 'bg-violet-400',
               },
@@ -151,7 +151,7 @@ export default function HowItWorksPage() {
           <GlassCard>
             <div className="px-6 pt-6 pb-6 space-y-4 text-sm text-zinc-300 leading-relaxed">
               <p>
-                The investable universe spans <span className="text-zinc-100 font-medium">19 themes</span>: 17 sector and commodity ETFs plus direct BTC and ETH. A proprietary trend confirmation filter ensures we only allocate to themes in genuine uptrends — not just any market with recent price movement.
+                The investable universe spans <span className="text-zinc-100 font-medium">19 sectors</span>: 17 sector and commodity ETFs plus direct BTC and ETH. A proprietary trend confirmation filter ensures we only allocate to sectors in genuine uptrends — not just any market with recent price movement.
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 <div>
@@ -172,7 +172,7 @@ export default function HowItWorksPage() {
                 </div>
               </div>
               <p>
-                The universe is refreshed monthly. Stocks that have been acquired, delisted, suspended, or lost liquidity are automatically replaced with active alternatives. You can explore each theme&apos;s full constituent list on the{' '}
+                The universe is refreshed monthly. Stocks that have been acquired, delisted, suspended, or lost liquidity are automatically replaced with active alternatives. You can explore each sector&apos;s full constituent list on the{' '}
                 <Link href="/rankings" className="text-violet-400 hover:text-violet-300 transition-colors">Rankings page</Link>.
               </p>
             </div>
@@ -222,7 +222,7 @@ export default function HowItWorksPage() {
                 ))}
               </div>
               <p>
-                On rebalance day: re-rank all themes, select new winners, sell outgoing positions, buy incoming picks, and adjust sizing to the new weights. The process typically takes 15–30 minutes to execute through a standard brokerage.
+                On rebalance day: re-rank all sectors, select new winners, sell outgoing positions, buy incoming picks, and adjust sizing to the new weights. The process typically takes 15–30 minutes to execute through a standard brokerage.
               </p>
             </div>
           </GlassCard>
@@ -262,7 +262,7 @@ export default function HowItWorksPage() {
             <div className="px-6 pt-6 pb-6 space-y-3 text-sm">
               {[
                 { step: '1', text: 'Check the Live Picks page for current picks and their target weights.', href: '/', label: 'Live Picks' },
-                { step: '2', text: 'Review the Rankings page to understand which themes are leading and why.', href: '/rankings', label: 'Rankings' },
+                { step: '2', text: 'Review the Rankings page to understand which sectors are leading and why.', href: '/rankings', label: 'Rankings' },
                 { step: '3', text: 'Check the Performance page to see momentum metrics and the next rebalance date.', href: '/performance', label: 'Performance' },
                 { step: '4', text: 'Execute trades through your own brokerage on or near the rebalance date.', href: null, label: null },
                 { step: '5', text: 'Repeat on schedule. The system does the analysis — your job is disciplined execution.', href: null, label: null },

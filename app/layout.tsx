@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Momentum Capital | Dynamic Universe Strategy",
-  description: "Global Multi-Asset Momentum Strategy — Dynamic Universe",
+  title: "Momentum Capital | Quantitative Sector Rotation",
+  description: "Quantitative Sector Rotation — systematic momentum across ETFs and crypto.",
 };
 
 export default function RootLayout({
