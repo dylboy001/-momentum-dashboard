@@ -51,7 +51,7 @@ const ARTICLES: Article[] = [
     slug: 'rs-score',
     icon: BarChart2,
     title: 'How Momentum Is Scored',
-    summary: '16–26 week momentum ranks which of the 19 sectors is strongest. The EMA 10/100 filter then confirms whether the trend is real. Together these two signals determine what the portfolio holds.',
+    summary: '16–26 week momentum ranks which of the 19 sectors is strongest. The EMA 10/100 filter then confirms whether the trend is real. Together these two factors determine what the portfolio holds.',
     readTime: '3 min read',
     body: (
       <div className="space-y-4 text-sm text-zinc-400 leading-relaxed">

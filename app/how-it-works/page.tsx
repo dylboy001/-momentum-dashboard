@@ -73,7 +73,7 @@ export default function HowItWorksPage() {
             <div className="px-8 py-8 sm:px-10 sm:py-10">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500 mb-4">— What this is</p>
               <p className="text-2xl sm:text-3xl font-thin tracking-tight text-white leading-snug mb-3">
-                A weekly signal service for<br className="hidden sm:block" /> self-directed traders.
+                Weekly rotation analysis for<br className="hidden sm:block" /> self-directed traders.
               </p>
               <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
                 Momentum Capital scans 19 market sectors every day, ranks them by quantitative momentum, and tells you which 1–2 to hold each week. <span className="text-zinc-200">You execute the trades yourself</span> in your own brokerage. Your capital stays in your account — we never touch it.
@@ -85,7 +85,7 @@ export default function HowItWorksPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             {[
               {
-                label: 'The signal',
+                label: 'The analysis',
                 heading: 'Know what to hold',
                 body: 'Each rebalance you get a clear output: which 1–2 sectors are strongest, target weights, and a countdown to the next rebalance. No interpretation needed.',
                 accent: 'border-violet-800/40 bg-violet-950/20',

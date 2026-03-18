@@ -58,7 +58,7 @@ const TIERS: Tier[] = [
     badge: 'Trader',
     name: 'Pro',
     price: 49,
-    description: 'Balanced mode: 47.72% CAGR over 19 years. Get exact ETF + crypto picks, position sizes, and weekly rebalance signals.',
+    description: 'Balanced mode: 47.72% CAGR over 19 years. Get exact ETF + crypto picks, position sizes, and weekly rebalance picks.',
     cta: 'Subscribe Now',
     ctaHref: '#',
     recommended: true,

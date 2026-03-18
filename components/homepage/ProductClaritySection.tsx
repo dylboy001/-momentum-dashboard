@@ -8,13 +8,13 @@ const E = [0.16, 1, 0.3, 1] as const
 const CARDS = [
   {
     num: '01',
-    heading: 'The signal',
+    heading: 'The analysis',
     body: 'Every week, we tell you which 1–2 market sectors have the strongest momentum. Clear output: what to hold, at what weight, and when to rebalance next.',
   },
   {
     num: '02',
     heading: 'You execute',
-    body: 'Your capital stays in your own brokerage. We never touch it. You decide when and how to act on the signal — full control, always.',
+    body: 'Your capital stays in your own brokerage. We never touch it. You decide when and how to act on the analysis — full control, always.',
   },
   {
     num: '03',
@@ -48,12 +48,12 @@ export function ProductClaritySection() {
             className="font-thin tracking-tight text-white leading-[1.05] mb-6"
             style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.75rem)' }}
           >
-            Weekly rotation signals<br />for self-directed traders.
+            Weekly rotation analysis<br />for self-directed traders.
           </h2>
           <p className="text-base text-zinc-400 leading-relaxed max-w-xl">
             We scan 19 market sectors daily using quantitative momentum analysis and tell you which ones are strongest right now.{' '}
             <span className="text-zinc-200">You execute in your own account.</span>{' '}
-            Not a fund. Not a robo-advisor. A systematic signal service that does the research so you don&apos;t have to.
+            Not a fund. Not a robo-advisor. A systematic research service that does the quantitative work so you don&apos;t have to.
           </p>
         </motion.div>
 

@@ -14,7 +14,7 @@ const FAQ_SECTIONS = [
   {
     number: '01',
     title: 'How It Works',
-    sub: 'The mechanics behind the strategy — signals, filters, and structure.',
+    sub: 'The mechanics behind the strategy — methodology, filters, and structure.',
     faqs: [
       {
         q: 'What is a momentum rotation strategy?',
@@ -184,7 +184,7 @@ Execution risk: Slippage, commissions, and timing differences between signal and
     faqs: [
       {
         q: 'Is this automated investing, or do I trade myself?',
-        a: `Momentum Capital is a signal service — not automated investing. We do the quantitative research: scanning 19 market sectors daily, ranking them by momentum, and filtering for confirmed uptrends. You receive a clear weekly signal (which 1–2 sectors to hold and at what weight), and you execute the trades yourself in your own brokerage.
+        a: `Momentum Capital is a research service — not automated investing. We do the quantitative work: scanning 19 market sectors daily, ranking them by momentum, and filtering for confirmed uptrends. You receive a clear weekly output (which 1–2 sectors to hold and at what weight), and you execute the trades yourself in your own brokerage.
 
 Your capital stays in your account at all times. We never have access to it, move it, or manage it. Think of it as having a systematic research analyst working for you — the analysis is done, the decision to act is yours.`,
       },
@@ -196,13 +196,13 @@ If you already trade using technical analysis, fundamentals, or your own system,
 
 Specific use cases:
 
-Sector confirmation: You are bullish on Energy from a fundamental view. Momentum Capital ranks XLE in the top 2 with a confirmed uptrend. Your discretionary thesis and the quantitative signal agree — that is meaningful confluence.
+Sector confirmation: You are bullish on Energy from a fundamental view. Momentum Capital ranks XLE in the top 2 with a confirmed uptrend. Your discretionary thesis and the quantitative data align — that is meaningful confluence.
 
 Universe filtering: Instead of scanning thousands of stocks, start with the top-ranked sectors. You are already in the strongest corner of the market — then apply your own stock selection process within those sectors.
 
 Time saving: The system does the broad market scan for you. What might take hours of weekly research is reduced to a 5-minute dashboard check.
 
-The strategy works as a standalone rules-based system. But the underlying signal is a legitimate analytical input regardless of how you choose to use it.`,
+The strategy works as a standalone rules-based system. But the underlying analysis is a legitimate input regardless of how you choose to use it.`,
       },
       {
         q: 'How do I actually execute the trades?',
@@ -249,20 +249,20 @@ During a cash period, the dashboard will show that no sectors are currently sele
 What you do with uninvested capital during these periods is a personal decision based on your own circumstances and risk tolerance. We do not make recommendations on where to hold cash. Consult a financial advisor if you need guidance.`,
       },
       {
-        q: 'What if I only want to trade the top-ranked sectors with my own strategy? Can the rankings serve as a signal for my own analysis?',
+        q: 'What if I only want to trade the top-ranked sectors with my own strategy? Can the rankings inform my own analysis?',
         a: `Absolutely — and many experienced investors use momentum rankings exactly this way.
 
-The rankings page shows all 19 sectors ordered by 16–26 week price return, with their EMA trend status. You can take that signal and overlay your own analysis on top: fundamental research, technical setups, sector macro views, or any other filter you apply.
+The rankings page shows all 19 sectors ordered by 16–26 week price return, with their EMA trend status. You can take that data and overlay your own analysis on top: fundamental research, technical setups, sector macro views, or any other filter you apply.
 
 Some examples of how traders use this:
 
-Confirmation signal: If your own analysis is bullish on Energy or Gold, checking that the sector ranks in the top 3–5 with a confirmed EMA uptrend adds a systematic data point to your discretionary view.
+Confirmation: If your own analysis is bullish on Energy or Gold, checking that the sector ranks in the top 3–5 with a confirmed EMA uptrend adds a systematic data point to your discretionary view.
 
 Universe filtering: Rather than scanning 5,000 stocks, start with the top-momentum sectors from the rankings. You are already in the right corner of the market — then apply your own stock selection within those sectors.
 
 Contra-indicator awareness: If a sector you are considering is ranked 15th of 19 with a failing EMA filter, the momentum data is telling you the trend is not in your favour. You can still trade it — but you go in with eyes open.
 
-The strategy as published is a complete, rules-based system designed for investors who want to follow it without discretion. But the underlying signal — sector momentum + EMA trend confirmation — is a legitimate analytical input regardless of how you use it.
+The strategy as published is a complete, rules-based system designed for investors who want to follow it without discretion. But the underlying analysis — sector momentum + EMA trend confirmation — is a legitimate input regardless of how you use it.
 
 The rankings page is free. Use it however it serves your process.`,
       },
