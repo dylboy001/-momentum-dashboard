@@ -778,6 +778,8 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **Dynamic universe** — `scripts/rebuild_universe.py` fetches live ETF holdings from EODHD, `scripts/v2_picks_generator.py` reads from `data/universe_config.json` if present
 - **BTC/ETH detail pages** — scanner adds them to universe_full_data; rankings detail page handles them as direct assets (no constituent stocks). `rs_score` = `crypto_momentum - spy_momentum` (vs SPY). Column label shows "RS vs SPY" not "RS vs Theme". Table guard uses `rows.length === 0` NOT `constituents.length === 0` (BTC/ETH have empty UNIVERSE arrays by design)
 - **Social assets** — logo-avatar.svg + twitter-banner.png in /public; Twitter @MomentumCap_
+- **Light mode** — `next-themes` (v0.4.6) with `attribute="class"`, `defaultTheme="dark"`. `app/providers.tsx` wraps layout. Sun/Moon toggle in NavBar. Global CSS overrides in `globals.css` handle all pages without per-file edits. `HeroSection` + `CTASection` use `resolvedTheme` to pass `light` prop to `AnimatedWavesBg` and compute dynamic clearance gradient. `dark:` variants on NavBar, Footer, GlassCard. Light mode bg: `#f8fafc`.
+- **Sector language** — all user-facing "theme/themes" renamed to "sector/sectors" sitewide. Variable/prop/component names (THEME_NAMES, theme_rankings, ThemeRankings) unchanged. "signal/signals" marketing language removed — replaced with "analysis"/"research service"/"rotation analysis".
 
 ### ✅ Deployment — LIVE
 - **GitHub**: https://github.com/dylboy001/-momentum-dashboard (**public repo** — required for raw URL fetching)
