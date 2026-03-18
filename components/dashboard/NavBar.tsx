@@ -14,7 +14,10 @@ import {
   BookOpen,
   HelpCircle,
   Mail,
+  Sun,
+  Moon,
 } from 'lucide-react'
+import { useTheme } from 'next-themes'
 import { LogoMark } from '@/components/ui/logo'
 
 import type { ReactNode } from 'react'
@@ -41,6 +44,7 @@ function isActive(href: string, pathname: string): boolean {
 export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
+  const { theme, setTheme } = useTheme()
 
   useEffect(() => { setOpen(false) }, [pathname])
 
@@ -52,14 +56,14 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
   return (
     <>
       {/* ── Header bar ── */}
-      <header className="border-b border-zinc-800 sticky top-0 z-30 bg-[#080808]/95 backdrop-blur-sm">
+      <header className="border-b border-zinc-800 dark:border-zinc-800 border-zinc-200 sticky top-0 z-30 bg-white/95 dark:bg-[#080808]/95 backdrop-blur-sm">
         <div className="px-6 py-4">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
 
             <Link href="/" className="flex items-center gap-3">
               <LogoMark size={22} animate={pathname === '/'} />
               <div>
-                <span className="text-lg font-semibold tracking-tight block leading-tight">
+                <span className="text-lg font-semibold tracking-tight block leading-tight text-zinc-900 dark:text-zinc-100">
                   Momentum Capital
                 </span>
                 <span className="text-zinc-500 text-xs">ETF &amp; Crypto Rotation</span>
@@ -72,7 +76,7 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
                 isActive(href, pathname) ? (
                   <span
                     key={href}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-zinc-100 bg-zinc-800"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-zinc-900 dark:text-zinc-100 bg-zinc-200 dark:bg-zinc-800"
                   >
                     <Icon size={14} />
                     {label}
@@ -81,7 +85,7 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
                   <Link
                     key={href}
                     href={href}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                   >
                     <Icon size={14} />
                     {label}
@@ -90,17 +94,27 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
               )}
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               {rightContent != null && (
                 <div className="hidden md:flex items-center gap-3 text-xs text-zinc-500">
                   {rightContent}
                 </div>
               )}
 
+              {/* Theme toggle */}
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="flex items-center justify-center w-9 h-9 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+                aria-label="Toggle theme"
+              >
+                <Sun size={16} className="hidden dark:block" />
+                <Moon size={16} className="block dark:hidden" />
+              </button>
+
               {/* Hamburger */}
               <button
                 onClick={() => setOpen(prev => !prev)}
-                className="md:hidden flex items-center justify-center w-9 h-9 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors"
+                className="md:hidden flex items-center justify-center w-9 h-9 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
                 aria-label={open ? 'Close menu' : 'Open menu'}
               >
                 <Menu size={18} />
@@ -122,19 +136,19 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
 
       {/* ── Drawer ── always mounted, slides in from right */}
       <div
-        className={`fixed top-0 right-0 z-50 h-full w-72 bg-zinc-900 border-l border-zinc-800 flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 right-0 z-50 h-full w-72 bg-white dark:bg-zinc-900 border-l border-zinc-200 dark:border-zinc-800 flex flex-col transition-transform duration-300 ease-in-out md:hidden ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
         {/* Drawer header */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-800">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center gap-2">
             <LogoMark size={18} animate={false} />
-            <span className="text-sm font-semibold text-zinc-100">Momentum Capital</span>
+            <span className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Momentum Capital</span>
           </div>
           <button
             onClick={() => setOpen(false)}
-            className="flex items-center justify-center w-8 h-8 rounded-md text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800 transition-colors"
+            className="flex items-center justify-center w-8 h-8 rounded-md text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
             aria-label="Close menu"
           >
             <X size={16} />
@@ -151,8 +165,8 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
               href={href}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                 isActive(href, pathname)
-                  ? 'bg-zinc-800 text-zinc-100'
-                  : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-800/60'
+                  ? 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100'
+                  : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60'
               }`}
             >
               <Icon size={16} />
@@ -161,15 +175,15 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
           ))}
 
           {/* Divider */}
-          <div className="pt-3 mt-2 border-t border-zinc-800 space-y-1">
+          <div className="pt-3 mt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-1">
             {NAV_SECONDARY.map(({ href, label, icon: Icon }) => (
               <Link
                 key={href}
                 href={href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                   isActive(href, pathname)
-                    ? 'bg-zinc-800 text-zinc-100'
-                    : 'text-zinc-500 hover:text-zinc-100 hover:bg-zinc-800/60'
+                    ? 'bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100'
+                    : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:bg-zinc-100 dark:hover:bg-zinc-800/60'
                 }`}
               >
                 <Icon size={16} />
@@ -181,8 +195,8 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
         </nav>
 
         {/* Drawer footer */}
-        <div className="px-5 py-4 border-t border-zinc-800">
-          <p className="text-[11px] text-zinc-700 leading-relaxed">
+        <div className="px-5 py-4 border-t border-zinc-200 dark:border-zinc-800">
+          <p className="text-[11px] text-zinc-500 dark:text-zinc-700 leading-relaxed">
             Not financial advice. Past performance does not guarantee future results.
           </p>
         </div>

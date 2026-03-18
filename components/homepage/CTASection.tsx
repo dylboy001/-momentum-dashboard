@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useTheme } from 'next-themes'
 import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
 
 const E = [0.16, 1, 0.3, 1] as const
@@ -10,13 +11,16 @@ const E = [0.16, 1, 0.3, 1] as const
 export function CTASection() {
   const ref = useRef<HTMLElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const { resolvedTheme } = useTheme()
+  const isLight = resolvedTheme === 'light'
+  const bgRgb = isLight ? '248,250,252' : '8,8,8'
 
   return (
     <section
       ref={ref}
       className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#080808] px-8 py-24"
     >
-      <AnimatedWavesBg />
+      <AnimatedWavesBg light={isLight} />
 
       {/* Heading clearance overlay */}
       <div
@@ -24,11 +28,11 @@ export function CTASection() {
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            'radial-gradient(ellipse 65% 52% at 50% 44%, ' +
-              'rgba(8,8,8,0.97)  0%, ' +
-              'rgba(8,8,8,0.88) 22%, ' +
-              'rgba(8,8,8,0.50) 52%, ' +
-              'rgba(8,8,8,0.00) 76%)',
+            `radial-gradient(ellipse 65% 52% at 50% 44%, ` +
+              `rgba(${bgRgb},0.97)  0%, ` +
+              `rgba(${bgRgb},0.88) 22%, ` +
+              `rgba(${bgRgb},0.50) 52%, ` +
+              `rgba(${bgRgb},0.00) 76%)`,
         }}
       />
 
@@ -59,7 +63,10 @@ export function CTASection() {
           {(["Discover The Market's", 'Top Performers'] as const).map((line, i) => (
             <div key={line} className="overflow-hidden">
               <motion.span
-                className="block bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent"
+                className={`block ${isLight
+                  ? 'text-zinc-900'
+                  : 'bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent'
+                }`}
                 initial={{ y: '115%' }}
                 animate={isInView ? { y: '0%' } : {}}
                 transition={{ delay: 0.28 + i * 0.12, duration: 1.1, ease: E }}
@@ -93,7 +100,7 @@ export function CTASection() {
           <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/how-it-works"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-700 px-10 py-4 text-sm font-medium uppercase tracking-widest text-zinc-400 transition-colors duration-300 hover:border-zinc-400 hover:text-white active:scale-[0.97]"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 px-10 py-4 text-sm font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 transition-colors duration-300 hover:border-zinc-600 dark:hover:border-zinc-400 hover:text-zinc-900 dark:hover:text-white active:scale-[0.97]"
             >
               How It Works
             </Link>

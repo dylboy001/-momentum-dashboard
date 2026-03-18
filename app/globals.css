@@ -275,3 +275,117 @@
     animation: scroll-bounce 2.2s ease-in-out 2000ms infinite;
   }
 }
+/* ── Light mode global overrides ────────────────────────────────────────────
+   These cover the hardcoded dark values used throughout page and component
+   files so we don't need to touch every individual file.
+   Specificity: html:not(.dark) .class > .class — always wins.
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Page / section backgrounds */
+html:not(.dark) .bg-\[\#080808\],
+html:not(.dark) .bg-\[\#0c0c0c\] {
+  background-color: #f8fafc;
+}
+html:not(.dark) .bg-\[\#080808\]\/95 {
+  background-color: rgb(248 250 252 / 95%);
+}
+
+/* Card / surface backgrounds */
+html:not(.dark) .bg-zinc-900\/50,
+html:not(.dark) .bg-zinc-900\/40,
+html:not(.dark) .bg-zinc-900\/30 {
+  background-color: #ffffff;
+}
+html:not(.dark) .bg-zinc-900 {
+  background-color: #f1f5f9;
+}
+html:not(.dark) .bg-zinc-800\/50 {
+  background-color: rgb(241 245 249 / 80%);
+}
+html:not(.dark) .bg-zinc-800\/60 {
+  background-color: #f1f5f9;
+}
+html:not(.dark) .bg-zinc-800\/40 {
+  background-color: rgb(241 245 249 / 70%);
+}
+html:not(.dark) .bg-zinc-800 {
+  background-color: #e2e8f0;
+}
+html:not(.dark) .bg-amber-950\/30 {
+  background-color: rgb(255 251 235 / 80%);
+}
+
+/* Borders */
+html:not(.dark) .border-zinc-800,
+html:not(.dark) .border-zinc-800\/60,
+html:not(.dark) .border-zinc-800\/50,
+html:not(.dark) .border-zinc-800\/40 {
+  border-color: #e2e8f0;
+}
+html:not(.dark) .border-zinc-700\/60 {
+  border-color: #cbd5e1;
+}
+html:not(.dark) .border-zinc-700 {
+  border-color: #cbd5e1;
+}
+
+/* Primary text — near-white becomes near-black */
+html:not(.dark) .text-white,
+html:not(.dark) .text-zinc-100 {
+  color: #0f172a;
+}
+html:not(.dark) .text-zinc-200 {
+  color: #1e293b;
+}
+html:not(.dark) .text-zinc-300 {
+  color: #334155;
+}
+/* Body copy text — zinc-400 becomes readable on light bg */
+html:not(.dark) .text-zinc-400 {
+  color: #475569;
+}
+/* Labels / muted — zinc-500 is readable on light, keep darker */
+html:not(.dark) .text-zinc-500 {
+  color: #64748b;
+}
+/* Faint — zinc-600 on light is fine */
+html:not(.dark) .text-zinc-600 {
+  color: #94a3b8;
+}
+/* Dividers — zinc-700 lightens further */
+html:not(.dark) .text-zinc-700 {
+  color: #cbd5e1;
+}
+
+/* GlassCard: backdrop-blur + shadow adjustments */
+html:not(.dark) .backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+html:not(.dark) .shadow-black\/40 {
+  --tw-shadow-color: rgb(0 0 0 / 8%);
+}
+
+/* Amber warning banners in light mode */
+html:not(.dark) .border-amber-800\/40 {
+  border-color: rgb(217 119 6 / 40%);
+}
+html:not(.dark) .text-amber-300\/80 {
+  color: rgb(180 83 9 / 90%);
+}
+
+/* btn-outline in light mode */
+html:not(.dark) .btn-outline {
+  border-color: #d4d4d8;
+  color: #52525b;
+}
+html:not(.dark) .btn-outline:hover {
+  border-color: rgb(167 139 250 / 50%);
+  background-color: #f1f5f9;
+  color: #18181b;
+}
+
+/* stat-card in light mode */
+html:not(.dark) .stat-card {
+  border-color: #e2e8f0;
+  background-color: rgb(255 255 255 / 70%);
+}

@@ -29,7 +29,7 @@ const SOCIALS = [
 
 function ColHeading({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-4">
+    <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider mb-4">
       {children}
     </p>
   );
@@ -37,7 +37,7 @@ function ColHeading({ children }: { children: React.ReactNode }) {
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   const external = href.startsWith('http') || href.startsWith('mailto');
-  const cls = 'block text-sm text-zinc-600 hover:text-zinc-200 transition-colors py-0.5';
+  const cls = 'block text-sm text-zinc-500 dark:text-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors py-0.5';
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
@@ -50,7 +50,7 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 
 export function Footer() {
   return (
-    <footer className="bg-[#080808] border-t border-zinc-800/60">
+    <footer className="bg-zinc-50 dark:bg-[#080808] border-t border-zinc-200 dark:border-zinc-800/60">
 
       {/* Main columns */}
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -90,7 +90,7 @@ export function Footer() {
                   href={href}
                   target={href.startsWith('mailto') ? undefined : '_blank'}
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2.5 text-sm text-zinc-600 hover:text-zinc-200 transition-colors py-0.5"
+                  className="flex items-center gap-2.5 text-sm text-zinc-500 dark:text-zinc-600 hover:text-zinc-900 dark:hover:text-zinc-200 transition-colors py-0.5"
                 >
                   <Icon size={13} className="shrink-0" />
                   {label}
@@ -103,15 +103,15 @@ export function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-zinc-800/60">
+      <div className="border-t border-zinc-200 dark:border-zinc-800/60">
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
 
           <div className="flex items-center gap-2">
             <TrendingUp size={13} className="text-violet-500" />
-            <span className="text-xs text-zinc-600">© 2026 Momentum Capital</span>
+            <span className="text-xs text-zinc-500 dark:text-zinc-600">© 2026 Momentum Capital</span>
           </div>
 
-          <p className="text-xs text-zinc-700 text-center sm:text-right max-w-md">
+          <p className="text-xs text-zinc-400 dark:text-zinc-700 text-center sm:text-right max-w-md">
             Not financial advice. Past performance does not guarantee future results. All investing involves risk of loss.
           </p>
 

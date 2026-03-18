@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRef } from 'react'
+import { useTheme } from 'next-themes'
 import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
 import { LogoMark } from '@/components/ui/logo'
 
@@ -10,12 +11,15 @@ const E = [0.16, 1, 0.3, 1] as const
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const { resolvedTheme } = useTheme()
+  const isLight = resolvedTheme === 'light'
+  const bgRgb = isLight ? '248,250,252' : '8,8,8'
 
   return (
     <section ref={sectionRef} className="relative flex min-h-screen flex-col overflow-hidden bg-[#080808]">
 
       {/* ── Animated wavy grid background ──────────────────────────────────── */}
-      <AnimatedWavesBg />
+      <AnimatedWavesBg light={isLight} />
 
       {/* ── Background logo — circle morphs to infinity, then fades to ghost ── */}
       <motion.div
@@ -35,11 +39,11 @@ export function HeroSection() {
         className="pointer-events-none absolute inset-0 z-[1]"
         style={{
           background:
-            'radial-gradient(ellipse 65% 52% at 50% 44%, ' +
-              'rgba(8,8,8,0.97)  0%, ' +
-              'rgba(8,8,8,0.88) 22%, ' +
-              'rgba(8,8,8,0.50) 52%, ' +
-              'rgba(8,8,8,0.00) 76%)',
+            `radial-gradient(ellipse 65% 52% at 50% 44%, ` +
+              `rgba(${bgRgb},0.97)  0%, ` +
+              `rgba(${bgRgb},0.88) 22%, ` +
+              `rgba(${bgRgb},0.50) 52%, ` +
+              `rgba(${bgRgb},0.00) 76%)`,
         }}
       />
 
@@ -91,7 +95,10 @@ export function HeroSection() {
             {(['MOMENTUM', 'CAPITAL'] as const).map((word, i) => (
               <div key={word} className="overflow-hidden">
                 <motion.span
-                  className="block bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent"
+                  className={`block ${isLight
+                    ? 'text-zinc-900'
+                    : 'bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent'
+                  }`}
                   initial={{ y: '115%' }}
                   animate={{ y: '0%' }}
                   transition={{ delay: 0.28 + i * 0.12, duration: 1.1, ease: E }}
