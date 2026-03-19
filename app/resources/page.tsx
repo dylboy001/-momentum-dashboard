@@ -58,7 +58,7 @@ const ARTICLES: Article[] = [
         <p>
           The <span className="text-zinc-200">momentum score</span> is the primary metric used to rank all 19 sectors. It answers the question: which sectors are showing the strongest sustained price trends right now?
         </p>
-        <div className="bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-300 my-4">
+        <div className="bg-zinc-100 dark:bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300 my-4">
           Momentum Score = (Price today / Price N weeks ago) − 1  [N = 16 Balanced · 26 Growth]
         </div>
         <p>
@@ -68,7 +68,7 @@ const ARTICLES: Article[] = [
         <p>
           A high momentum score alone isn&apos;t enough — a sector can spike briefly without being in a genuine uptrend. The filter requires:
         </p>
-        <div className="bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-300 my-4">
+        <div className="bg-zinc-100 dark:bg-zinc-800/60 rounded-lg px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300 my-4">
           Price &gt; EMA(10 days) &gt; EMA(100 days)
         </div>
         <p>
@@ -205,7 +205,7 @@ const ARTICLES: Article[] = [
         <p>
           The backtested CAGR and other metrics shown on this site are honest estimates using standard rules, not cherry-picked windows. But treat them as a plausibility check — evidence that the approach has a rational basis in historical data — rather than a guarantee of future performance. The strategy&apos;s live results will always differ, likely negatively, from the backtest.
         </p>
-        <div className="bg-amber-950/30 border border-amber-800/40 rounded-lg px-4 py-3 text-amber-300/80 text-xs leading-relaxed mt-4">
+        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800/40 rounded-lg px-4 py-3 text-amber-700 dark:text-amber-300/80 text-xs leading-relaxed mt-4">
           Past performance is not indicative of future results. Backtested results are hypothetical and do not represent actual trading. All investing involves risk of loss.
         </div>
       </div>
@@ -292,8 +292,8 @@ export default function ResourcesPage() {
 
             {/* Article header */}
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-violet-950/60 border border-violet-800/40 flex items-center justify-center shrink-0">
-                <Icon size={18} className="text-violet-400" />
+              <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950/60 border border-violet-200 dark:border-violet-800/40 flex items-center justify-center shrink-0">
+                <Icon size={18} className="text-violet-600 dark:text-violet-400" />
               </div>
               <div>
                 <h2 className="text-xl font-thin tracking-tight text-white mb-1">{article.title}</h2>
