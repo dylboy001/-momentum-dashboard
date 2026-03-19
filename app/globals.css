@@ -311,8 +311,20 @@ html:not(.dark) .bg-zinc-800\/40 {
 html:not(.dark) .bg-zinc-800 {
   background-color: #e2e8f0;
 }
+html:not(.dark) .bg-zinc-950\/50 {
+  background-color: #ffffff;
+}
 html:not(.dark) .bg-amber-950\/30 {
   background-color: rgb(255 251 235 / 80%);
+}
+html:not(.dark) .bg-violet-950\/20 {
+  background-color: rgb(245 243 255 / 80%);
+}
+html:not(.dark) .bg-violet-950\/10 {
+  background-color: rgb(245 243 255 / 50%);
+}
+html:not(.dark) .bg-violet-950\/30 {
+  background-color: rgb(237 233 254 / 60%);
 }
 
 /* Borders */
@@ -379,8 +391,8 @@ html:not(.dark) .btn-outline {
   color: #52525b;
 }
 html:not(.dark) .btn-outline:hover {
-  border-color: rgb(167 139 250 / 50%);
-  background-color: #f1f5f9;
+  border-color: rgb(139 92 246 / 50%);
+  background-color: #dde3ea;
   color: #18181b;
 }
 
@@ -388,6 +400,10 @@ html:not(.dark) .btn-outline:hover {
 html:not(.dark) .stat-card {
   border-color: #e2e8f0;
   background-color: rgb(255 255 255 / 70%);
+}
+html:not(.dark) .stat-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 20px 40px rgb(0 0 0 / 8%);
 }
 
 /* ── Hero/CTA clearance overlay — CSS variable avoids JS hydration flash ── */
@@ -434,21 +450,28 @@ html:not(.dark) .hover\:bg-zinc-900\/60:hover,
 html:not(.dark) .hover\:bg-zinc-900:hover,
 html:not(.dark) .hover\:bg-zinc-800\/50:hover,
 html:not(.dark) .hover\:bg-zinc-800\/40:hover,
-html:not(.dark) .hover\:bg-zinc-800\/30:hover {
-  background-color: #f4f4f5; /* zinc-100 — subtle, never washes text */
+html:not(.dark) .hover\:bg-zinc-800\/30:hover,
+html:not(.dark) .hover\:bg-zinc-50:hover {
+  background-color: #dde3ea; /* slate-200-ish — clearly visible on #f8fafc */
 }
 
 html:not(.dark) .hover\:bg-zinc-800:hover {
-  background-color: #e4e4e7; /* zinc-200 — slightly stronger for bg-zinc-800 */
+  background-color: #cbd5e1; /* slate-300 — stronger for bg-zinc-800 hover */
 }
 
 /* group-hover variants (contact page icons, etc.) */
 html:not(.dark) .group:hover .group-hover\:bg-zinc-700 {
-  background-color: #e4e4e7;
+  background-color: #e2e8f0;
+}
+
+/* violet CTA hover (performance page header link) */
+html:not(.dark) .hover\:bg-violet-950\/40:hover {
+  background-color: rgb(237 233 254 / 60%);
 }
 
 /* hover:text overrides — dark hover text should become dark in light mode */
 html:not(.dark) .hover\:text-zinc-100:hover,
+html:not(.dark) .hover\:text-zinc-200:hover,
 html:not(.dark) .hover\:text-zinc-300:hover {
   color: #18181b; /* zinc-900 */
 }

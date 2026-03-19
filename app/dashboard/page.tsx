@@ -145,8 +145,8 @@ export default function DashboardPage() {
         )}
 
         {/* ── ROW 1: Rebalance countdown — full width ────────────────────── */}
-        <GlassCard className="bg-gradient-to-b from-zinc-900/60 to-zinc-900/20">
-          <div className="px-6 py-3 border-b border-zinc-800/50 bg-zinc-900/40 flex items-center justify-between">
+        <GlassCard className="dark:bg-gradient-to-b dark:from-zinc-900/60 dark:to-zinc-900/20">
+          <div className="px-6 py-3 border-b border-zinc-800/50 dark:bg-zinc-900/40 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
