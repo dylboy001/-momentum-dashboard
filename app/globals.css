@@ -127,6 +127,18 @@
     @apply bg-background text-foreground;
     font-family: -apple-system, "Helvetica Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
   }
+
+  /* Text selection — dark mode: violet bg, white text */
+  ::selection {
+    background-color: rgb(139 92 246 / 40%);
+    color: #ffffff;
+  }
+
+  /* Text selection — light mode: violet bg, dark text */
+  html:not(.dark) ::selection {
+    background-color: rgb(139 92 246 / 25%);
+    color: #18181b;
+  }
 }
 
 /* ── Keyframes ─────────────────────────────────────────────────── */
@@ -404,6 +416,23 @@ html:not(.dark) .btn-outline:hover {
   border-color: rgb(139 92 246 / 50%);
   background-color: #dde3ea;
   color: #18181b;
+}
+
+/* Violet text — make readable on light backgrounds */
+html:not(.dark) .text-violet-300,
+html:not(.dark) .text-violet-400 {
+  color: #6d28d9; /* violet-700 */
+}
+html:not(.dark) .hover\:text-violet-200:hover,
+html:not(.dark) .hover\:text-violet-300:hover,
+html:not(.dark) .hover\:text-violet-400:hover {
+  color: #5b21b6; /* violet-800 */
+}
+
+/* Exempt text-white on violet-bg buttons — white text must stay white */
+html:not(.dark) .bg-violet-600.text-white,
+html:not(.dark) .bg-violet-500.text-white {
+  color: #ffffff;
 }
 
 /* stat-card in light mode */
