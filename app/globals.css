@@ -314,8 +314,17 @@ html:not(.dark) .bg-zinc-800 {
 html:not(.dark) .bg-zinc-950\/50 {
   background-color: #ffffff;
 }
+html:not(.dark) .bg-emerald-950\/30 {
+  background-color: rgb(236 253 245 / 90%); /* very light green */
+}
+html:not(.dark) .border-emerald-800\/60 {
+  border-color: rgb(16 185 129 / 35%); /* emerald-500 at low opacity */
+}
 html:not(.dark) .bg-amber-950\/30 {
   background-color: rgb(255 251 235 / 80%);
+}
+html:not(.dark) .border-amber-800\/60 {
+  border-color: rgb(217 119 6 / 35%); /* amber-600 at low opacity */
 }
 html:not(.dark) .bg-violet-950\/20 {
   background-color: rgb(245 243 255 / 80%);
@@ -371,6 +380,7 @@ html:not(.dark) .text-zinc-700 {
 
 /* GlassCard: backdrop-blur + shadow adjustments */
 html:not(.dark) .backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 html:not(.dark) .shadow-black\/40 {
@@ -470,6 +480,7 @@ html:not(.dark) .hover\:bg-violet-950\/40:hover {
 }
 
 /* hover:text overrides — dark hover text should become dark in light mode */
+html:not(.dark) .hover\:text-white:hover,
 html:not(.dark) .hover\:text-zinc-100:hover,
 html:not(.dark) .hover\:text-zinc-200:hover,
 html:not(.dark) .hover\:text-zinc-300:hover {

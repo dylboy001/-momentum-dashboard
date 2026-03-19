@@ -378,7 +378,7 @@ export default function PerformancePage() {
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
-        <GlassCard className="bg-gradient-to-br from-violet-950/20 to-transparent">
+        <GlassCard className="dark:bg-gradient-to-br dark:from-violet-950/20 dark:to-transparent">
           <div className="px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <p className="text-lg font-thin text-white mb-1">Ready to put this strategy to work?</p>
