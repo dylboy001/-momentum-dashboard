@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { NavBar } from '@/components/dashboard/NavBar';
 import { PageHeader } from '@/components/ui/page-header';
 import { GlassCard } from '@/components/ui/glass-card';
-import { Mail, HelpCircle, Twitter, Linkedin, CheckCircle, AlertCircle } from 'lucide-react';
+import { Mail, HelpCircle, Twitter, CheckCircle, AlertCircle } from 'lucide-react';
 
 const SUBJECTS = [
   'General Inquiry',
@@ -269,17 +269,6 @@ export default function ContactPage() {
                       <Twitter size={14} />
                     </div>
                     @MomentumCap_
-                  </a>
-                  <a
-                    href="https://linkedin.com/company/momentumcapital"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-sm text-zinc-400 hover:text-zinc-100 transition-colors group"
-                  >
-                    <div className="w-8 h-8 rounded-lg bg-zinc-800 flex items-center justify-center group-hover:bg-zinc-700 transition-colors">
-                      <Linkedin size={14} />
-                    </div>
-                    Momentum Capital
                   </a>
                 </div>
               </div>

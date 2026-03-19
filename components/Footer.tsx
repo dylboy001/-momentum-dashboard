@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { TrendingUp, Twitter, Linkedin, Mail } from 'lucide-react';
+import { TrendingUp, Twitter, Mail } from 'lucide-react';
 
 const PRODUCT_LINKS = [
   { label: 'Home',        href: '/' },
@@ -22,9 +22,8 @@ const LEGAL_LINKS = [
 ];
 
 const SOCIALS = [
-  { label: 'X / Twitter', href: 'https://x.com/MomentumCap_',                 icon: Twitter },
-  { label: 'LinkedIn',    href: 'https://linkedin.com/company/momentumcapital', icon: Linkedin },
-  { label: 'Email',       href: 'mailto:contact@momentumcap.io',               icon: Mail },
+  { label: 'X / Twitter', href: 'https://x.com/MomentumCap_',   icon: Twitter },
+  { label: 'Email',       href: 'mailto:contact@momentumcap.io', icon: Mail },
 ];
 
 function ColHeading({ children }: { children: React.ReactNode }) {
