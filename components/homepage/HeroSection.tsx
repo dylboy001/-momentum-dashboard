@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
 import { LogoMark } from '@/components/ui/logo'
@@ -12,8 +12,11 @@ const E = [0.16, 1, 0.3, 1] as const
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const { resolvedTheme } = useTheme()
-  const isLight = resolvedTheme === 'light'
-  const bgRgb = isLight ? '248,250,252' : '8,8,8'
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+  // Only pass light to the canvas after hydration — avoids wrong initial render.
+  // Gradient + heading text are CSS-driven (no JS flash).
+  const isLight = mounted && resolvedTheme === 'light'
 
   return (
     <section ref={sectionRef} className="relative flex min-h-screen flex-col overflow-hidden bg-[#080808]">
@@ -33,18 +36,11 @@ export function HeroSection() {
         <LogoMark size={520} animate morphDelay={600} morphDuration={3200} />
       </motion.div>
 
-      {/* ── Heading clearance overlay ───────────────────────────────────────── */}
+      {/* ── Heading clearance overlay — uses CSS var, no JS hydration flash ─── */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-[1]"
-        style={{
-          background:
-            `radial-gradient(ellipse 65% 52% at 50% 44%, ` +
-              `rgba(${bgRgb},0.97)  0%, ` +
-              `rgba(${bgRgb},0.88) 22%, ` +
-              `rgba(${bgRgb},0.50) 52%, ` +
-              `rgba(${bgRgb},0.00) 76%)`,
-        }}
+        style={{ background: 'var(--hero-clearance-bg)' }}
       />
 
       {/* ── Corner marks ────────────────────────────────────────────────────── */}
@@ -94,11 +90,9 @@ export function HeroSection() {
           >
             {(['MOMENTUM', 'CAPITAL'] as const).map((word, i) => (
               <div key={word} className="overflow-hidden">
+                {/* hero-word: CSS class handles light/dark — no JS flash */}
                 <motion.span
-                  className={`block ${isLight
-                    ? 'text-zinc-900'
-                    : 'bg-gradient-to-b from-white via-white to-white/70 bg-clip-text text-transparent'
-                  }`}
+                  className="hero-word"
                   initial={{ y: '115%' }}
                   animate={{ y: '0%' }}
                   transition={{ delay: 0.28 + i * 0.12, duration: 1.1, ease: E }}

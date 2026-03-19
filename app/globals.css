@@ -389,3 +389,36 @@ html:not(.dark) .stat-card {
   border-color: #e2e8f0;
   background-color: rgb(255 255 255 / 70%);
 }
+
+/* ── Hero/CTA clearance overlay — CSS variable avoids JS hydration flash ── */
+/* next-themes sets .dark on <html> via inline script before React runs,    */
+/* so these variables resolve correctly with zero flash.                    */
+:root {
+  --hero-clearance-bg:
+    radial-gradient(ellipse 65% 52% at 50% 44%,
+      rgba(248,250,252,0.97)  0%,
+      rgba(248,250,252,0.88) 22%,
+      rgba(248,250,252,0.50) 52%,
+      rgba(248,250,252,0.00) 76%);
+}
+.dark {
+  --hero-clearance-bg:
+    radial-gradient(ellipse 65% 52% at 50% 44%,
+      rgba(8,8,8,0.97)  0%,
+      rgba(8,8,8,0.88) 22%,
+      rgba(8,8,8,0.50) 52%,
+      rgba(8,8,8,0.00) 76%);
+}
+
+/* ── Hero heading word — light: dark text, dark: white gradient ── */
+.hero-word {
+  display: block;
+  color: #0f172a;
+}
+.dark .hero-word {
+  background: linear-gradient(to bottom, #fff, #fff, rgba(255,255,255,0.70));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
