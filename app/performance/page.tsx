@@ -219,7 +219,7 @@ export default function PerformancePage() {
               <p className="text-xs text-zinc-600 mt-1">Momentum Strategy vs S&amp;P 500 — logarithmic scale</p>
             </div>
             {/* Mode toggle */}
-            <div className="flex items-center gap-1 bg-zinc-800/60 rounded-lg p-1 self-start sm:self-auto">
+            <div className="flex items-center gap-1 bg-zinc-200/80 dark:bg-zinc-800/60 rounded-lg p-1 self-start sm:self-auto border border-zinc-300/60 dark:border-zinc-700/50">
               {CHART_MODES.map((m) => (
                 <button
                   key={m.id}
@@ -227,7 +227,7 @@ export default function PerformancePage() {
                   className={`px-3 py-1.5 rounded-md text-xs font-mono transition-colors ${
                     chartMode === m.id
                       ? 'bg-violet-600 text-white'
-                      : 'text-zinc-400 hover:text-zinc-200'
+                      : 'text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-300/60 dark:hover:bg-zinc-700/60'
                   }`}
                 >
                   {m.label}
