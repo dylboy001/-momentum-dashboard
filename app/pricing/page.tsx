@@ -109,7 +109,7 @@ const FAQS = [
   },
   {
     q: 'When is the Pro plan worth it?',
-    a: 'Once you want to act on the strategy — seeing the actual stock picks, position sizes, and rebalance dates — Pro gives you everything needed to execute quarterly rotation on your own brokerage account.',
+    a: 'Once you want to act on the strategy — seeing the actual sector picks, position sizes, and rebalance dates — Pro gives you everything needed to execute the weekly rebalance on your own brokerage account.',
   },
   {
     q: 'Why does the equity curve look flat vs SPY before 2016?',
