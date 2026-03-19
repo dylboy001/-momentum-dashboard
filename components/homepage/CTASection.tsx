@@ -91,7 +91,7 @@ export function CTASection() {
           <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
             <Link
               href="/how-it-works"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-300 dark:border-zinc-700 px-10 py-4 text-sm font-medium uppercase tracking-widest text-zinc-600 dark:text-zinc-400 transition-colors duration-300 hover:border-zinc-600 dark:hover:border-zinc-400 hover:text-zinc-900 dark:hover:text-white active:scale-[0.97]"
+              className="btn-outline"
             >
               How It Works
             </Link>
