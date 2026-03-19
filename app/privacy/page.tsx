@@ -258,7 +258,7 @@ function BulletItem({ label, children }: { label: string; children: React.ReactN
 
 function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mt-5 rounded-lg border border-violet-800/40 bg-violet-950/30 px-4 py-3 text-sm text-violet-200">
+    <div className="mt-5 rounded-lg border border-violet-300 dark:border-violet-800/40 bg-violet-50 dark:bg-violet-950/30 px-4 py-3 text-sm text-violet-800 dark:text-violet-200">
       {children}
     </div>
   )
