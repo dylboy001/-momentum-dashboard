@@ -250,17 +250,17 @@ export default function ResourcesPage() {
                   className={[
                     'group w-full text-left rounded-xl px-4 py-3.5 transition-colors duration-200',
                     isActive
-                      ? 'bg-violet-950/40 border border-violet-500/20'
-                      : 'border border-transparent hover:bg-zinc-900/60 hover:border-zinc-800',
+                      ? 'bg-violet-100 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-500/20'
+                      : 'border border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900/60 hover:border-zinc-200 dark:hover:border-zinc-800',
                   ].join(' ')}
                 >
                   <div className="flex items-center gap-2.5 mb-1">
-                    <NavIcon size={13} className={isActive ? 'text-violet-400' : 'text-zinc-600 group-hover:text-zinc-500'} />
-                    <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-violet-400' : 'text-zinc-600 group-hover:text-zinc-500'}`}>
+                    <NavIcon size={13} className={isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'} />
+                    <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
                       {a.readTime}
                     </span>
                   </div>
-                  <span className={`block text-sm font-medium leading-snug ${isActive ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-300'}`}>
+                  <span className={`block text-sm font-medium leading-snug ${isActive ? 'text-violet-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300'}`}>
                     {a.title}
                   </span>
                 </button>
