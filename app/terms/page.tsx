@@ -93,9 +93,9 @@ export default function TermsPage() {
       <main className="relative z-10 max-w-3xl mx-auto px-6 py-12">
 
         {/* Prominent disclaimer banner */}
-        <div className="bg-amber-950/30 border border-amber-800/40 rounded-xl px-5 py-4 mb-10">
-          <p className="text-amber-300 text-sm font-medium mb-1">Educational tool — not investment advice</p>
-          <p className="text-amber-300/70 text-sm leading-relaxed">
+        <div className="bg-amber-50 dark:bg-amber-950/30 border border-amber-300 dark:border-amber-800/40 rounded-xl px-5 py-4 mb-10">
+          <p className="text-amber-800 dark:text-amber-300 text-sm font-medium mb-1">Educational tool — not investment advice</p>
+          <p className="text-amber-700/80 dark:text-amber-300/70 text-sm leading-relaxed">
             This dashboard is an analytical and educational resource only. Nothing here is a recommendation to buy, sell, or hold any financial instrument. Past performance does not guarantee future results. All investing involves risk of loss.
           </p>
         </div>
