@@ -422,3 +422,33 @@ html:not(.dark) .stat-card {
   -webkit-text-fill-color: transparent;
   color: transparent;
 }
+
+/* ── Light mode: hover background overrides ─────────────────────────────────
+   Tailwind hover: variants generate separate CSS classes from resting state,
+   so they need their own overrides. All dark zinc hover bgs → zinc-100 in
+   light mode so text never gets washed out.
+   ─────────────────────────────────────────────────────────────────────────── */
+html:not(.dark) .hover\:bg-zinc-900\/30:hover,
+html:not(.dark) .hover\:bg-zinc-900\/40:hover,
+html:not(.dark) .hover\:bg-zinc-900\/60:hover,
+html:not(.dark) .hover\:bg-zinc-900:hover,
+html:not(.dark) .hover\:bg-zinc-800\/50:hover,
+html:not(.dark) .hover\:bg-zinc-800\/40:hover,
+html:not(.dark) .hover\:bg-zinc-800\/30:hover {
+  background-color: #f4f4f5; /* zinc-100 — subtle, never washes text */
+}
+
+html:not(.dark) .hover\:bg-zinc-800:hover {
+  background-color: #e4e4e7; /* zinc-200 — slightly stronger for bg-zinc-800 */
+}
+
+/* group-hover variants (contact page icons, etc.) */
+html:not(.dark) .group:hover .group-hover\:bg-zinc-700 {
+  background-color: #e4e4e7;
+}
+
+/* hover:text overrides — dark hover text should become dark in light mode */
+html:not(.dark) .hover\:text-zinc-100:hover,
+html:not(.dark) .hover\:text-zinc-300:hover {
+  color: #18181b; /* zinc-900 */
+}

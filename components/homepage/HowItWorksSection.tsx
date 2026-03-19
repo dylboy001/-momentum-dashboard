@@ -59,7 +59,7 @@ export function HowItWorksSection() {
                 delay: 0.2 + i * 0.13,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-10 transition-colors duration-300 hover:border-zinc-600 hover:bg-zinc-900/30"
+              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-10 transition-colors duration-300 hover:border-zinc-600 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
             >
               {/* Top glow line on hover */}
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />

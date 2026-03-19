@@ -65,7 +65,7 @@ export function ProductClaritySection() {
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.15 + i * 0.11, ease: E }}
-              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-8 transition-colors duration-200 hover:border-zinc-700 hover:bg-zinc-900/30"
+              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-8 transition-colors duration-200 hover:border-zinc-700 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <p
