@@ -69,7 +69,7 @@ const STATS = [
 
 export function StatsSection({ light = false }: { light?: boolean }) {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const isInView = useInView(ref, { once: true, margin: '0px' })
 
   const bg         = light ? 'bg-white'       : 'bg-[#080808]'
   const border     = light ? 'border-zinc-200' : 'border-zinc-800'

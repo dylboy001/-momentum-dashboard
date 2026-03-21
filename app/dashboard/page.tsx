@@ -112,7 +112,7 @@ export default function DashboardPage() {
       <main className="relative z-10 max-w-7xl mx-auto px-6 py-8 space-y-5">
 
         {/* ── Page header ───────────────────────────────────────────────── */}
-        <div className="flex items-end justify-between">
+        <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
             <h1 className="text-3xl font-thin tracking-tight text-white">Dashboard</h1>
             <p className="text-zinc-400 text-sm mt-1">Real-time action hub · updated daily</p>
@@ -154,7 +154,7 @@ export default function DashboardPage() {
               </span>
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400">Next Rebalance In</span>
             </div>
-            <div className="flex items-center gap-4 font-mono text-[11px] text-zinc-600">
+            <div className="hidden sm:flex items-center gap-4 font-mono text-[11px] text-zinc-600">
               {topMomentum != null && (
                 <span>
                   leading:{' '}

@@ -68,7 +68,7 @@ export function RebalanceTimer({ rebalanceNext, variant = 'default' }: Rebalance
           </div>
         ) : (
           <>
-            <div className="flex items-end gap-3 md:gap-5">
+            <div className="flex items-end gap-1.5 md:gap-5">
               <HeroSegment value={timeLeft.days} label="days" color={urgencyColor} glowFilter={glowFilter} />
               <HeroColon color={urgencyColor} />
               <HeroSegment value={timeLeft.hours} label="hrs" color={urgencyColor} glowFilter={glowFilter} />
@@ -161,9 +161,9 @@ function HeroSegment({
   glowFilter?: string
 }) {
   return (
-    <div className="flex flex-col items-center min-w-[4rem] md:min-w-[6rem]">
+    <div className="flex flex-col items-center min-w-[2.75rem] md:min-w-[6rem]">
       <span
-        className={`font-mono font-thin tabular-nums ${color} text-5xl md:text-7xl leading-none transition-[filter] duration-1000`}
+        className={`font-mono font-thin tabular-nums ${color} text-[2.25rem] md:text-7xl leading-none transition-[filter] duration-1000`}
         style={glowFilter ? { filter: glowFilter } : undefined}
       >
         {pad(value)}
@@ -177,6 +177,6 @@ function HeroSegment({
 
 function HeroColon({ color }: { color: string }) {
   return (
-    <span className={`font-mono font-thin text-4xl md:text-6xl mb-4 md:mb-6 opacity-40 ${color}`}>:</span>
+    <span className={`font-mono font-thin text-[1.75rem] md:text-6xl mb-3 md:mb-6 opacity-40 ${color}`}>:</span>
   )
 }

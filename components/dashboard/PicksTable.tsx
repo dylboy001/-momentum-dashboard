@@ -55,6 +55,7 @@ export function PicksTable({ picks }: PicksTableProps) {
   }
 
   return (
+    <div className="overflow-x-auto">
     <Table>
       <TableHeader>
         <TableRow className="border-zinc-800 hover:bg-transparent">
@@ -98,7 +99,7 @@ export function PicksTable({ picks }: PicksTableProps) {
               </TooltipContent>
             </Tooltip>
           </TableHead>
-          <TableHead className="text-zinc-400 font-medium text-right">
+          <TableHead className="hidden md:table-cell text-zinc-400 font-medium text-right">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help ml-auto">
                 Volatility <Info size={11} className="text-zinc-600" />
@@ -157,12 +158,12 @@ export function PicksTable({ picks }: PicksTableProps) {
                 {pick.rs_score.toFixed(2)}
               </span>
             </TableCell>
-            <TableCell className="text-right font-mono text-zinc-400">
+            <TableCell className="hidden md:table-cell text-right font-mono text-zinc-400">
               {pick.volatility != null ? `${pick.volatility.toFixed(1)}%` : '—'}
             </TableCell>
             <TableCell className="text-right">
               <div className="flex items-center justify-end gap-2">
-                <div className="w-16 h-1.5 rounded-full bg-zinc-800 overflow-hidden">
+                <div className="hidden sm:block w-16 h-1.5 rounded-full bg-zinc-800 overflow-hidden">
                   <div
                     className="h-full rounded-full bg-violet-500"
                     style={{ width: `${Math.min(pick.weight_pct, 100)}%` }}
@@ -177,5 +178,6 @@ export function PicksTable({ picks }: PicksTableProps) {
         ))}
       </TableBody>
     </Table>
+    </div>
   )
 }

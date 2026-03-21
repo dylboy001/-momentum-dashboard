@@ -129,7 +129,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="mb-5">
@@ -207,7 +207,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
         <GlassCard>
@@ -287,7 +287,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
         <div>
@@ -304,7 +304,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
         <GlassCard>
@@ -319,8 +319,8 @@ export default function PerformancePage() {
                 { label: 'Max Drawdown', strategy: '-46.4%', spy: '-55.2%', better: true },
                 { label: 'vs SPY (annual alpha)', strategy: '+36.92%', spy: '—', better: null },
                 { label: 'Lookback Period', strategy: '16 weeks', spy: '—', better: null },
-                { label: 'Concentration', strategy: 'Top 2 sectors · 50% each', spy: '—', better: null },
-                { label: 'Entry Filter', strategy: 'EMA 10/100 uptrend', spy: '—', better: null },
+                { label: 'Concentration', strategy: 'Top 2 · 50/50', spy: '—', better: null },
+                { label: 'Entry Filter', strategy: 'EMA 10/100', spy: '—', better: null },
                 { label: 'Rebalance Cadence', strategy: 'Weekly (7 days)', spy: '—', better: null },
               ] : [
                 { label: 'CAGR (Annualised Return)', strategy: '61.34%', spy: '10.80%', better: true },
@@ -328,11 +328,11 @@ export default function PerformancePage() {
                 { label: 'Max Drawdown', strategy: '-75.9%', spy: '-55.2%', better: false },
                 { label: 'vs SPY (annual alpha)', strategy: '+50.54%', spy: '—', better: null },
                 { label: 'Lookback Period', strategy: '26 weeks', spy: '—', better: null },
-                { label: 'Concentration', strategy: 'Top 1 sector · 100%', spy: '—', better: null },
-                { label: 'Entry Filter', strategy: 'EMA 10/100 uptrend', spy: '—', better: null },
+                { label: 'Concentration', strategy: 'Top 1 · 100%', spy: '—', better: null },
+                { label: 'Entry Filter', strategy: 'EMA 10/100', spy: '—', better: null },
                 { label: 'Rebalance Cadence', strategy: 'Monthly (30 days)', spy: '—', better: null },
               ]).map((row) => (
-                <div key={row.label} className="flex items-center justify-between py-3 border-b border-zinc-800/60 last:border-0">
+                <div key={row.label} className="flex flex-col sm:flex-row sm:items-center sm:justify-between py-3 border-b border-zinc-800/60 last:border-0 gap-1">
                   <span className="text-sm text-zinc-400">{row.label}</span>
                   <div className="flex items-center gap-4 font-mono text-sm">
                     <span className={row.better === true ? 'text-emerald-400' : row.better === false ? 'text-red-400' : 'text-zinc-300'}>
@@ -355,7 +355,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
         <div>
@@ -375,7 +375,7 @@ export default function PerformancePage() {
         <motion.div
           initial={{ opacity: 0, y: 28 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: '0px' }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         >
         <GlassCard className="dark:bg-gradient-to-br dark:from-violet-950/20 dark:to-transparent">
