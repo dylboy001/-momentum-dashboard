@@ -109,11 +109,11 @@ export default function PerformancePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1], delay: i * 0.09 }}
-              className={`py-8 text-center ${i > 0 ? 'border-t md:border-t-0 md:border-l md:pl-8 border-zinc-800' : ''} ${i < 3 ? 'md:pr-8' : ''}`}
+              className={`py-5 md:py-8 text-center ${i > 0 ? 'border-t md:border-t-0 md:border-l md:pl-8 border-zinc-800' : ''} ${i < 3 ? 'md:pr-8' : ''}`}
             >
               {loading ? <StatSkeleton /> : (
                 <>
-                  <p className={`font-mono text-[3rem] font-thin leading-none tabular-nums mb-3 ${stat.color}`}>
+                  <p className={`font-mono text-[2rem] md:text-[3rem] font-thin leading-none tabular-nums mb-3 ${stat.color}`}>
                     {stat.value}
                   </p>
                   <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-500 mb-1">{stat.label}</p>

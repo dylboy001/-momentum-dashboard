@@ -126,6 +126,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: -apple-system, "Helvetica Neue", "Inter", ui-sans-serif, system-ui, sans-serif;
+    overflow-x: hidden;
   }
 
   /* Text selection — dark mode: violet bg, white text */
