@@ -60,10 +60,10 @@ export default function RankingsPage() {
 
         <GlassCard>
           {/* Table header */}
-          <div className="grid grid-cols-[56px_1fr_130px_150px_160px_160px] gap-4 px-6 py-4 border-b border-zinc-800/50 bg-zinc-900/40">
+          <div className="grid grid-cols-[40px_1fr_100px_80px] md:grid-cols-[56px_1fr_130px_150px_160px_160px] gap-3 md:gap-4 px-4 md:px-6 py-4 border-b border-zinc-800/50 bg-zinc-900/40">
             <div className="text-sm text-zinc-500 uppercase tracking-wider text-center">Rank</div>
             <div className="text-sm text-zinc-500 uppercase tracking-wider">Sector</div>
-            <div className="text-sm text-zinc-500 uppercase tracking-wider">Category</div>
+            <div className="hidden md:block text-sm text-zinc-500 uppercase tracking-wider">Category</div>
             <Tooltip>
               <TooltipTrigger className="text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left">
                 Momentum
@@ -73,7 +73,7 @@ export default function RankingsPage() {
               </TooltipContent>
             </Tooltip>
             <Tooltip>
-              <TooltipTrigger className="text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left">
+              <TooltipTrigger className="hidden md:block text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left">
                 vs SPY
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
@@ -104,7 +104,7 @@ export default function RankingsPage() {
                   <Link
                     key={theme}
                     href={`/rankings/${theme}`}
-                    className="relative grid grid-cols-[56px_1fr_130px_150px_160px_160px] gap-4 px-6 py-4 border-b border-zinc-800/50 transition-colors duration-150 items-center cursor-pointer group last:border-0 hover:bg-zinc-800/40"
+                    className="relative grid grid-cols-[40px_1fr_100px_80px] md:grid-cols-[56px_1fr_130px_150px_160px_160px] gap-3 md:gap-4 px-4 md:px-6 py-4 border-b border-zinc-800/50 transition-colors duration-150 items-center cursor-pointer group last:border-0 hover:bg-zinc-800/40"
                   >
                     <div className="absolute left-0 top-0 h-full w-[2px] rounded-r bg-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
@@ -119,7 +119,7 @@ export default function RankingsPage() {
                       <div className="text-zinc-600 text-sm font-mono">{theme}</div>
                     </div>
 
-                    <div>
+                    <div className="hidden md:block">
                       <span className="text-sm px-2 py-1 rounded bg-zinc-800/60 text-zinc-400 font-medium">
                         {THEME_CATEGORIES[theme] ?? 'Other'}
                       </span>
@@ -132,7 +132,7 @@ export default function RankingsPage() {
                       {isPositive ? '+' : ''}{momentum.toFixed(2)}%
                     </div>
 
-                    <div className="font-mono text-sm">
+                    <div className="hidden md:block font-mono text-sm">
                       {data.spy_momentum != null ? (() => {
                         const vsSpy = momentum - data.spy_momentum!;
                         return (

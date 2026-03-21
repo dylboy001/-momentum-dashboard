@@ -300,10 +300,10 @@ export default function FAQPage() {
       />
 
       <main className="relative z-10 max-w-5xl mx-auto px-6 py-12">
-        <div className="flex gap-10 items-start">
+        <div className="flex flex-col md:flex-row gap-6 md:gap-10 items-start">
 
           {/* ── Left: sticky section nav ─────────────────────────────── */}
-          <nav className="sticky top-24 shrink-0 w-52 space-y-1">
+          <nav className="w-full flex flex-row md:flex-col gap-2 md:gap-0 md:sticky md:top-24 md:shrink-0 md:w-52 md:space-y-1 overflow-x-auto pb-1 md:pb-0">
             {FAQ_SECTIONS.map((s, i) => {
               const isActive = i === active;
               return (
@@ -311,7 +311,7 @@ export default function FAQPage() {
                   key={s.number}
                   onClick={() => setActive(i)}
                   className={[
-                    'group w-full text-left rounded-xl px-4 py-3.5 transition-colors duration-200',
+                    'group shrink-0 md:w-full text-left rounded-xl px-4 py-3 md:py-3.5 transition-colors duration-200',
                     isActive
                       ? 'bg-violet-100 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-500/20'
                       : 'border border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900/60 hover:border-zinc-200 dark:hover:border-zinc-800',
@@ -320,10 +320,10 @@ export default function FAQPage() {
                   <span className={`block font-mono text-[10px] uppercase tracking-[0.22em] mb-1 ${isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
                     {s.number}
                   </span>
-                  <span className={`block text-sm font-medium leading-snug ${isActive ? 'text-violet-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300'}`}>
+                  <span className={`block text-sm font-medium leading-snug whitespace-nowrap md:whitespace-normal ${isActive ? 'text-violet-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300'}`}>
                     {s.title}
                   </span>
-                  <span className={`block text-xs mt-0.5 leading-snug ${isActive ? 'text-violet-500 dark:text-zinc-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
+                  <span className={`hidden md:block text-xs mt-0.5 leading-snug ${isActive ? 'text-violet-500 dark:text-zinc-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
                     {s.faqs.length} questions
                   </span>
                 </button>
