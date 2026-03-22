@@ -8,9 +8,10 @@ import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
 
 export function CTASection() {
   const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
-  const isLight = mounted && resolvedTheme === 'light'
+  const [isLight, setIsLight] = useState(() =>
+    typeof window !== 'undefined' && !document.documentElement.classList.contains('dark')
+  )
+  useEffect(() => { setIsLight(resolvedTheme === 'light') }, [resolvedTheme])
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#080808] px-8 py-24">

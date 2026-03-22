@@ -9,9 +9,10 @@ import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const { resolvedTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
-  useEffect(() => { setMounted(true) }, [])
-  const isLight = mounted && resolvedTheme === 'light'
+  const [isLight, setIsLight] = useState(() =>
+    typeof window !== 'undefined' && !document.documentElement.classList.contains('dark')
+  )
+  useEffect(() => { setIsLight(resolvedTheme === 'light') }, [resolvedTheme])
 
   return (
     <section ref={sectionRef} className="relative flex min-h-[85vh] sm:min-h-screen flex-col overflow-hidden bg-[#080808]">
