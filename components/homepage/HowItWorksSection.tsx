@@ -1,8 +1,5 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-
 const STEPS = [
   {
     num: '1',
@@ -22,43 +19,25 @@ const STEPS = [
 ]
 
 export function HowItWorksSection() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '0px' })
-
   return (
-    <section
-      ref={ref}
-      className="flex min-h-screen items-center bg-[#080808] px-8 py-24"
-    >
+    <section className="flex min-h-screen items-center bg-[#080808] px-8 py-24">
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20"
-        >
+        <div className="mb-20">
           <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-600">
             — Process
           </p>
           <h2 className="text-5xl font-thin tracking-tight text-white">
             How It Works
           </h2>
-        </motion.div>
+        </div>
 
         {/* Step cards */}
         <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-          {STEPS.map(({ num, title, desc }, i) => (
-            <motion.div
+          {STEPS.map(({ num, title, desc }) => (
+            <div
               key={num}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.7,
-                delay: 0.2 + i * 0.13,
-                ease: [0.16, 1, 0.3, 1],
-              }}
               className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-10 transition-colors duration-300 hover:border-zinc-600 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
             >
               {/* Top glow line on hover */}
@@ -79,7 +58,7 @@ export function HowItWorksSection() {
 
               {/* Description */}
               <p className="text-sm leading-relaxed text-zinc-500">{desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

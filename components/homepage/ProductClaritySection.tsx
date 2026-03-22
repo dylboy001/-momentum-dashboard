@@ -1,10 +1,5 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
-
-const E = [0.16, 1, 0.3, 1] as const
-
 const CARDS = [
   {
     num: '01',
@@ -24,23 +19,12 @@ const CARDS = [
 ]
 
 export function ProductClaritySection() {
-  const ref = useRef<HTMLElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '0px' })
-
   return (
-    <section
-      ref={ref}
-      className="flex min-h-screen items-center bg-[#080808] px-8 py-24"
-    >
+    <section className="flex min-h-screen items-center bg-[#080808] px-8 py-24">
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: E }}
-          className="mb-16 max-w-3xl"
-        >
+        <div className="mb-16 max-w-3xl">
           <p className="mb-5 font-mono text-[11px] uppercase tracking-[0.22em] text-zinc-600">
             — What is Momentum Capital?
           </p>
@@ -55,16 +39,13 @@ export function ProductClaritySection() {
             <span className="text-zinc-200">You execute in your own account.</span>{' '}
             Not a fund. Not a robo-advisor. A systematic research service that does the quantitative work so you don&apos;t have to.
           </p>
-        </motion.div>
+        </div>
 
         {/* 3 cards */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {CARDS.map(({ num, heading, body }, i) => (
-            <motion.div
+          {CARDS.map(({ num, heading, body }) => (
+            <div
               key={num}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.7, delay: 0.15 + i * 0.11, ease: E }}
               className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-8 transition-colors duration-200 hover:border-zinc-700 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -76,7 +57,7 @@ export function ProductClaritySection() {
               </p>
               <p className="mb-3 text-lg font-light text-white">{heading}</p>
               <p className="text-sm leading-relaxed text-zinc-500">{body}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

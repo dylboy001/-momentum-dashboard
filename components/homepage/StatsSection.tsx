@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
 
 // ── Animated counter ──────────────────────────────────────────────────────────
@@ -68,9 +68,6 @@ const STATS = [
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export function StatsSection({ light = false }: { light?: boolean }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: '0px' })
-
   const bg         = light ? 'bg-white'       : 'bg-[#080808]'
   const border     = light ? 'border-zinc-200' : 'border-zinc-800'
   const numColor   = light ? 'text-black'      : 'text-white'
@@ -81,36 +78,21 @@ export function StatsSection({ light = false }: { light?: boolean }) {
   const accentLine = light ? 'bg-zinc-900'     : 'bg-violet-500'
 
   return (
-    <section
-      ref={ref}
-      className={`${bg} flex min-h-screen items-center justify-center px-8 py-24`}
-    >
+    <section className={`${bg} flex min-h-screen items-center justify-center px-8 py-24`}>
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Section label */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6 }}
-          className={`mb-16 font-mono text-[11px] uppercase tracking-[0.22em] ${tagColor}`}
-        >
+        <p className={`mb-16 font-mono text-[11px] uppercase tracking-[0.22em] ${tagColor}`}>
           — Performance
-        </motion.p>
+        </p>
 
         {/* Stats */}
         <div className={`grid grid-cols-1 border-t ${border} md:grid-cols-3`}>
           {STATS.map((stat, i) => {
             const hasEnd = 'end' in stat
             return (
-              <motion.div
+              <div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.1 + i * 0.12,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
                 className={[
                   'group relative py-20 text-center transition-colors duration-300',
                   hoverBg,
@@ -148,20 +130,15 @@ export function StatsSection({ light = false }: { light?: boolean }) {
 
                 {/* Sub */}
                 <p className={`text-sm ${subColor}`}>{stat.sub}</p>
-              </motion.div>
+              </div>
             )
           })}
         </div>
 
         {/* Disclaimer */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className={`mt-8 text-[11px] leading-relaxed ${subColor}`}
-        >
+        <p className={`mt-8 text-[11px] leading-relaxed ${subColor}`}>
           Past performance does not guarantee future results. Backtested data reflects the strategy applied retroactively to historical prices.
-        </motion.p>
+        </p>
       </div>
     </section>
   )
