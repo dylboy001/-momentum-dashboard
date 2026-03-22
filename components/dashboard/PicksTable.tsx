@@ -59,6 +59,7 @@ export function PicksTable({ picks }: PicksTableProps) {
     <Table>
       <TableHeader>
         <TableRow className="border-zinc-800 hover:bg-transparent">
+          {/* Ticker — on mobile shows sector below as sub-label */}
           <TableHead className="text-zinc-400 font-medium">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help">
@@ -69,7 +70,8 @@ export function PicksTable({ picks }: PicksTableProps) {
               </TooltipContent>
             </Tooltip>
           </TableHead>
-          <TableHead className="text-zinc-400 font-medium">
+          {/* Sector — hidden on mobile (shown inline in Ticker cell) */}
+          <TableHead className="hidden sm:table-cell text-zinc-400 font-medium">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help">
                 Sector <Info size={11} className="text-zinc-600" />
@@ -79,7 +81,8 @@ export function PicksTable({ picks }: PicksTableProps) {
               </TooltipContent>
             </Tooltip>
           </TableHead>
-          <TableHead className="text-zinc-400 font-medium text-right">
+          {/* Price — hidden on mobile */}
+          <TableHead className="hidden sm:table-cell text-zinc-400 font-medium text-right">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help ml-auto">
                 Price <Info size={11} className="text-zinc-600" />
@@ -127,15 +130,21 @@ export function PicksTable({ picks }: PicksTableProps) {
             key={pick.ticker}
             className="border-zinc-800 hover:bg-zinc-800/50 transition-colors"
           >
+            {/* Ticker cell — on mobile includes sector label below */}
             <TableCell>
               <span className="font-mono font-bold text-white">{pick.ticker}</span>
+              {/* Sector shown inline on mobile only */}
+              <span className="sm:hidden block text-xs text-zinc-500 font-sans font-normal mt-0.5 leading-tight">
+                {THEME_LABELS[pick.theme] ?? pick.theme}
+              </span>
               {pick.name && (
-                <span className="block text-xs text-zinc-500 font-sans font-normal mt-0.5 leading-tight">
+                <span className="hidden sm:block text-xs text-zinc-500 font-sans font-normal mt-0.5 leading-tight">
                   {pick.name}
                 </span>
               )}
             </TableCell>
-            <TableCell>
+            {/* Sector badge — desktop only */}
+            <TableCell className="hidden sm:table-cell">
               <Badge
                 variant="outline"
                 className="border-zinc-600 text-zinc-300 text-xs"
@@ -143,7 +152,8 @@ export function PicksTable({ picks }: PicksTableProps) {
                 {THEME_LABELS[pick.theme] ?? pick.theme}
               </Badge>
             </TableCell>
-            <TableCell className="text-right font-mono text-zinc-200">
+            {/* Price — desktop only */}
+            <TableCell className="hidden sm:table-cell text-right font-mono text-zinc-200">
               ${pick.price.toFixed(2)}
             </TableCell>
             <TableCell className="text-right font-mono">

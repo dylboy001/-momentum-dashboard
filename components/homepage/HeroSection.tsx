@@ -13,28 +13,37 @@ export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const { resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
-  useEffect(() => setMounted(true), [])
+  const [isMobile, setIsMobile] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+    setIsMobile(window.innerWidth < 640)
+  }, [])
   // Only pass light to the canvas after hydration — avoids wrong initial render.
   // Gradient + heading text are CSS-driven (no JS flash).
   const isLight = mounted && resolvedTheme === 'light'
+  // Skip animation delays on mobile — CTAs appear instantly
+  const d = (s: number) => isMobile ? 0 : s
 
   return (
-    <section ref={sectionRef} className="relative flex min-h-screen flex-col overflow-hidden bg-[#080808]">
+    <section ref={sectionRef} className="relative flex min-h-[85vh] sm:min-h-screen flex-col overflow-hidden bg-[#080808]">
 
       {/* ── Animated wavy grid background ──────────────────────────────────── */}
       <AnimatedWavesBg light={isLight} />
 
       {/* ── Background logo — circle morphs to infinity, then fades to ghost ── */}
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center"
-        style={{ willChange: 'transform, opacity' }}
-        initial={{ opacity: 0, scale: 2.5, y: 0 }}
-        animate={{ opacity: [0, 0.78, 0.13], scale: [2.5, 2.3, 1.0], y: [0, 0, -55] }}
-        transition={{ duration: 7.5, times: [0, 0.07, 1.0], ease: [0.25, 0.1, 0.25, 1] }}
-      >
-        <LogoMark size={520} animate morphDelay={600} morphDuration={3200} />
-      </motion.div>
+      {/* Hidden on mobile — the animation is heavy and unnecessary at small sizes */}
+      {!isMobile && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center"
+          style={{ willChange: 'transform, opacity' }}
+          initial={{ opacity: 0, scale: 2.5, y: 0 }}
+          animate={{ opacity: [0, 0.78, 0.13], scale: [2.5, 2.3, 1.0], y: [0, 0, -55] }}
+          transition={{ duration: 7.5, times: [0, 0.07, 1.0], ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <LogoMark size={520} animate morphDelay={600} morphDuration={3200} />
+        </motion.div>
+      )}
 
       {/* ── Heading clearance overlay — uses CSS var, no JS hydration flash ─── */}
       <div
@@ -52,14 +61,14 @@ export function HeroSection() {
       </div>
 
       {/* ── Content ─────────────────────────────────────────────────────────── */}
-      <div className="relative z-10 flex flex-1 flex-col justify-between px-8 py-9 sm:px-12 sm:py-11 pointer-events-none">
+      <div className="relative z-10 flex flex-1 flex-col justify-between px-5 py-8 sm:px-12 sm:py-11 pointer-events-none">
 
         {/* ── TOP: strategy label (left) + live badge (right) ─────────────── */}
         <div className="flex items-center justify-between">
           <motion.p
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.15, duration: 0.8, ease: E }}
+            transition={{ delay: d(0.15), duration: 0.8, ease: E }}
             className="font-mono text-[10px] uppercase tracking-[0.38em] text-zinc-600"
           >
             — ETF &amp; Crypto Momentum Rotation —
@@ -68,7 +77,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, x: 10 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.15, duration: 0.8, ease: E }}
+            transition={{ delay: d(0.15), duration: 0.8, ease: E }}
             className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/[0.07] px-4 py-1.5"
           >
             <span className="relative flex h-1.5 w-1.5 shrink-0">
@@ -95,7 +104,7 @@ export function HeroSection() {
                   className="hero-word"
                   initial={{ y: '115%' }}
                   animate={{ y: '0%' }}
-                  transition={{ delay: 0.28 + i * 0.12, duration: 1.1, ease: E }}
+                  transition={{ delay: d(0.28 + i * 0.12), duration: isMobile ? 0.4 : 1.1, ease: E }}
                 >
                   {word}
                 </motion.span>
@@ -106,7 +115,7 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.4, duration: 0.8, ease: E }}
+            transition={{ delay: d(1.4), duration: 0.8, ease: E }}
             className="mb-10 max-w-sm text-base font-light tracking-wide text-zinc-400 sm:max-w-none sm:text-lg"
           >
             Systematic Rotation Into Leading Market Assets
@@ -115,7 +124,7 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.0, duration: 0.65, ease: E }}
+            transition={{ delay: d(2.0), duration: 0.65, ease: E }}
             className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center pointer-events-auto"
           >
             <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
@@ -135,7 +144,7 @@ export function HeroSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.9 }}
+          transition={{ delay: d(1.2), duration: 0.9 }}
           className="grid grid-cols-3 items-end"
         >
           <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-700">

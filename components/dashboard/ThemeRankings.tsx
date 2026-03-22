@@ -10,6 +10,7 @@ import {
   Cell,
   ReferenceLine,
 } from 'recharts'
+import { THEME_NAMES } from '@/lib/theme-data'
 
 interface ThemeRankingsProps {
   // Array of [theme, momentum_pct] tuples
@@ -55,6 +56,41 @@ export function ThemeRankings({ rankings, topThemes }: ThemeRankingsProps) {
 
   return (
     <div>
+      {/* ── Mobile: ranked list — no chart ──────────────────────────── */}
+      <div className="sm:hidden divide-y divide-zinc-800/50">
+        {data.map((entry, i) => {
+          const isActive = topThemes.includes(entry.theme)
+          const isPositive = entry.momentum >= 0
+          return (
+            <div
+              key={entry.theme}
+              className={`flex items-center justify-between py-2.5 ${isActive ? 'bg-violet-950/10' : ''}`}
+            >
+              <div className="flex items-center gap-3">
+                <span className="font-mono text-zinc-600 text-xs w-5 shrink-0">#{i + 1}</span>
+                <div>
+                  <span className={`text-sm font-medium ${isActive ? 'text-violet-300' : 'text-zinc-200'}`}>
+                    {THEME_NAMES[entry.theme] ?? entry.theme}
+                  </span>
+                  <span className="block font-mono text-[10px] text-zinc-600">{entry.theme}</span>
+                </div>
+                {isActive && (
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+                )}
+              </div>
+              <span className={`font-mono text-sm tabular-nums ${isPositive ? 'text-emerald-400' : 'text-red-400'}`}>
+                {isPositive ? '+' : ''}{entry.momentum.toFixed(2)}%
+              </span>
+            </div>
+          )
+        })}
+        <p className="text-xs text-zinc-600 pt-3">
+          Violet = currently held · must pass EMA 10/100 daily trend filter
+        </p>
+      </div>
+
+      {/* ── Desktop: bar chart ───────────────────────────────────────── */}
+      <div className="hidden sm:block">
       <ResponsiveContainer width="100%" height={260}>
         <BarChart
           data={data}
@@ -104,6 +140,7 @@ export function ThemeRankings({ rankings, topThemes }: ThemeRankingsProps) {
       <p className="text-xs text-zinc-600 mt-2 px-1">
         Holdings are selected from the highest-ranked sectors that also pass the EMA 10/100 daily trend filter. A sector may rank highly but be excluded if it is not in an uptrend.
       </p>
+      </div>
     </div>
   )
 }

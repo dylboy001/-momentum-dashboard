@@ -109,7 +109,7 @@ export default function DashboardPage() {
         </div>
       } />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-8 space-y-5">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-4 sm:space-y-5">
 
         {/* ── Page header ───────────────────────────────────────────────── */}
         <div className="flex flex-wrap items-end justify-between gap-2">
@@ -218,7 +218,8 @@ export default function DashboardPage() {
             </div>
           </GlassCard>
 
-          <GlassCard>
+          {/* Allocation donut — desktop only (weight % visible in table on mobile) */}
+          <GlassCard className="hidden sm:block">
             <div className="px-6 py-3 border-b border-zinc-800/50 bg-zinc-900/40 flex items-center justify-between">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">Allocation</span>
               {data?.picks.length ? (

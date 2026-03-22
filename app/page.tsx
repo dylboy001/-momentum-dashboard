@@ -16,29 +16,29 @@ export default function HomePage() {
         <HeroSection />
       </div>
 
-      {/* ── 2. WHAT IS IT ─────────────────────────────────────────── */}
-      <div className="sticky top-0 z-[2] rounded-t-[2rem] overflow-hidden relative">
+      {/* ── 2. WHAT IS IT — hidden on mobile ──────────────────────── */}
+      <div className="hidden sm:block sm:sticky sm:top-0 sm:z-[2] sm:rounded-t-[2rem] sm:overflow-hidden relative">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-violet-500/[0.06] to-transparent" />
         <ProductClaritySection />
       </div>
 
-      {/* ── 3. STATS ──────────────────────────────────────────────── */}
-      <div className="sticky top-0 z-[3] rounded-t-[2rem] overflow-hidden relative">
+      {/* ── 3. STATS — hidden on mobile ───────────────────────────── */}
+      <div className="hidden sm:block sm:sticky sm:top-0 sm:z-[3] sm:rounded-t-[2rem] sm:overflow-hidden relative">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-violet-500/[0.06] to-transparent" />
         <StatsSection />
       </div>
 
-      {/* ── 4. HOW IT WORKS ───────────────────────────────────────── */}
-      <div className="sticky top-0 z-[4] rounded-t-[2rem] overflow-hidden relative">
+      {/* ── 4. HOW IT WORKS — hidden on mobile ────────────────────── */}
+      <div className="hidden sm:block sm:sticky sm:top-0 sm:z-[4] sm:rounded-t-[2rem] sm:overflow-hidden relative">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-violet-500/[0.06] to-transparent" />
         <HowItWorksSection />
       </div>
 
       {/* ── 5. CTA ────────────────────────────────────────────────── */}
-      <div className="sticky top-0 z-[5] rounded-t-[2rem] overflow-hidden relative">
+      <div className="sm:sticky sm:top-0 sm:z-[5] sm:rounded-t-[2rem] sm:overflow-hidden relative">
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 z-10 h-24 bg-gradient-to-b from-violet-500/[0.06] to-transparent" />
         <CTASection />

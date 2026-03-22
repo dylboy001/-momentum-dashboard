@@ -1074,3 +1074,144 @@ z-50   Mobile navigation drawer
 - **Tables on mobile**: wrap in `overflow-x-auto`
 - **Hero text**: use `clamp()` in `style` prop for fluid font sizes
 - **Breakpoints in use**: `sm` (640px), `md` (768px), `lg` (1024px), `xl` (1280px)
+
+---
+
+## 14. MOBILE DESIGN PATTERNS
+
+> Established in the March 2026 mobile overhaul. Follow these patterns for all new mobile work.
+
+### Core Principle
+Mobile = fast, clear, direct. Show only what clients need to act. Remove decorative/educational content that adds scroll. No horizontal scrolling anywhere.
+
+---
+
+### Homepage Mobile (`app/page.tsx`)
+
+**Decision**: Hero + CTA only on mobile. Middle 3 sections hidden.
+
+Middle sections use `hidden sm:block` + `sm:sticky sm:top-N` so they only participate in the sticky-stack effect on desktop:
+
+```tsx
+{/* Hidden on mobile — sticky stack on sm+ */}
+<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[2] sm:rounded-t-[2rem] sm:overflow-hidden relative">
+  <ProductClaritySection />
+</div>
+<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[3] ...">
+  <StatsSection />
+</div>
+<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[4] ...">
+  <HowItWorksSection />
+</div>
+
+{/* CTA — shown on mobile, sticky only on sm+ */}
+<div className="sm:sticky sm:top-0 sm:z-[5] sm:rounded-t-[2rem] sm:overflow-hidden relative">
+  <CTASection />
+</div>
+```
+
+Result: ~700px total scroll on mobile (vs ~6,500px before).
+
+---
+
+### Hero Animation on Mobile (`components/homepage/HeroSection.tsx`)
+
+All framer-motion delays are zeroed on mobile using the `d()` helper:
+
+```tsx
+const [isMobile, setIsMobile] = useState(false)
+useEffect(() => {
+  setMounted(true)
+  setIsMobile(window.innerWidth < 640)
+}, [])
+
+// Helper: returns 0 on mobile, actual delay on desktop
+const d = (s: number) => isMobile ? 0 : s
+```
+
+Usage: `delay: d(0.28)`, `delay: d(1.4)`, etc.
+
+The large background LogoMark (520px) is not rendered on mobile:
+```tsx
+{!isMobile && (
+  <motion.div ...>
+    <LogoMark size={520} ... />
+  </motion.div>
+)}
+```
+
+Section min-height: `min-h-[85vh] sm:min-h-screen`
+
+---
+
+### Dashboard Mobile (`app/dashboard/page.tsx` + components)
+
+**ThemeRankings** — dual render: ranked list on mobile, bar chart on desktop:
+```tsx
+{/* Mobile: ranked list (sm:hidden) */}
+<div className="sm:hidden divide-y divide-zinc-800/50">
+  {data.map((entry, i) => (
+    <div key={entry.theme} className="flex items-center justify-between py-2.5">
+      <span className="font-mono text-zinc-600 text-xs w-5">#{i + 1}</span>
+      <span className="text-sm font-medium">{THEME_NAMES[entry.theme]}</span>
+      {isActive && <span className="w-1.5 h-1.5 rounded-full bg-violet-500" />}
+      <span className="font-mono text-sm tabular-nums">{momentum}%</span>
+    </div>
+  ))}
+</div>
+{/* Desktop: bar chart (hidden sm:block) */}
+<div className="hidden sm:block">
+  <ResponsiveContainer width="100%" height={260}>...</ResponsiveContainer>
+</div>
+```
+
+**PicksTable** — 3 columns on mobile (Ticker/RS Score/Weight), 5+ on desktop:
+- Sector column: `hidden sm:table-cell`
+- Price column: `hidden sm:table-cell`
+- Ticker cell shows sector name inline on mobile via `sm:hidden` sub-label
+
+**Allocation donut**: `hidden sm:block` — weight% is visible in table on mobile
+
+**Responsive chart height** (`EquityCurveChart`):
+```tsx
+const [chartHeight, setChartHeight] = useState(380)
+useEffect(() => {
+  const update = () => setChartHeight(window.innerWidth < 640 ? 220 : 380)
+  update()
+  window.addEventListener('resize', update)
+  return () => window.removeEventListener('resize', update)
+}, [])
+// Then: <ResponsiveContainer height={chartHeight}>
+```
+
+---
+
+### Rankings Page Mobile (`app/rankings/page.tsx`)
+
+Flex layout on mobile, CSS grid on `md+`. This avoids horizontal overflow from fixed-width grid columns:
+
+```tsx
+{/* Header + rows use the same pattern */}
+<div className="flex items-center gap-2 md:grid md:grid-cols-[56px_1fr_130px_150px_160px_160px] md:gap-4 px-4 md:px-6 ...">
+  <div className="w-8 md:w-auto ... shrink-0">#</div>
+  <div className="flex-1 min-w-0 ...">Sector</div>
+  {/* Category, vs SPY columns: hidden md:block */}
+  <div className="hidden md:block ...">Category</div>
+  <div className="hidden md:block ...">vs SPY</div>
+  {/* Momentum + Status: shrink-0 to stay on same row */}
+  <div className="... shrink-0">Mom.</div>
+  <div className="... shrink-0">Status</div>
+</div>
+```
+
+Sector name truncation: `truncate` on the name `<div>` inside `flex-1 min-w-0`.
+
+---
+
+### No Horizontal Scroll Rule
+
+- Never use fixed-width grid columns (`grid-cols-[Npx ...]`) at base breakpoint — use `md:grid-cols-[...]`
+- Always pair `flex-1` with `min-w-0` when the item should truncate
+- Add `shrink-0` to icons and short fixed-width items (rank numbers, status labels, momentum values)
+- Use `overflow-x-auto` only as a last resort for tables that truly can't be simplified
+- Prefer hiding columns on mobile over making the table scrollable

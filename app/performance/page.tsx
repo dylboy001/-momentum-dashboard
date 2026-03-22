@@ -72,7 +72,7 @@ export default function PerformancePage() {
 
       <NavBar />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-10 space-y-10">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-8 sm:space-y-10">
 
         {/* Page header + CTA to Dashboard */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -239,28 +239,30 @@ export default function PerformancePage() {
           {(() => {
             const m = CHART_MODES.find(x => x.id === chartMode)!;
             return (
-              <div className="px-6 py-3 border-b border-zinc-800/40 flex items-center gap-6 flex-wrap">
-                {[
-                  { label: 'CAGR', value: m.cagr, color: 'text-emerald-400' },
-                  { label: 'Max DD', value: m.maxdd, color: chartMode === 'growth' ? 'text-red-400' : 'text-zinc-300' },
-                  { label: '$10k →', value: m.final, color: 'text-emerald-400' },
-                ].map(s => (
-                  <div key={s.label} className="flex items-baseline gap-1.5">
-                    <span className={`font-mono text-sm tabular-nums ${s.color}`}>{s.value}</span>
-                    <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-600">{s.label}</span>
-                  </div>
-                ))}
+              <div className="px-4 sm:px-6 py-3 border-b border-zinc-800/40">
+                <div className="flex items-center gap-4 sm:gap-6 flex-wrap">
+                  {[
+                    { label: 'CAGR', value: m.cagr, color: 'text-emerald-400' },
+                    { label: 'Max DD', value: m.maxdd, color: chartMode === 'growth' ? 'text-red-400' : 'text-zinc-300' },
+                    { label: '$10k →', value: m.final, color: 'text-emerald-400' },
+                  ].map(s => (
+                    <div key={s.label} className="flex items-baseline gap-1.5">
+                      <span className={`font-mono text-sm tabular-nums ${s.color}`}>{s.value}</span>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-zinc-600">{s.label}</span>
+                    </div>
+                  ))}
+                </div>
                 {chartMode === 'growth' && (
-                  <span className="ml-auto font-mono text-[10px] uppercase tracking-[0.15em] text-amber-500/80">
+                  <span className="block mt-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-amber-500/80">
                     High drawdown — experienced investors only
                   </span>
                 )}
               </div>
             );
           })()}
-          <div className="px-6 py-6">
+          <div className="px-3 sm:px-6 py-4 sm:py-6">
             {loading || chartLoading ? (
-              <Skeleton className="h-72 w-full bg-zinc-800" />
+              <Skeleton className="h-52 sm:h-72 w-full bg-zinc-800" />
             ) : equityData ? (
               <>
                 <EquityCurveChart

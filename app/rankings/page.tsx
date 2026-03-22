@@ -42,7 +42,7 @@ export default function RankingsPage() {
 
       <NavBar />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-10">
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-10">
 
         {/* Page header */}
         <div className="mb-8">
@@ -60,16 +60,16 @@ export default function RankingsPage() {
 
         <GlassCard>
           {/* Table header */}
-          <div className="grid grid-cols-[40px_1fr_100px_80px] md:grid-cols-[56px_1fr_130px_150px_160px_160px] gap-3 md:gap-4 px-4 md:px-6 py-4 border-b border-zinc-800/50 bg-zinc-900/40">
-            <div className="text-sm text-zinc-500 uppercase tracking-wider text-center">Rank</div>
-            <div className="text-sm text-zinc-500 uppercase tracking-wider">Sector</div>
+          <div className="flex items-center gap-2 md:grid md:grid-cols-[56px_1fr_130px_150px_160px_160px] md:gap-4 px-4 md:px-6 py-3 md:py-4 border-b border-zinc-800/50 bg-zinc-900/40">
+            <div className="w-8 md:w-auto text-xs md:text-sm text-zinc-500 uppercase tracking-wider text-center shrink-0">#</div>
+            <div className="flex-1 text-xs md:text-sm text-zinc-500 uppercase tracking-wider">Sector</div>
             <div className="hidden md:block text-sm text-zinc-500 uppercase tracking-wider">Category</div>
             <Tooltip>
-              <TooltipTrigger className="text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left">
-                Momentum
+              <TooltipTrigger className="text-xs md:text-sm text-zinc-500 uppercase tracking-wider cursor-help underline decoration-dotted underline-offset-2 text-left shrink-0">
+                Mom.
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                16-week price return of the sector&apos;s proxy ETF (e.g. BITO for Crypto, XLK for Technology). Higher = stronger trend.
+                16-week price return of the sector&apos;s proxy ETF. Higher = stronger trend.
               </TooltipContent>
             </Tooltip>
             <Tooltip>
@@ -77,10 +77,10 @@ export default function RankingsPage() {
                 vs SPY
               </TooltipTrigger>
               <TooltipContent className="max-w-56 text-xs bg-zinc-800 border-zinc-700 text-zinc-200">
-                Sector momentum minus SPY&apos;s 16-week momentum. Positive = beating the market. Only shown when scanner has run recently.
+                Sector momentum minus SPY&apos;s 16-week momentum. Positive = beating the market.
               </TooltipContent>
             </Tooltip>
-            <div className="text-sm text-zinc-500 uppercase tracking-wider">Status</div>
+            <div className="text-xs md:text-sm text-zinc-500 uppercase tracking-wider shrink-0">Status</div>
           </div>
 
           {loading && (
@@ -104,19 +104,19 @@ export default function RankingsPage() {
                   <Link
                     key={theme}
                     href={`/rankings/${theme}`}
-                    className="relative grid grid-cols-[40px_1fr_100px_80px] md:grid-cols-[56px_1fr_130px_150px_160px_160px] gap-3 md:gap-4 px-4 md:px-6 py-4 border-b border-zinc-800/50 transition-colors duration-150 items-center cursor-pointer group last:border-0 hover:bg-zinc-800/40"
+                    className="relative flex items-center gap-2 md:grid md:grid-cols-[56px_1fr_130px_150px_160px_160px] md:gap-4 px-4 md:px-6 py-3.5 md:py-4 border-b border-zinc-800/50 transition-colors duration-150 cursor-pointer group last:border-0 hover:bg-zinc-800/40"
                   >
                     <div className="absolute left-0 top-0 h-full w-[2px] rounded-r bg-zinc-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
 
-                    <div className="text-center font-mono text-zinc-500 text-sm">
-                      #{i + 1}
+                    <div className="w-8 md:w-auto text-center font-mono text-zinc-500 text-sm shrink-0">
+                      {i + 1}
                     </div>
 
-                    <div>
-                      <div className="text-zinc-100 font-medium text-base group-hover:text-violet-400 transition-colors">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-zinc-100 font-medium text-sm md:text-base group-hover:text-violet-400 transition-colors truncate">
                         {THEME_NAMES[theme] ?? theme}
                       </div>
-                      <div className="text-zinc-600 text-sm font-mono">{theme}</div>
+                      <div className="text-zinc-600 text-xs font-mono">{theme}</div>
                     </div>
 
                     <div className="hidden md:block">
@@ -125,10 +125,10 @@ export default function RankingsPage() {
                       </span>
                     </div>
 
-                    <div className={`font-mono font-semibold text-sm flex items-center gap-1 ${
+                    <div className={`font-mono font-semibold text-sm flex items-center gap-0.5 shrink-0 ${
                       isPositive ? 'text-emerald-400' : 'text-red-400'
                     }`}>
-                      {isPositive ? <ArrowUpRight size={14} /> : <ArrowDownRight size={14} />}
+                      {isPositive ? <ArrowUpRight size={13} /> : <ArrowDownRight size={13} />}
                       {isPositive ? '+' : ''}{momentum.toFixed(2)}%
                     </div>
 
@@ -143,9 +143,9 @@ export default function RankingsPage() {
                       })() : <span className="text-zinc-700">—</span>}
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-zinc-600">
-                      <Lock size={11} className="shrink-0" />
-                      <span className="font-mono text-[11px] uppercase tracking-[0.15em]">Pro</span>
+                    <div className="flex items-center gap-1 text-zinc-600 shrink-0">
+                      <Lock size={10} className="shrink-0" />
+                      <span className="font-mono text-[10px] uppercase tracking-[0.12em]">Pro</span>
                     </div>
                   </Link>
                 );

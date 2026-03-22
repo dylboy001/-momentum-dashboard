@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer,
@@ -75,6 +76,13 @@ function CustomLegend({ finalStrategy, finalSpy, strategyLabel }: { finalStrateg
 export function EquityCurveChart({ data, finalStrategy, finalSpy, strategyLabel = 'Momentum Strategy' }: Props) {
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme !== 'light';
+  const [chartHeight, setChartHeight] = useState(380);
+  useEffect(() => {
+    const update = () => setChartHeight(window.innerWidth < 640 ? 220 : 380);
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
 
   const gridColor   = isDark ? '#27272a' : '#e2e8f0';
   const axisColor   = isDark ? '#3f3f46' : '#e2e8f0';
@@ -89,7 +97,7 @@ export function EquityCurveChart({ data, finalStrategy, finalSpy, strategyLabel 
   return (
     <div>
       <CustomLegend finalStrategy={finalStrategy} finalSpy={finalSpy} strategyLabel={strategyLabel} />
-      <ResponsiveContainer width="100%" height={380}>
+      <ResponsiveContainer width="100%" height={chartHeight}>
         <LineChart data={data} margin={{ top: 5, right: 10, left: 10, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" stroke={gridColor} vertical={false} />
           <XAxis
