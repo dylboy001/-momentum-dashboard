@@ -58,7 +58,7 @@ export function HeroSection() {
         <div className="flex flex-col items-center text-center">
 
           <h1
-            className="mb-6 text-center font-thin uppercase leading-[0.91] tracking-[0.10em] hero-word"
+            className="mb-6 text-center font-thin uppercase leading-[0.91] tracking-[0.10em] text-white"
             style={{ fontSize: 'clamp(52px, 10vw, 158px)' }}
           >
             MOMENTUM<br />CAPITAL

@@ -472,11 +472,7 @@ html:not(.dark) .stat-card:hover {
   color: #0f172a;
 }
 .dark .hero-word {
-  background: linear-gradient(to bottom, #fff, #fff, rgba(255,255,255,0.70));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #ffffff;
 }
 
 /* ── Light mode: hover background overrides ─────────────────────────────────
