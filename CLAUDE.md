@@ -73,10 +73,10 @@ npm run lint
 │   │   └── RebalanceTimer.tsx ← Live countdown to next rebalance (2 variants: default/hero)
 │   │                             Includes urgency-based digit glow filter (emerald→amber→red)
 │   ├── homepage/
-│   │   ├── HeroSection.tsx    ← Full-screen hero + AnimatedWavesBg + framer-motion reveals
-│   │   ├── StatsSection.tsx   ← 3-stat grid with AnimatedCounter (scroll-triggered)
-│   │   ├── HowItWorksSection.tsx ← 3 step cards (framer-motion stagger)
-│   │   └── CTASection.tsx     ← White-background CTA section (mirrors hero layout)
+│   │   ├── HeroSection.tsx    ← Full-screen hero + AnimatedWavesBg (no entry animations — immediately visible)
+│   │   ├── StatsSection.tsx   ← 3-stat grid with AnimatedCounter (count-up on scroll, no entry delay)
+│   │   ├── HowItWorksSection.tsx ← 3 step cards (plain HTML, no framer-motion)
+│   │   └── CTASection.tsx     ← CTA section (whileHover/whileTap on buttons only, no entry animations)
 │   ├── performance/
 │   │   ├── EquityCurveChart.tsx ← 20-year log-scale line chart (recharts)
 │   │   ├── RegimeBreakdown.tsx ← 4 market regime comparison cards
@@ -295,10 +295,10 @@ Used by all inner pages (not homepage/dashboard). Renders animated title + optio
 The `tag` prop exists but is NOT rendered — it was removed to avoid a visual split between the header and page content. The page-level ambient blobs provide all the glow.
 
 ### Animation System
-- **Homepage**: `framer-motion` — slide-up reveals, staggered word blur-in, scroll-triggered counters
-- **Performance page**: `framer-motion` `whileInView` scroll-triggered reveals on all sections
+- **Homepage**: **No entry animations.** All content is immediately visible on load. `framer-motion` is only used for `whileHover`/`whileTap` on CTA buttons (interaction only, not entry). `AnimatedCounter` in StatsSection counts up when scrolled into view — the number itself is always visible, just animates the count. DO NOT add `initial={{ opacity: 0 }}` or `whileInView` entry animations to homepage sections — they caused a visible 2-second blank delay that was unacceptable.
+- **Performance page**: `framer-motion` `whileInView` scroll-triggered reveals on all sections (safe because these sections are always below the fold)
 - **Background**: `AnimatedWavesBg` (canvas-based wavy grid, used in Hero + CTA)
-- **CSS-only**: keyframes in globals.css (`headline-reveal`, `hero-reveal`, `word-appear`, `pulse-glow`, `mesh-float-a/b`)
+- **CSS-only**: keyframes in globals.css (`pulse-glow`, `mesh-float-a/b`)
 - **Shared easing**: `[0.16, 1, 0.3, 1]` (expo out) used across all framer-motion transitions
 - **Pulsing dots**: `animate-ping` on a violet or emerald dot = "live" indicator
 
@@ -993,8 +993,7 @@ In framer-motion: `const E = [0.16, 1, 0.3, 1] as const`
 |---|---|---|
 | Micro-interaction | `duration-200` | Color change, border, icon swap |
 | Hover lift / shadow | `duration-200` to `duration-300` | Card translate, glow |
-| Page reveals | 600–800ms | framer-motion initial animations |
-| Homepage stagger | 700–1200ms | Word blur-in, hero sequence |
+| Page reveals | 600–800ms | Performance page scroll-triggered reveals |
 
 **Loading states:** Always `<Skeleton>`, not full-page spinners.
 Exception: Small `animate-spin` on a single icon (e.g., `<RefreshCw className="animate-spin" />`) is fine for inline status indicators.
@@ -1088,59 +1087,30 @@ Mobile = fast, clear, direct. Show only what clients need to act. Remove decorat
 
 ### Homepage Mobile (`app/page.tsx`)
 
-**Decision**: Hero + CTA only on mobile. Middle 3 sections hidden.
+**Decision**: All 5 sections shown on all screen sizes. No sticky stacking, no hidden sections.
 
-Middle sections use `hidden sm:block` + `sm:sticky sm:top-N` so they only participate in the sticky-stack effect on desktop:
-
-```tsx
-{/* Hidden on mobile — sticky stack on sm+ */}
-<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[2] sm:rounded-t-[2rem] sm:overflow-hidden relative">
-  <ProductClaritySection />
-</div>
-<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[3] ...">
-  <StatsSection />
-</div>
-<div className="hidden sm:block sm:sticky sm:top-0 sm:z-[4] ...">
-  <HowItWorksSection />
-</div>
-
-{/* CTA — shown on mobile, sticky only on sm+ */}
-<div className="sm:sticky sm:top-0 sm:z-[5] sm:rounded-t-[2rem] sm:overflow-hidden relative">
-  <CTASection />
-</div>
-```
-
-Result: ~700px total scroll on mobile (vs ~6,500px before).
-
----
-
-### Hero Animation on Mobile (`components/homepage/HeroSection.tsx`)
-
-All framer-motion delays are zeroed on mobile using the `d()` helper:
+`app/page.tsx` is a simple flat stack — no wrappers, no sticky, no hidden:
 
 ```tsx
-const [isMobile, setIsMobile] = useState(false)
-useEffect(() => {
-  setMounted(true)
-  setIsMobile(window.innerWidth < 640)
-}, [])
-
-// Helper: returns 0 on mobile, actual delay on desktop
-const d = (s: number) => isMobile ? 0 : s
+export default function HomePage() {
+  return (
+    <div className="bg-[#080808] text-white">
+      <NavBar />
+      <HeroSection />
+      <ProductClaritySection />
+      <StatsSection />
+      <HowItWorksSection />
+      <CTASection />
+    </div>
+  )
+}
 ```
 
-Usage: `delay: d(0.28)`, `delay: d(1.4)`, etc.
+**Why no sticky stacking**: Removing it required all section components to have zero entry animations (no `initial={{ opacity: 0 }}`). Sections that are in the initial viewport with `whileInView` cause a brief blank flash as IntersectionObserver fires asynchronously after mount. Removing sticky stacking means sections may be in initial viewport — so all homepage entry animations were stripped.
 
-The large background LogoMark (520px) is not rendered on mobile:
-```tsx
-{!isMobile && (
-  <motion.div ...>
-    <LogoMark size={520} ... />
-  </motion.div>
-)}
-```
+### Hero (`components/homepage/HeroSection.tsx`)
 
-Section min-height: `min-h-[85vh] sm:min-h-screen`
+All content is plain HTML — immediately visible on load. No framer-motion entry animations. Only the bouncing scroll arrow uses `motion.div` (decoration, not content). `AnimatedWavesBg` handles the canvas background. Section min-height: `min-h-[85vh] sm:min-h-screen`
 
 ---
 
