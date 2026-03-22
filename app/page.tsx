@@ -12,7 +12,7 @@ export default function HomePage() {
       <NavBar />
 
       {/* ── 1. HERO ───────────────────────────────────────────────── */}
-      <div className="sticky top-0 z-[1]">
+      <div className="sm:sticky sm:top-0 sm:z-[1]">
         <HeroSection />
       </div>
 
