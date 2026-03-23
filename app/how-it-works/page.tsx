@@ -137,11 +137,11 @@ export default function HowItWorksPage() {
             {STEPS.map((step, i) => (
               <div key={step.num} className="flex gap-4">
                 <div className="flex flex-col items-center">
-                  <div className="w-9 h-9 rounded-full bg-violet-950/60 border border-violet-800/50 flex items-center justify-center text-violet-400 font-mono text-xs font-semibold shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-violet-100 dark:bg-violet-950/60 border border-violet-300 dark:border-violet-800/50 flex items-center justify-center text-violet-600 dark:text-violet-400 font-mono text-xs font-semibold shrink-0">
                     {step.num}
                   </div>
                   {i < STEPS.length - 1 && (
-                    <div className="w-px flex-1 bg-zinc-800 mt-2" />
+                    <div className="w-px flex-1 bg-zinc-200 dark:bg-zinc-800 mt-2" />
                   )}
                 </div>
                 <div className="pb-6 pt-1.5 flex-1">
