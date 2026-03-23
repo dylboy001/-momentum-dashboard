@@ -250,17 +250,17 @@ export default function ResourcesPage() {
                   className={[
                     'group shrink-0 md:w-full text-left rounded-xl px-4 py-3 md:py-3.5 transition-colors duration-200',
                     isActive
-                      ? 'bg-violet-100 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-500/20'
-                      : 'border border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900/60 hover:border-zinc-200 dark:hover:border-zinc-800',
+                      ? 'bg-zinc-900 border border-zinc-700'
+                      : 'border border-transparent hover:bg-zinc-900/60 hover:border-zinc-800',
                   ].join(' ')}
                 >
                   <div className="flex items-center gap-2.5 mb-1">
-                    <NavIcon size={13} className={isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'} />
-                    <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
+                    <NavIcon size={13} className={isActive ? 'text-violet-400' : 'text-zinc-600 group-hover:text-zinc-500'} />
+                    <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${isActive ? 'text-violet-400' : 'text-zinc-600 group-hover:text-zinc-500'}`}>
                       {a.readTime}
                     </span>
                   </div>
-                  <span className={`block text-sm font-medium leading-snug whitespace-nowrap md:whitespace-normal ${isActive ? 'text-violet-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300'}`}>
+                  <span className={`block text-sm font-medium leading-snug whitespace-nowrap md:whitespace-normal ${isActive ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-300'}`}>
                     {a.title}
                   </span>
                 </button>
@@ -292,8 +292,8 @@ export default function ResourcesPage() {
 
             {/* Article header */}
             <div className="flex items-start gap-4 mb-6">
-              <div className="w-10 h-10 rounded-xl bg-violet-100 dark:bg-violet-950/60 border border-violet-200 dark:border-violet-800/40 flex items-center justify-center shrink-0">
-                <Icon size={18} className="text-violet-600 dark:text-violet-400" />
+              <div className="w-10 h-10 rounded-xl bg-zinc-800/60 border border-zinc-700/60 flex items-center justify-center shrink-0">
+                <Icon size={18} className="text-violet-400" />
               </div>
               <div>
                 <h2 className="text-xl font-thin tracking-tight text-white mb-1">{article.title}</h2>

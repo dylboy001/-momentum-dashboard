@@ -313,17 +313,17 @@ export default function FAQPage() {
                   className={[
                     'group shrink-0 md:w-full text-left rounded-xl px-4 py-3 md:py-3.5 transition-colors duration-200',
                     isActive
-                      ? 'bg-violet-100 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-500/20'
-                      : 'border border-transparent hover:bg-zinc-100 dark:hover:bg-zinc-900/60 hover:border-zinc-200 dark:hover:border-zinc-800',
+                      ? 'bg-zinc-900 border border-zinc-700'
+                      : 'border border-transparent hover:bg-zinc-900/60 hover:border-zinc-800',
                   ].join(' ')}
                 >
-                  <span className={`block font-mono text-[10px] uppercase tracking-[0.22em] mb-1 ${isActive ? 'text-violet-600 dark:text-violet-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
+                  <span className={`block font-mono text-[10px] uppercase tracking-[0.22em] mb-1 ${isActive ? 'text-violet-400' : 'text-zinc-600 group-hover:text-zinc-500'}`}>
                     {s.number}
                   </span>
-                  <span className={`block text-sm font-medium leading-snug whitespace-nowrap md:whitespace-normal ${isActive ? 'text-violet-900 dark:text-white' : 'text-zinc-600 dark:text-zinc-400 group-hover:text-zinc-900 dark:group-hover:text-zinc-300'}`}>
+                  <span className={`block text-sm font-medium leading-snug whitespace-nowrap md:whitespace-normal ${isActive ? 'text-white' : 'text-zinc-400 group-hover:text-zinc-300'}`}>
                     {s.title}
                   </span>
-                  <span className={`hidden md:block text-xs mt-0.5 leading-snug ${isActive ? 'text-violet-500 dark:text-zinc-400' : 'text-zinc-400 dark:text-zinc-600 group-hover:text-zinc-500'}`}>
+                  <span className={`hidden md:block text-xs mt-0.5 leading-snug ${isActive ? 'text-zinc-500' : 'text-zinc-600 group-hover:text-zinc-500'}`}>
                     {s.faqs.length} questions
                   </span>
                 </button>
