@@ -14,7 +14,7 @@ export function CTASection() {
   useEffect(() => { setIsLight(resolvedTheme === 'light') }, [resolvedTheme])
 
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#080808] px-8 py-24">
+    <section className="relative flex items-center justify-center overflow-hidden bg-[#080808] px-8 py-28 md:py-36">
       <AnimatedWavesBg light={isLight} />
 
       {/* Heading clearance overlay — CSS var, no hydration flash */}

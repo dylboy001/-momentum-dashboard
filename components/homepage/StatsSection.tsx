@@ -78,7 +78,7 @@ export function StatsSection({ light = false }: { light?: boolean }) {
   const accentLine = light ? 'bg-zinc-900'     : 'bg-violet-500'
 
   return (
-    <section className={`${bg} flex min-h-screen items-center justify-center px-8 py-24`}>
+    <section className={`${bg} px-8 py-20 md:py-28`}>
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Section label */}

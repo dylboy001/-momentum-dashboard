@@ -20,7 +20,7 @@ const CARDS = [
 
 export function ProductClaritySection() {
   return (
-    <section className="flex min-h-screen items-center bg-[#080808] px-8 py-24">
+    <section className="bg-[#080808] px-8 py-20 md:py-28">
       <div className="mx-auto w-full max-w-6xl">
 
         {/* Statement */}
