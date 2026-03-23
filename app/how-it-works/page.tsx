@@ -64,59 +64,7 @@ export default function HowItWorksPage() {
         sub="A systematic, rules-based momentum strategy that rotates capital into the strongest market sectors weekly or monthly. No discretionary guesswork — just price data, math, and discipline."
       />
 
-      <main className="relative z-10 max-w-4xl mx-auto px-6 py-14 space-y-14">
-
-        {/* What is this — bold clarity section */}
-        <section>
-          {/* Big statement */}
-          <div className="border border-zinc-800 rounded-2xl overflow-hidden mb-4">
-            <div className="px-8 py-8 sm:px-10 sm:py-10">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-violet-500 mb-4">— What this is</p>
-              <p className="text-2xl sm:text-3xl font-thin tracking-tight text-white leading-snug mb-3">
-                Weekly rotation analysis for<br className="hidden sm:block" /> self-directed traders.
-              </p>
-              <p className="text-sm text-zinc-400 leading-relaxed max-w-2xl">
-                Momentum Capital scans 19 market sectors every day, ranks them by quantitative momentum, and tells you which 1–2 to hold each week. <span className="text-zinc-200">You execute the trades yourself</span> in your own brokerage. Your capital stays in your account — we never touch it.
-              </p>
-            </div>
-          </div>
-
-          {/* 3-column clarity cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            {[
-              {
-                label: 'The analysis',
-                heading: 'Know what to hold',
-                body: 'Each rebalance you get a clear output: which 1–2 sectors are strongest, target weights, and a countdown to the next rebalance. No interpretation needed.',
-                accent: 'border-violet-800/40 bg-violet-950/20',
-                dot: 'bg-violet-400',
-              },
-              {
-                label: 'Your control',
-                heading: 'You trade. We research.',
-                body: 'This is not a robo-advisor or managed fund. We do the quantitative work — you decide when and how to act. Full control of your capital, always.',
-                accent: 'border-zinc-800',
-                dot: 'bg-emerald-400',
-              },
-              {
-                label: 'Your edge',
-                heading: 'Standalone or confirmation',
-                body: 'Run it as a complete rules-based strategy, or use the momentum rankings as quantitative confirmation alongside your own analysis. Either way works.',
-                accent: 'border-zinc-800',
-                dot: 'bg-blue-400',
-              },
-            ].map(({ label, heading, body, accent, dot }) => (
-              <div key={label} className={`border ${accent} rounded-2xl px-5 py-5`}>
-                <div className="flex items-center gap-2 mb-3">
-                  <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${dot}`} />
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">{label}</span>
-                </div>
-                <p className="text-zinc-100 font-medium text-sm mb-2">{heading}</p>
-                <p className="text-zinc-400 text-sm leading-relaxed">{body}</p>
-              </div>
-            ))}
-          </div>
-        </section>
+      <main className="relative z-10 max-w-4xl mx-auto px-6 pt-2 pb-14 space-y-14">
 
         {/* Strategy overview */}
         <section>
@@ -130,7 +78,7 @@ export default function HowItWorksPage() {
                 Momentum rotation is built on a well-documented phenomenon in financial markets: assets that have recently outperformed tend to continue outperforming over the next 1–12 months. This effect has been observed across equities, commodities, currencies, and fixed income for decades.
               </p>
               <p>
-                Instead of picking individual stocks bottom-up, the strategy first identifies <span className="text-zinc-100 font-medium">which market segment</span> has the strongest trend, then drills down to find the <span className="text-zinc-100 font-medium">best stocks within that segment</span>. This top-down filtering dramatically reduces the universe and focuses capital on the highest-probability opportunities.
+                Rather than picking individual stocks, the strategy identifies <span className="text-zinc-100 font-medium">which market sector</span> has the strongest trend and holds it via its ETF directly (or as direct crypto for BTC and ETH). No individual stock selection — just sector ETFs and direct crypto assets.
               </p>
               <p>
                 The result is a concentrated portfolio of 1–2 positions, rebalanced weekly (Balanced) or monthly (Growth), that systematically rotates toward market strength.
@@ -261,7 +209,7 @@ export default function HowItWorksPage() {
           <GlassCard>
             <div className="px-6 pt-6 pb-6 space-y-3 text-sm">
               {[
-                { step: '1', text: 'Check the Live Picks page for current picks and their target weights.', href: '/', label: 'Live Picks' },
+                { step: '1', text: 'Check the Live Picks page for current picks and their target weights.', href: '/dashboard', label: 'Live Picks' },
                 { step: '2', text: 'Review the Rankings page to understand which sectors are leading and why.', href: '/rankings', label: 'Rankings' },
                 { step: '3', text: 'Check the Performance page to see momentum metrics and the next rebalance date.', href: '/performance', label: 'Performance' },
                 { step: '4', text: 'Execute trades through your own brokerage on or near the rebalance date.', href: null, label: null },
