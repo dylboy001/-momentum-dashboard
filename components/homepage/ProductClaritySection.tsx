@@ -46,16 +46,16 @@ export function ProductClaritySection() {
           {CARDS.map(({ num, heading, body }) => (
             <div
               key={num}
-              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-8 transition-colors duration-200 hover:border-zinc-700 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
+              className="group relative overflow-hidden rounded-2xl border border-zinc-800 p-10 transition-colors duration-200 hover:border-zinc-700 dark:hover:bg-zinc-900/30 hover:bg-zinc-50"
             >
               <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <p
-                className="mb-8 font-mono font-thin leading-none text-zinc-800 transition-colors duration-300 group-hover:text-zinc-700"
-                style={{ fontSize: 'clamp(3rem, 5vw, 5rem)' }}
+                className="mb-10 font-mono font-thin leading-none text-zinc-800 transition-colors duration-300 group-hover:text-zinc-700"
+                style={{ fontSize: 'clamp(4rem, 7vw, 7rem)' }}
               >
                 {num}
               </p>
-              <p className="mb-3 text-lg font-light text-white">{heading}</p>
+              <p className="mb-4 text-xl font-light text-white">{heading}</p>
               <p className="text-sm leading-relaxed text-zinc-500">{body}</p>
             </div>
           ))}

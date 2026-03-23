@@ -73,9 +73,9 @@ export function LogoMark({
     >
       <defs>
         <linearGradient id={gradId} x1="15" y1="20" x2="90" y2="65" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#ede9fe" />
+          <stop offset="0%" stopColor="#c084fc" />
           <stop offset="40%" stopColor="#a855f7" />
-          <stop offset="100%" stopColor="#4c1d95" />
+          <stop offset="100%" stopColor="#6d28d9" />
         </linearGradient>
         <filter id={glowId} x="-40%" y="-40%" width="180%" height="180%">
           <feGaussianBlur stdDeviation="2.2" result="b" />
