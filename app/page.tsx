@@ -1,6 +1,5 @@
 import { NavBar } from '@/components/dashboard/NavBar'
 import { HeroSection } from '@/components/homepage/HeroSection'
-import { ProductClaritySection } from '@/components/homepage/ProductClaritySection'
 import { StatsSection } from '@/components/homepage/StatsSection'
 import { HowItWorksSection } from '@/components/homepage/HowItWorksSection'
 import { CTASection } from '@/components/homepage/CTASection'
@@ -13,16 +12,13 @@ export default function HomePage() {
       {/* ── 1. HERO ───────────────────────────────────────────────── */}
       <HeroSection />
 
-      {/* ── 2. WHAT IS IT ─────────────────────────────────────────── */}
-      <ProductClaritySection />
-
-      {/* ── 3. STATS ──────────────────────────────────────────────── */}
+      {/* ── 2. STATS ──────────────────────────────────────────────── */}
       <StatsSection />
 
-      {/* ── 4. HOW IT WORKS ───────────────────────────────────────── */}
+      {/* ── 3. HOW IT WORKS ───────────────────────────────────────── */}
       <HowItWorksSection />
 
-      {/* ── 5. CTA ────────────────────────────────────────────────── */}
+      {/* ── 4. CTA ────────────────────────────────────────────────── */}
       <CTASection />
     </div>
   )

@@ -1,21 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-// Violet/indigo-only palette to match the site theme
-const COLORS = [
-  "rgba(139, 92, 246, 0.90)",   // violet-500
-  "rgba(167, 139, 250, 0.85)",  // violet-400
-  "rgba(196, 181, 253, 0.80)",  // violet-300
-  "rgba(109,  40, 217, 0.88)",  // violet-700
-  "rgba( 79,  70, 229, 0.85)",  // indigo-600
-  "rgba( 99, 102, 241, 0.82)",  // indigo-500
-  "rgba(124,  58, 237, 0.88)",  // violet-600
-  "rgba(221, 214, 254, 0.75)",  // violet-200
-];
-
-const getRandomColor = () => COLORS[Math.floor(Math.random() * COLORS.length)];
 
 export const BoxesCore = ({ className, light = false, ...rest }: { className?: string; light?: boolean }) => {
   const rows = new Array(150).fill(1);
@@ -35,17 +20,12 @@ export const BoxesCore = ({ className, light = false, ...rest }: { className?: s
       {...rest}
     >
       {rows.map((_, i) => (
-        <motion.div
+        <div
           key={"row" + i}
           className={`w-16 h-8 border-l ${border} relative`}
         >
           {cols.map((_, j) => (
-            <motion.div
-              whileHover={{
-                backgroundColor: getRandomColor(),
-                transition: { duration: 0 },
-              }}
-              animate={{ transition: { duration: 2 } }}
+            <div
               key={"col" + j}
               className={`w-16 h-8 border-r border-t ${border} relative`}
             >
@@ -65,9 +45,9 @@ export const BoxesCore = ({ className, light = false, ...rest }: { className?: s
                   />
                 </svg>
               ) : null}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       ))}
     </div>
   );
