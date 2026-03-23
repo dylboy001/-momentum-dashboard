@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import { AnimatedWavesBg } from '@/components/ui/animated-waves-bg'
+import { LogoMark } from '@/components/ui/logo'
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -12,13 +13,29 @@ export function HeroSection() {
   const [isLight, setIsLight] = useState(() =>
     typeof window !== 'undefined' && !document.documentElement.classList.contains('dark')
   )
+  const [isMobile, setIsMobile] = useState(false)
   useEffect(() => { setIsLight(resolvedTheme === 'light') }, [resolvedTheme])
+  useEffect(() => { setIsMobile(window.innerWidth < 640) }, [])
 
   return (
     <section ref={sectionRef} className="relative flex min-h-[85vh] sm:min-h-screen flex-col overflow-hidden bg-[#080808]">
 
       {/* ── Animated wavy grid background ──────────────────────────────────── */}
       <AnimatedWavesBg light={isLight} />
+
+      {/* ── Background logo — circle morphs to infinity, fades to ghost ──────── */}
+      {!isMobile && (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 z-[2] flex items-center justify-center"
+          style={{ willChange: 'transform, opacity' }}
+          initial={{ opacity: 0, scale: 2.5, y: 0 }}
+          animate={{ opacity: [0, 0.78, 0.13], scale: [2.5, 2.3, 1.0], y: [0, 0, -55] }}
+          transition={{ duration: 7.5, times: [0, 0.07, 1.0], ease: [0.25, 0.1, 0.25, 1] }}
+        >
+          <LogoMark size={520} animate morphDelay={600} morphDuration={3200} />
+        </motion.div>
+      )}
 
       {/* ── Heading clearance overlay ───────────────────────────────────────── */}
       <div
