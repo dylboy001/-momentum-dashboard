@@ -1,82 +1,82 @@
 {
-  "date": "2026-03-23",
-  "rebalance_next": "2026-03-30",
+  "date": "2026-03-24",
+  "rebalance_next": "2026-03-31",
   "theme_rankings": [
     [
       "XLE",
-      31.82
+      34.49
     ],
     [
       "SLV",
-      17.98
+      18.89
     ],
     [
       "XLB",
-      8.89
+      10.95
     ],
     [
       "ICLN",
-      8.61
+      9.38
     ],
     [
       "XLI",
-      6.14
-    ],
-    [
-      "URA",
-      5.28
+      6.76
     ],
     [
       "XLU",
-      4.92
+      5.65
+    ],
+    [
+      "URA",
+      5.36
     ],
     [
       "XLP",
-      4.88
+      4.79
     ],
     [
       "GLD",
-      4.55
+      4.58
     ],
     [
       "XLRE",
-      0.85
+      0.03
     ],
     [
       "CPER",
-      0.54
+      0.0
     ],
     [
       "XLC",
-      -3.15
+      -4.51
     ],
     [
       "XLV",
-      -4.75
+      -4.73
     ],
     [
       "XLK",
-      -6.32
+      -6.87
     ],
     [
       "XLF",
-      -7.42
+      -7.4
     ],
     [
       "XLY",
-      -7.66
-    ],
-    [
-      "BITO",
-      -21.74
+      -8.03
     ],
     [
       "BTC",
-      -24.5
+      -22.01
+    ],
+    [
+      "BITO",
+      -23.11
     ],
     [
       "ETH",
-      -32.75
+      -30.27
     ]
   ],
   "top_themes": [
@@ -87,268 +87,268 @@
       "ticker": "XLE",
       "name": "Energy",
       "theme": "XLE",
-      "price": 59.63,
-      "rs_score": 31.82,
-      "volatility": 20.58,
+      "price": 60.84,
+      "rs_score": 34.49,
+      "volatility": 20.74,
       "weight_pct": 100.0
     }
   ],
-  "spy_momentum": -3.88,
+  "spy_momentum": -4.2,
   "universe_full_data": {
     "XLK": [
       {
         "ticker": "AAPL",
-        "price": 251.49,
-        "rs_score": -3.38,
-        "volatility": 24.18,
+        "price": 251.64,
+        "rs_score": -2.78,
+        "volatility": 24.15,
         "selected": false
       },
       {
         "ticker": "MSFT",
-        "price": 383.0,
-        "rs_score": -14.23,
-        "volatility": 31.76,
+        "price": 372.74,
+        "rs_score": -15.81,
+        "volatility": 32.08,
         "selected": false
       },
       {
         "ticker": "NVDA",
-        "price": 175.64,
-        "rs_score": 2.61,
+        "price": 175.2,
+        "rs_score": 2.92,
         "volatility": 33.99,
         "selected": false
       },
       {
         "ticker": "GOOGL",
-        "price": 302.06,
-        "rs_score": 0.47,
-        "volatility": 20.9,
+        "price": 290.44,
+        "rs_score": -2.6,
+        "volatility": 22.3,
         "selected": false
       },
       {
         "ticker": "META",
-        "price": 604.06,
-        "rs_score": -3.83,
-        "volatility": 35.41,
+        "price": 592.92,
+        "rs_score": -4.94,
+        "volatility": 35.57,
         "selected": false
       },
       {
         "ticker": "AVGO",
-        "price": 322.51,
-        "rs_score": -10.7,
-        "volatility": 37.37,
+        "price": 318.29,
+        "rs_score": -11.24,
+        "volatility": 37.52,
         "selected": false
       },
       {
         "ticker": "AMD",
-        "price": 202.68,
-        "rs_score": -0.69,
-        "volatility": 61.15,
+        "price": 205.37,
+        "rs_score": 1.09,
+        "volatility": 61.21,
         "selected": false
       },
       {
         "ticker": "ORCL",
-        "price": 154.34,
-        "rs_score": -22.56,
-        "volatility": 51.18,
+        "price": 147.09,
+        "rs_score": -25.35,
+        "volatility": 51.86,
         "selected": false
       },
       {
         "ticker": "ADBE",
-        "price": 247.64,
-        "rs_score": -22.16,
-        "volatility": 36.57,
+        "price": 238.87,
+        "rs_score": -24.14,
+        "volatility": 37.04,
         "selected": false
       },
       {
         "ticker": "CRM",
-        "price": 195.18,
-        "rs_score": -18.65,
-        "volatility": 40.16,
+        "price": 183.02,
+        "rs_score": -22.78,
+        "volatility": 41.78,
         "selected": false
       },
       {
         "ticker": "QCOM",
-        "price": 128.35,
-        "rs_score": -19.79,
-        "volatility": 30.14,
+        "price": 128.67,
+        "rs_score": -19.05,
+        "volatility": 30.16,
         "selected": false
       },
       {
         "ticker": "NOW",
-        "price": 110.95,
-        "rs_score": -28.75,
-        "volatility": 47.72,
+        "price": 104.65,
+        "rs_score": -31.89,
+        "volatility": 48.87,
         "selected": false
       }
     ],
     "XLF": [
       {
         "ticker": "JPM",
-        "price": 289.91,
-        "rs_score": -0.14,
-        "volatility": 24.38,
+        "price": 292.4,
+        "rs_score": 0.63,
+        "volatility": 24.35,
         "selected": false
       },
       {
         "ticker": "BAC",
-        "price": 47.52,
-        "rs_score": -4.0,
-        "volatility": 24.93,
+        "price": 48.14,
+        "rs_score": -2.86,
+        "volatility": 25.08,
         "selected": false
       },
       {
         "ticker": "GS",
-        "price": 831.27,
-        "rs_score": 5.21,
-        "volatility": 34.19,
+        "price": 835.72,
+        "rs_score": 5.71,
+        "volatility": 34.14,
         "selected": false
       },
       {
         "ticker": "MS",
-        "price": 164.32,
-        "rs_score": 1.03,
-        "volatility": 33.27,
+        "price": 165.87,
+        "rs_score": 1.89,
+        "volatility": 33.23,
         "selected": false
       },
       {
         "ticker": "WFC",
-        "price": 78.28,
-        "rs_score": -5.01,
-        "volatility": 28.97,
+        "price": 79.61,
+        "rs_score": -3.54,
+        "volatility": 29.16,
         "selected": false
       },
       {
         "ticker": "BLK",
-        "price": 974.58,
-        "rs_score": -1.18,
+        "price": 976.06,
+        "rs_score": -1.06,
         "volatility": 31.63,
         "selected": false
       },
       {
         "ticker": "AXP",
-        "price": 301.91,
-        "rs_score": -10.88,
-        "volatility": 31.9,
+        "price": 302.0,
+        "rs_score": -10.87,
+        "volatility": 31.89,
         "selected": false
       },
       {
         "ticker": "SCHW",
-        "price": 95.3,
-        "rs_score": 9.34,
-        "volatility": 26.77,
+        "price": 95.68,
+        "rs_score": 9.73,
+        "volatility": 26.75,
         "selected": false
       },
       {
         "ticker": "SPGI",
-        "price": 428.87,
-        "rs_score": -6.35,
-        "volatility": 40.1,
+        "price": 411.2,
+        "rs_score": -9.92,
+        "volatility": 40.84,
         "selected": false
       },
       {
         "ticker": "CME",
-        "price": 306.56,
-        "rs_score": 23.84,
-        "volatility": 20.38,
+        "price": 302.68,
+        "rs_score": 22.34,
+        "volatility": 20.61,
         "selected": false
       },
       {
         "ticker": "C",
-        "price": 111.64,
-        "rs_score": 10.49,
-        "volatility": 36.04,
+        "price": 113.74,
+        "rs_score": 12.41,
+        "volatility": 36.06,
         "selected": false
       },
       {
         "ticker": "MCO",
-        "price": 441.07,
-        "rs_score": -3.55,
-        "volatility": 37.35,
+        "price": 428.46,
+        "rs_score": -6.12,
+        "volatility": 37.71,
         "selected": false
       }
     ],
     "XLV": [
       {
         "ticker": "UNH",
-        "price": 269.54,
-        "rs_score": -12.61,
-        "volatility": 49.28,
+        "price": 272.28,
+        "rs_score": -11.79,
+        "volatility": 49.29,
         "selected": false
       },
       {
         "ticker": "LLY",
-        "price": 910.55,
-        "rs_score": -4.97,
-        "volatility": 41.22,
+        "price": 903.02,
+        "rs_score": -5.74,
+        "volatility": 41.21,
         "selected": false
       },
       {
         "ticker": "JNJ",
-        "price": 235.42,
-        "rs_score": 21.95,
-        "volatility": 15.92,
+        "price": 235.27,
+        "rs_score": 21.86,
+        "volatility": 15.86,
         "selected": false
       },
       {
         "ticker": "ABBV",
-        "price": 204.93,
-        "rs_score": -3.88,
-        "volatility": 27.3,
+        "price": 205.2,
+        "rs_score": -3.78,
+        "volatility": 27.27,
         "selected": false
       },
       {
         "ticker": "MRK",
-        "price": 115.68,
-        "rs_score": 22.61,
-        "volatility": 23.04,
+        "price": 116.37,
+        "rs_score": 23.3,
+        "volatility": 22.93,
         "selected": false
       },
       {
         "ticker": "TMO",
-        "price": 478.12,
-        "rs_score": -11.63,
-        "volatility": 26.64,
+        "price": 490.29,
+        "rs_score": -9.52,
+        "volatility": 27.27,
         "selected": false
       },
       {
         "ticker": "ISRG",
-        "price": 478.04,
-        "rs_score": -12.16,
-        "volatility": 23.95,
+        "price": 471.91,
+        "rs_score": -13.25,
+        "volatility": 24.03,
         "selected": false
       },
       {
         "ticker": "AMGN",
-        "price": 349.77,
-        "rs_score": 11.51,
-        "volatility": 31.05,
+        "price": 348.43,
+        "rs_score": 11.08,
+        "volatility": 31.04,
         "selected": false
       },
       {
         "ticker": "VRTX",
-        "price": 451.24,
-        "rs_score": 3.82,
-        "volatility": 35.29,
+        "price": 448.62,
+        "rs_score": 3.22,
+        "volatility": 35.27,
         "selected": false
       },
       {
         "ticker": "DHR",
-        "price": 190.0,
-        "rs_score": -11.16,
-        "volatility": 25.52,
+        "price": 190.1,
+        "rs_score": -11.13,
+        "volatility": 25.5,
         "selected": false
       },
       {
         "ticker": "REGN",
-        "price": 736.53,
-        "rs_score": 7.4,
-        "volatility": 27.74,
+        "price": 741.69,
+        "rs_score": 8.1,
+        "volatility": 27.79,
         "selected": false
       },
       {
         "ticker": "ABT",
-        "price": 104.85,
-        "rs_score": -11.0,
+        "price": 104.06,
+        "rs_score": -11.65,
         "volatility": 28.01,
         "selected": false
       }
@@ -356,875 +356,875 @@
     "XLE": [
       {
         "ticker": "XOM",
-        "price": 161.13,
-        "rs_score": 7.36,
-        "volatility": 26.04,
+        "price": 165.38,
+        "rs_score": 8.36,
+        "volatility": 26.36,
         "selected": false
       },
       {
         "ticker": "CVX",
-        "price": 205.21,
-        "rs_score": 6.32,
-        "volatility": 23.32,
+        "price": 206.79,
+        "rs_score": 4.72,
+        "volatility": 23.3,
         "selected": false
       },
       {
         "ticker": "COP",
-        "price": 127.19,
-        "rs_score": 4.99,
-        "volatility": 30.21,
+        "price": 129.35,
+        "rs_score": 4.65,
+        "volatility": 30.12,
         "selected": false
       },
       {
         "ticker": "EOG",
-        "price": 139.68,
-        "rs_score": -6.11,
-        "volatility": 27.28,
+        "price": 142.53,
+        "rs_score": -6.21,
+        "volatility": 27.42,
         "selected": false
       },
       {
         "ticker": "SLB",
-        "price": 49.25,
-        "rs_score": -3.01,
-        "volatility": 42.46,
+        "price": 50.51,
+        "rs_score": -2.38,
+        "volatility": 42.61,
         "selected": false
       },
       {
         "ticker": "MPC",
-        "price": 232.53,
-        "rs_score": -9.16,
-        "volatility": 35.39,
+        "price": 243.91,
+        "rs_score": -5.83,
+        "volatility": 36.4,
         "selected": false
       },
       {
         "ticker": "PSX",
-        "price": 176.76,
-        "rs_score": -3.94,
-        "volatility": 31.58,
+        "price": 184.12,
+        "rs_score": -1.29,
+        "volatility": 32.34,
         "selected": false
       },
       {
         "ticker": "VLO",
-        "price": 237.39,
-        "rs_score": 5.34,
-        "volatility": 38.96,
+        "price": 241.75,
+        "rs_score": 5.18,
+        "volatility": 39.0,
         "selected": false
       },
       {
         "ticker": "OXY",
-        "price": 60.31,
-        "rs_score": 11.82,
-        "volatility": 37.65,
+        "price": 61.25,
+        "rs_score": 11.39,
+        "volatility": 37.63,
         "selected": false
       },
       {
         "ticker": "HAL",
-        "price": 37.51,
-        "rs_score": 0.66,
+        "price": 38.11,
+        "rs_score": 0.11,
         "volatility": 36.23,
         "selected": false
       },
       {
         "ticker": "DVN",
-        "price": 48.49,
-        "rs_score": -0.9,
-        "volatility": 32.44,
+        "price": 50.27,
+        "rs_score": 1.24,
+        "volatility": 33.02,
         "selected": false
       },
       {
         "ticker": "BKR",
-        "price": 62.53,
-        "rs_score": -4.25,
-        "volatility": 35.55,
+        "price": 63.49,
+        "rs_score": -4.96,
+        "volatility": 35.6,
         "selected": false
       }
     ],
     "XLY": [
       {
         "ticker": "AMZN",
-        "price": 210.14,
-        "rs_score": -0.79,
-        "volatility": 29.43,
-        "selected": false
-      },
-      {
-        "ticker": "TSLA",
-        "price": 380.85,
-        "rs_score": -8.64,
-        "volatility": 34.7,
-        "selected": false
-      },
-      {
-        "ticker": "HD",
-        "price": 330.9,
-        "rs_score": 1.6,
-        "volatility": 24.15,
-        "selected": false
-      },
-      {
-        "ticker": "MCD",
-        "price": 308.47,
-        "rs_score": 7.33,
-        "volatility": 16.08,
-        "selected": false
-      },
-      {
-        "ticker": "NKE",
-        "price": 52.71,
-        "rs_score": -11.78,
-        "volatility": 31.62,
-        "selected": false
-      },
-      {
-        "ticker": "BKNG",
-        "price": 4396.79,
-        "rs_score": -7.55,
-        "volatility": 41.85,
-        "selected": false
-      },
-      {
-        "ticker": "LOW",
-        "price": 234.25,
-        "rs_score": 2.36,
+        "price": 207.24,
+        "rs_score": -1.68,
         "volatility": 29.53,
         "selected": false
       },
       {
+        "ticker": "TSLA",
+        "price": 383.03,
+        "rs_score": -7.79,
+        "volatility": 34.75,
+        "selected": false
+      },
+      {
+        "ticker": "HD",
+        "price": 330.91,
+        "rs_score": 1.97,
+        "volatility": 24.1,
+        "selected": false
+      },
+      {
+        "ticker": "MCD",
+        "price": 307.84,
+        "rs_score": 7.49,
+        "volatility": 16.0,
+        "selected": false
+      },
+      {
+        "ticker": "NKE",
+        "price": 53.49,
+        "rs_score": -10.21,
+        "volatility": 30.23,
+        "selected": false
+      },
+      {
+        "ticker": "BKNG",
+        "price": 4290.65,
+        "rs_score": -9.22,
+        "volatility": 42.06,
+        "selected": false
+      },
+      {
+        "ticker": "LOW",
+        "price": 234.43,
+        "rs_score": 2.8,
+        "volatility": 29.52,
+        "selected": false
+      },
+      {
         "ticker": "TJX",
-        "price": 156.5,
-        "rs_score": 10.05,
-        "volatility": 17.4,
+        "price": 158.38,
+        "rs_score": 11.65,
+        "volatility": 17.48,
         "selected": false
       },
       {
         "ticker": "SBUX",
-        "price": 93.83,
-        "rs_score": 18.6,
-        "volatility": 28.86,
+        "price": 91.98,
+        "rs_score": 16.79,
+        "volatility": 29.17,
         "selected": false
       },
       {
         "ticker": "MAR",
-        "price": 326.52,
-        "rs_score": 19.47,
-        "volatility": 30.12,
+        "price": 324.29,
+        "rs_score": 19.08,
+        "volatility": 30.16,
         "selected": false
       },
       {
         "ticker": "CMG",
-        "price": 33.36,
-        "rs_score": 5.95,
-        "volatility": 34.51,
+        "price": 32.76,
+        "rs_score": 4.55,
+        "volatility": 34.65,
         "selected": false
       },
       {
         "ticker": "TGT",
-        "price": 114.93,
-        "rs_score": 33.59,
-        "volatility": 31.58,
+        "price": 115.92,
+        "rs_score": 35.05,
+        "volatility": 31.32,
         "selected": false
       }
     ],
     "XLP": [
       {
         "ticker": "WMT",
-        "price": 120.72,
-        "rs_score": 0.42,
-        "volatility": 25.72,
+        "price": 122.05,
+        "rs_score": 1.67,
+        "volatility": 25.78,
         "selected": false
       },
       {
         "ticker": "COST",
-        "price": 965.73,
-        "rs_score": 3.21,
-        "volatility": 20.43,
+        "price": 973.82,
+        "rs_score": 4.2,
+        "volatility": 20.14,
         "selected": false
       },
       {
         "ticker": "PG",
-        "price": 143.99,
-        "rs_score": -3.79,
-        "volatility": 20.79,
+        "price": 143.16,
+        "rs_score": -4.28,
+        "volatility": 20.74,
         "selected": false
       },
       {
         "ticker": "KO",
-        "price": 75.11,
-        "rs_score": 3.16,
-        "volatility": 17.05,
+        "price": 74.67,
+        "rs_score": 2.61,
+        "volatility": 17.11,
         "selected": false
       },
       {
         "ticker": "PEP",
-        "price": 150.88,
-        "rs_score": 0.09,
-        "volatility": 22.07,
+        "price": 150.59,
+        "rs_score": -0.02,
+        "volatility": 22.08,
         "selected": false
       },
       {
         "ticker": "PM",
-        "price": 163.24,
-        "rs_score": 7.56,
+        "price": 163.87,
+        "rs_score": 8.09,
         "volatility": 27.13,
         "selected": false
       },
       {
         "ticker": "MO",
-        "price": 64.39,
-        "rs_score": 8.19,
-        "volatility": 24.41,
+        "price": 64.32,
+        "rs_score": 8.16,
+        "volatility": 24.42,
         "selected": false
       },
       {
         "ticker": "CL",
-        "price": 85.15,
-        "rs_score": 4.86,
-        "volatility": 25.33,
+        "price": 84.53,
+        "rs_score": 4.15,
+        "volatility": 25.38,
         "selected": false
       },
       {
         "ticker": "MDLZ",
-        "price": 56.86,
-        "rs_score": -0.38,
-        "volatility": 27.04,
+        "price": 57.18,
+        "rs_score": 0.3,
+        "volatility": 27.01,
         "selected": false
       },
       {
         "ticker": "KMB",
-        "price": 99.45,
-        "rs_score": -7.1,
-        "volatility": 21.75,
+        "price": 98.92,
+        "rs_score": -7.53,
+        "volatility": 21.69,
         "selected": false
       },
       {
         "ticker": "HSY",
-        "price": 215.17,
-        "rs_score": 13.93,
-        "volatility": 29.14,
+        "price": 215.2,
+        "rs_score": 14.03,
+        "volatility": 29.09,
         "selected": false
       },
       {
         "ticker": "SYY",
-        "price": 81.6,
-        "rs_score": 7.57,
-        "volatility": 29.47,
+        "price": 82.34,
+        "rs_score": 8.68,
+        "volatility": 29.5,
         "selected": false
       }
     ],
     "XLI": [
       {
         "ticker": "GE",
-        "price": 291.54,
-        "rs_score": -3.2,
-        "volatility": 34.67,
+        "price": 290.63,
+        "rs_score": -4.14,
+        "volatility": 34.66,
         "selected": false
       },
       {
         "ticker": "CAT",
-        "price": 701.7,
-        "rs_score": 10.47,
-        "volatility": 36.07,
+        "price": 716.63,
+        "rs_score": 12.33,
+        "volatility": 36.25,
         "selected": false
       },
       {
         "ticker": "RTX",
-        "price": 194.82,
-        "rs_score": 8.1,
-        "volatility": 25.58,
+        "price": 194.0,
+        "rs_score": 7.0,
+        "volatility": 25.6,
         "selected": false
       },
       {
         "ticker": "HON",
-        "price": 223.01,
-        "rs_score": 11.0,
-        "volatility": 23.74,
+        "price": 221.57,
+        "rs_score": 9.62,
+        "volatility": 23.79,
         "selected": false
       },
       {
         "ticker": "LMT",
-        "price": 616.25,
-        "rs_score": 30.86,
-        "volatility": 30.92,
+        "price": 610.17,
+        "rs_score": 28.88,
+        "volatility": 31.06,
         "selected": false
       },
       {
         "ticker": "UNP",
-        "price": 238.37,
-        "rs_score": -4.31,
-        "volatility": 23.59,
+        "price": 239.67,
+        "rs_score": -4.37,
+        "volatility": 23.6,
         "selected": false
       },
       {
         "ticker": "UPS",
-        "price": 97.67,
-        "rs_score": -1.75,
-        "volatility": 26.9,
+        "price": 98.44,
+        "rs_score": -1.55,
+        "volatility": 26.93,
         "selected": false
       },
       {
         "ticker": "ETN",
-        "price": 359.74,
-        "rs_score": 0.73,
-        "volatility": 31.27,
+        "price": 374.1,
+        "rs_score": 4.38,
+        "volatility": 32.22,
         "selected": false
       },
       {
         "ticker": "DE",
-        "price": 569.03,
-        "rs_score": 14.04,
-        "volatility": 37.31,
+        "price": 583.02,
+        "rs_score": 16.38,
+        "volatility": 37.56,
         "selected": false
       },
       {
         "ticker": "ITW",
-        "price": 262.75,
-        "rs_score": -0.23,
-        "volatility": 23.74,
+        "price": 265.04,
+        "rs_score": 0.07,
+        "volatility": 23.79,
         "selected": false
       },
       {
         "ticker": "BA",
-        "price": 198.41,
-        "rs_score": -7.86,
-        "volatility": 29.6,
+        "price": 196.42,
+        "rs_score": -9.47,
+        "volatility": 29.61,
         "selected": false
       },
       {
         "ticker": "CSX",
-        "price": 38.94,
-        "rs_score": 1.49,
-        "volatility": 23.3,
+        "price": 38.87,
+        "rs_score": 0.67,
+        "volatility": 23.29,
         "selected": false
       }
     ],
     "XLB": [
       {
         "ticker": "LIN",
-        "price": 478.05,
-        "rs_score": 11.15,
+        "price": 479.84,
+        "rs_score": 9.54,
         "volatility": 18.1,
         "selected": false
       },
       {
         "ticker": "SHW",
-        "price": 313.95,
-        "rs_score": -14.43,
-        "volatility": 25.3,
+        "price": 313.7,
+        "rs_score": -16.57,
+        "volatility": 25.28,
         "selected": false
       },
       {
         "ticker": "APD",
-        "price": 278.66,
-        "rs_score": -1.22,
-        "volatility": 25.87,
+        "price": 286.25,
+        "rs_score": -0.34,
+        "volatility": 26.36,
         "selected": false
       },
       {
         "ticker": "ECL",
-        "price": 261.13,
-        "rs_score": -7.78,
-        "volatility": 20.84,
+        "price": 264.49,
+        "rs_score": -8.54,
+        "volatility": 21.0,
         "selected": false
       },
       {
         "ticker": "FCX",
-        "price": 54.94,
-        "rs_score": 12.96,
-        "volatility": 49.89,
+        "price": 56.48,
+        "rs_score": 14.32,
+        "volatility": 50.19,
         "selected": false
       },
       {
         "ticker": "NEM",
-        "price": 98.14,
-        "rs_score": 0.67,
-        "volatility": 54.88,
+        "price": 99.02,
+        "rs_score": -0.41,
+        "volatility": 54.91,
         "selected": false
       },
       {
         "ticker": "NUE",
-        "price": 160.62,
-        "rs_score": -7.81,
-        "volatility": 28.13,
+        "price": 162.74,
+        "rs_score": -8.54,
+        "volatility": 28.17,
         "selected": false
       },
       {
         "ticker": "DOW",
-        "price": 36.04,
-        "rs_score": 49.94,
-        "volatility": 48.17,
+        "price": 38.31,
+        "rs_score": 57.88,
+        "volatility": 49.46,
         "selected": false
       },
       {
         "ticker": "ALB",
-        "price": 167.56,
-        "rs_score": 25.69,
-        "volatility": 61.11,
+        "price": 177.06,
+        "rs_score": 31.26,
+        "volatility": 62.07,
         "selected": false
       },
       {
         "ticker": "VMC",
-        "price": 263.75,
-        "rs_score": -19.27,
-        "volatility": 33.18,
+        "price": 266.7,
+        "rs_score": -20.33,
+        "volatility": 33.27,
         "selected": false
       },
       {
         "ticker": "PPG",
-        "price": 102.08,
-        "rs_score": -7.27,
-        "volatility": 32.48,
+        "price": 103.42,
+        "rs_score": -8.0,
+        "volatility": 32.55,
         "selected": false
       },
       {
         "ticker": "MLM",
-        "price": 577.59,
-        "rs_score": -16.27,
-        "volatility": 31.68,
+        "price": 576.18,
+        "rs_score": -18.55,
+        "volatility": 31.63,
         "selected": false
       }
     ],
     "XLU": [
       {
         "ticker": "NEE",
-        "price": 90.23,
-        "rs_score": 4.36,
-        "volatility": 20.6,
+        "price": 91.62,
+        "rs_score": 5.31,
+        "volatility": 20.74,
         "selected": false
       },
       {
         "ticker": "SO",
-        "price": 93.75,
-        "rs_score": 4.59,
-        "volatility": 18.66,
+        "price": 93.98,
+        "rs_score": 4.13,
+        "volatility": 18.6,
         "selected": false
       },
       {
         "ticker": "DUK",
-        "price": 127.34,
-        "rs_score": 5.3,
-        "volatility": 14.73,
+        "price": 127.38,
+        "rs_score": 4.6,
+        "volatility": 14.71,
         "selected": false
       },
       {
         "ticker": "AEP",
-        "price": 127.92,
-        "rs_score": 4.77,
-        "volatility": 18.32,
+        "price": 128.8,
+        "rs_score": 4.8,
+        "volatility": 18.35,
         "selected": false
       },
       {
         "ticker": "SRE",
-        "price": 93.46,
-        "rs_score": -0.36,
-        "volatility": 21.54,
+        "price": 95.0,
+        "rs_score": 0.64,
+        "volatility": 21.77,
         "selected": false
       },
       {
         "ticker": "EXC",
-        "price": 47.17,
-        "rs_score": 3.67,
+        "price": 47.29,
+        "rs_score": 3.22,
         "volatility": 22.41,
         "selected": false
       },
       {
         "ticker": "D",
-        "price": 59.82,
-        "rs_score": -1.56,
-        "volatility": 18.59,
+        "price": 60.27,
+        "rs_score": -1.51,
+        "volatility": 18.41,
         "selected": false
       },
       {
         "ticker": "XEL",
-        "price": 76.95,
-        "rs_score": -3.71,
-        "volatility": 17.85,
+        "price": 77.96,
+        "rs_score": -3.11,
+        "volatility": 18.03,
         "selected": false
       },
       {
         "ticker": "PEG",
-        "price": 79.82,
-        "rs_score": -2.99,
-        "volatility": 19.52,
+        "price": 80.19,
+        "rs_score": -3.25,
+        "volatility": 19.53,
         "selected": false
       },
       {
         "ticker": "WEC",
-        "price": 112.05,
-        "rs_score": 1.97,
-        "volatility": 14.97,
+        "price": 113.08,
+        "rs_score": 2.22,
+        "volatility": 15.04,
         "selected": false
       },
       {
         "ticker": "ES",
-        "price": 67.65,
-        "rs_score": -1.34,
-        "volatility": 24.16,
+        "price": 67.47,
+        "rs_score": -2.34,
+        "volatility": 24.05,
         "selected": false
       },
       {
         "ticker": "AWK",
-        "price": 135.73,
-        "rs_score": 0.6,
-        "volatility": 23.24,
+        "price": 133.58,
+        "rs_score": -1.8,
+        "volatility": 23.48,
         "selected": false
       }
     ],
     "XLRE": [
       {
         "ticker": "PLD",
-        "price": 130.31,
-        "rs_score": 2.59,
-        "volatility": 21.86,
+        "price": 130.35,
+        "rs_score": 3.44,
+        "volatility": 21.75,
         "selected": false
       },
       {
         "ticker": "AMT",
-        "price": 176.5,
-        "rs_score": -1.21,
-        "volatility": 28.62,
+        "price": 170.36,
+        "rs_score": -3.86,
+        "volatility": 29.51,
         "selected": false
       },
       {
         "ticker": "EQIX",
-        "price": 966.96,
-        "rs_score": 30.25,
+        "price": 964.53,
+        "rs_score": 30.74,
         "volatility": 29.98,
         "selected": false
       },
       {
         "ticker": "CCI",
-        "price": 81.33,
-        "rs_score": -7.53,
-        "volatility": 34.57,
+        "price": 78.59,
+        "rs_score": -9.85,
+        "volatility": 35.2,
         "selected": false
       },
       {
         "ticker": "PSA",
-        "price": 271.32,
-        "rs_score": 1.0,
-        "volatility": 25.86,
+        "price": 267.94,
+        "rs_score": 0.56,
+        "volatility": 25.94,
         "selected": false
       },
       {
         "ticker": "DLR",
-        "price": 176.47,
-        "rs_score": 7.87,
-        "volatility": 22.97,
+        "price": 174.71,
+        "rs_score": 7.61,
+        "volatility": 23.07,
         "selected": false
       },
       {
         "ticker": "WELL",
-        "price": 195.0,
-        "rs_score": -5.07,
-        "volatility": 22.22,
+        "price": 196.61,
+        "rs_score": -3.46,
+        "volatility": 22.26,
         "selected": false
       },
       {
         "ticker": "O",
-        "price": 60.85,
-        "rs_score": 4.59,
-        "volatility": 16.92,
+        "price": 60.46,
+        "rs_score": 4.74,
+        "volatility": 16.83,
         "selected": false
       },
       {
         "ticker": "VICI",
-        "price": 27.05,
-        "rs_score": -0.11,
-        "volatility": 18.32,
+        "price": 27.3,
+        "rs_score": 1.64,
+        "volatility": 18.36,
         "selected": false
       },
       {
         "ticker": "AVB",
-        "price": 163.27,
-        "rs_score": -8.26,
-        "volatility": 22.59,
+        "price": 163.56,
+        "rs_score": -7.28,
+        "volatility": 22.52,
         "selected": false
       },
       {
         "ticker": "EQR",
-        "price": 58.41,
-        "rs_score": -4.13,
-        "volatility": 21.77,
+        "price": 58.67,
+        "rs_score": -2.88,
+        "volatility": 21.75,
         "selected": false
       },
       {
         "ticker": "SBAC",
-        "price": 171.98,
-        "rs_score": -9.52,
-        "volatility": 29.02,
+        "price": 166.76,
+        "rs_score": -11.47,
+        "volatility": 29.6,
         "selected": false
       }
     ],
     "XLC": [
       {
         "ticker": "META",
-        "price": 604.06,
-        "rs_score": -7.0,
-        "volatility": 35.41,
+        "price": 592.92,
+        "rs_score": -7.3,
+        "volatility": 35.57,
         "selected": false
       },
       {
         "ticker": "GOOGL",
-        "price": 302.06,
-        "rs_score": -2.7,
-        "volatility": 20.9,
+        "price": 290.44,
+        "rs_score": -4.96,
+        "volatility": 22.3,
         "selected": false
       },
       {
         "ticker": "NFLX",
-        "price": 93.38,
-        "rs_score": -3.69,
-        "volatility": 40.0,
+        "price": 90.92,
+        "rs_score": -4.79,
+        "volatility": 40.37,
         "selected": false
       },
       {
         "ticker": "DIS",
-        "price": 97.95,
-        "rs_score": -3.2,
+        "price": 96.39,
+        "rs_score": -3.33,
         "volatility": 28.56,
         "selected": false
       },
       {
         "ticker": "CMCSA",
-        "price": 29.01,
-        "rs_score": 17.87,
-        "volatility": 24.96,
+        "price": 29.22,
+        "rs_score": 20.06,
+        "volatility": 24.86,
         "selected": false
       },
       {
         "ticker": "T",
-        "price": 28.76,
-        "rs_score": 18.25,
-        "volatility": 26.07,
+        "price": 28.87,
+        "rs_score": 20.05,
+        "volatility": 26.05,
         "selected": false
       },
       {
         "ticker": "VZ",
-        "price": 50.58,
-        "rs_score": 26.58,
-        "volatility": 30.1,
+        "price": 50.91,
+        "rs_score": 28.74,
+        "volatility": 30.08,
         "selected": false
       },
       {
         "ticker": "TMUS",
-        "price": 208.76,
-        "rs_score": 3.21,
-        "volatility": 26.8,
+        "price": 211.26,
+        "rs_score": 5.77,
+        "volatility": 26.87,
         "selected": false
       },
       {
         "ticker": "EA",
-        "price": 201.13,
-        "rs_score": 1.88,
+        "price": 201.62,
+        "rs_score": 3.48,
         "volatility": 7.82,
         "selected": false
       },
       {
         "ticker": "CHTR",
-        "price": 216.61,
-        "rs_score": 8.76,
-        "volatility": 41.84,
+        "price": 217.6,
+        "rs_score": 10.6,
+        "volatility": 41.74,
         "selected": false
       },
       {
         "ticker": "TTWO",
-        "price": 200.84,
-        "rs_score": -15.83,
-        "volatility": 36.19,
+        "price": 191.37,
+        "rs_score": -18.29,
+        "volatility": 37.18,
         "selected": false
       },
       {
         "ticker": "LYV",
-        "price": 151.83,
-        "rs_score": 12.12,
-        "volatility": 33.52,
+        "price": 152.7,
+        "rs_score": 14.11,
+        "volatility": 33.5,
         "selected": false
       }
     ],
     "GLD": [
       {
         "ticker": "NEM",
-        "price": 98.14,
-        "rs_score": 5.01,
-        "volatility": 54.88,
+        "price": 99.02,
+        "rs_score": 5.96,
+        "volatility": 54.91,
         "selected": false
       },
       {
         "ticker": "GOLD",
-        "price": 43.9,
-        "rs_score": 38.05,
-        "volatility": 70.6,
+        "price": 43.5,
+        "rs_score": 36.72,
+        "volatility": 70.45,
         "selected": false
       },
       {
         "ticker": "AEM",
-        "price": 184.04,
-        "rs_score": 4.65,
+        "price": 183.49,
+        "rs_score": 4.3,
         "volatility": 55.73,
         "selected": false
       },
       {
         "ticker": "FNV",
-        "price": 226.85,
-        "rs_score": 7.29,
-        "volatility": 48.71,
+        "price": 230.71,
+        "rs_score": 9.16,
+        "volatility": 48.81,
         "selected": false
       },
       {
         "ticker": "WPM",
-        "price": 119.88,
-        "rs_score": 6.36,
-        "volatility": 59.27,
+        "price": 120.59,
+        "rs_score": 6.98,
+        "volatility": 59.26,
         "selected": false
       },
       {
         "ticker": "KGC",
-        "price": 27.81,
-        "rs_score": -2.48,
-        "volatility": 61.72,
+        "price": 27.92,
+        "rs_score": -2.11,
+        "volatility": 61.71,
         "selected": false
       },
       {
         "ticker": "RGLD",
-        "price": 222.84,
-        "rs_score": 6.19,
-        "volatility": 51.68,
+        "price": 227.38,
+        "rs_score": 8.42,
+        "volatility": 51.85,
         "selected": false
       },
       {
         "ticker": "AU",
-        "price": 85.6,
-        "rs_score": 1.01,
+        "price": 85.81,
+        "rs_score": 1.24,
         "volatility": 70.0,
         "selected": false
       },
       {
         "ticker": "AGI",
-        "price": 40.15,
-        "rs_score": 6.82,
-        "volatility": 68.04,
+        "price": 40.87,
+        "rs_score": 8.79,
+        "volatility": 68.11,
         "selected": false
       },
       {
         "ticker": "BTG",
-        "price": 4.08,
-        "rs_score": -14.73,
-        "volatility": 69.54,
+        "price": 4.12,
+        "rs_score": -13.88,
+        "volatility": 69.57,
         "selected": false
       }
     ],
     "SLV": [
       {
         "ticker": "PAAS",
-        "price": 49.14,
-        "rs_score": -6.99,
-        "volatility": 69.91,
+        "price": 49.87,
+        "rs_score": -6.25,
+        "volatility": 69.98,
         "selected": false
       },
       {
         "ticker": "AG",
-        "price": 19.2,
-        "rs_score": 9.54,
-        "volatility": 91.28,
+        "price": 20.1,
+        "rs_score": 14.61,
+        "volatility": 91.67,
         "selected": false
       },
       {
         "ticker": "HL",
-        "price": 17.81,
-        "rs_score": -13.01,
-        "volatility": 86.78,
+        "price": 17.93,
+        "rs_score": -13.21,
+        "volatility": 86.66,
         "selected": false
       },
       {
         "ticker": "CDE",
-        "price": 17.89,
-        "rs_score": -5.18,
-        "volatility": 82.61,
+        "price": 18.31,
+        "rs_score": -3.44,
+        "volatility": 82.64,
         "selected": false
       },
       {
         "ticker": "EXK",
-        "price": 8.72,
-        "rs_score": -17.4,
-        "volatility": 91.63,
+        "price": 8.97,
+        "rs_score": -15.43,
+        "volatility": 91.78,
         "selected": false
       },
       {
         "ticker": "FSM",
-        "price": 9.08,
-        "rs_score": -19.92,
-        "volatility": 75.6,
+        "price": 9.21,
+        "rs_score": -19.43,
+        "volatility": 75.66,
         "selected": false
       },
       {
         "ticker": "SVM",
-        "price": 9.36,
-        "rs_score": 0.35,
-        "volatility": 86.08,
+        "price": 9.79,
+        "rs_score": 4.88,
+        "volatility": 86.51,
         "selected": false
       },
       {
         "ticker": "SSRM",
-        "price": 24.27,
-        "rs_score": -1.97,
-        "volatility": 85.33,
+        "price": 24.44,
+        "rs_score": -2.06,
+        "volatility": 85.27,
         "selected": false
       }
     ],
     "CPER": [
       {
         "ticker": "FCX",
-        "price": 54.94,
-        "rs_score": 21.31,
-        "volatility": 49.89,
+        "price": 56.48,
+        "rs_score": 25.27,
+        "volatility": 50.19,
         "selected": false
       },
       {
         "ticker": "SCCO",
-        "price": 159.59,
-        "rs_score": 14.59,
-        "volatility": 63.87,
+        "price": 159.88,
+        "rs_score": 15.34,
+        "volatility": 63.86,
         "selected": false
       },
       {
         "ticker": "BHP",
-        "price": 68.21,
-        "rs_score": 17.65,
+        "price": 68.77,
+        "rs_score": 19.16,
         "volatility": 38.2,
         "selected": false
       },
       {
         "ticker": "RIO",
-        "price": 85.84,
-        "rs_score": 20.24,
-        "volatility": 35.27,
+        "price": 86.77,
+        "rs_score": 22.09,
+        "volatility": 35.32,
         "selected": false
       },
       {
         "ticker": "VALE",
-        "price": 14.79,
-        "rs_score": 20.21,
-        "volatility": 42.24,
+        "price": 14.87,
+        "rs_score": 21.4,
+        "volatility": 42.22,
         "selected": false
       },
       {
         "ticker": "TECK",
-        "price": 48.22,
-        "rs_score": 6.86,
+        "price": 48.56,
+        "rs_score": 8.16,
         "volatility": 51.09,
         "selected": false
       },
       {
         "ticker": "HBM",
-        "price": 18.85,
-        "rs_score": 7.33,
-        "volatility": 65.56,
+        "price": 18.95,
+        "rs_score": 8.44,
+        "volatility": 65.57,
         "selected": false
       },
       {
         "ticker": "ERO",
-        "price": 24.76,
-        "rs_score": -1.5,
+        "price": 24.7,
+        "rs_score": -1.2,
         "volatility": 67.19,
         "selected": false
       }
@@ -1232,213 +1232,213 @@
     "URA": [
       {
         "ticker": "CCJ",
-        "price": 105.57,
-        "rs_score": 10.39,
-        "volatility": 57.39,
+        "price": 108.04,
+        "rs_score": 13.01,
+        "volatility": 57.54,
         "selected": false
       },
       {
         "ticker": "UUUU",
-        "price": 17.79,
-        "rs_score": 8.69,
+        "price": 18.06,
+        "rs_score": 10.34,
         "volatility": 105.37,
         "selected": false
       },
       {
         "ticker": "DNN",
-        "price": 3.43,
-        "rs_score": 19.9,
-        "volatility": 72.18,
+        "price": 3.51,
+        "rs_score": 22.74,
+        "volatility": 72.26,
         "selected": false
       },
       {
         "ticker": "UEC",
-        "price": 12.51,
-        "rs_score": -14.36,
-        "volatility": 80.0,
+        "price": 13.19,
+        "rs_score": -9.5,
+        "volatility": 80.71,
         "selected": false
       },
       {
         "ticker": "NXE",
-        "price": 11.4,
-        "rs_score": 15.87,
-        "volatility": 54.94,
+        "price": 11.63,
+        "rs_score": 18.23,
+        "volatility": 55.05,
         "selected": false
       },
       {
         "ticker": "EU",
-        "price": 1.82,
-        "rs_score": -41.42,
-        "volatility": 76.58,
+        "price": 1.85,
+        "rs_score": -40.45,
+        "volatility": 76.63,
         "selected": false
       },
       {
         "ticker": "URG",
         "price": 1.5,
-        "rs_score": 3.42,
-        "volatility": 68.68,
+        "rs_score": 3.34,
+        "volatility": 68.63,
         "selected": false
       },
       {
         "ticker": "UROY",
-        "price": 3.37,
-        "rs_score": -19.09,
-        "volatility": 74.17,
+        "price": 3.41,
+        "rs_score": -18.15,
+        "volatility": 74.21,
         "selected": false
       }
     ],
     "ICLN": [
       {
         "ticker": "ENPH",
-        "price": 40.76,
-        "rs_score": 21.82,
-        "volatility": 101.09,
+        "price": 40.97,
+        "rs_score": 21.72,
+        "volatility": 101.05,
         "selected": false
       },
       {
         "ticker": "FSLR",
-        "price": 189.92,
-        "rs_score": -34.89,
-        "volatility": 54.88,
+        "price": 192.85,
+        "rs_score": -34.52,
+        "volatility": 54.95,
         "selected": false
       },
       {
         "ticker": "RUN",
-        "price": 12.35,
-        "rs_score": -38.36,
-        "volatility": 102.16,
+        "price": 12.75,
+        "rs_score": -36.85,
+        "volatility": 102.06,
         "selected": false
       },
       {
         "ticker": "SEDG",
-        "price": 46.73,
-        "rs_score": 49.69,
-        "volatility": 92.34,
+        "price": 47.67,
+        "rs_score": 52.1,
+        "volatility": 92.37,
         "selected": false
       },
       {
         "ticker": "CSIQ",
-        "price": 13.11,
-        "rs_score": -53.64,
-        "volatility": 89.73,
+        "price": 13.26,
+        "rs_score": -53.76,
+        "volatility": 89.65,
         "selected": false
       },
       {
         "ticker": "JKS",
-        "price": 23.91,
-        "rs_score": -9.89,
-        "volatility": 58.69,
+        "price": 25.52,
+        "rs_score": -4.01,
+        "volatility": 60.34,
         "selected": false
       },
       {
         "ticker": "FLNC",
-        "price": 15.36,
-        "rs_score": -44.5,
-        "volatility": 104.72,
+        "price": 16.15,
+        "rs_score": -41.98,
+        "volatility": 105.27,
         "selected": false
       },
       {
         "ticker": "ARRY",
-        "price": 6.75,
-        "rs_score": -23.38,
-        "volatility": 94.09,
+        "price": 7.24,
+        "rs_score": -17.97,
+        "volatility": 95.27,
         "selected": false
       },
       {
         "ticker": "MAXN",
-        "price": 1.76,
-        "rs_score": -49.35,
-        "volatility": 91.81,
+        "price": 1.51,
+        "rs_score": -58.54,
+        "volatility": 95.8,
         "selected": false
       }
     ],
     "BITO": [
       {
         "ticker": "COIN",
-        "price": 200.62,
-        "rs_score": -3.88,
-        "volatility": 82.89,
+        "price": 181.04,
+        "rs_score": -9.77,
+        "volatility": 85.17,
         "selected": false
       },
       {
         "ticker": "MSTR",
-        "price": 138.2,
-        "rs_score": -1.05,
-        "volatility": 93.4,
+        "price": 136.25,
+        "rs_score": -0.77,
+        "volatility": 93.43,
         "selected": false
       },
       {
         "ticker": "MARA",
-        "price": 8.91,
-        "rs_score": -2.37,
-        "volatility": 97.05,
+        "price": 8.25,
+        "rs_score": -6.62,
+        "volatility": 98.22,
         "selected": false
       },
       {
         "ticker": "RIOT",
-        "price": 14.37,
-        "rs_score": 17.92,
-        "volatility": 93.84,
+        "price": 14.33,
+        "rs_score": 19.03,
+        "volatility": 93.79,
         "selected": false
       },
       {
         "ticker": "CLSK",
-        "price": 9.98,
-        "rs_score": -5.49,
-        "volatility": 97.05,
+        "price": 9.58,
+        "rs_score": -7.04,
+        "volatility": 97.37,
         "selected": false
       },
       {
         "ticker": "HUT",
-        "price": 52.94,
-        "rs_score": 46.51,
+        "price": 53.25,
+        "rs_score": 48.61,
         "volatility": 103.1,
         "selected": false
       },
       {
         "ticker": "BITF",
-        "price": 2.31,
-        "rs_score": 0.85,
-        "volatility": 100.96,
+        "price": 2.21,
+        "rs_score": -1.21,
+        "volatility": 101.32,
         "selected": false
       },
       {
         "ticker": "CIFR",
-        "price": 14.89,
-        "rs_score": -1.03,
-        "volatility": 100.82,
+        "price": 14.88,
+        "rs_score": 0.29,
+        "volatility": 100.75,
         "selected": false
       },
       {
         "ticker": "CORZ",
-        "price": 16.58,
-        "rs_score": 18.64,
-        "volatility": 68.47,
+        "price": 16.85,
+        "rs_score": 21.59,
+        "volatility": 68.53,
         "selected": false
       },
       {
         "ticker": "IREN",
-        "price": 42.16,
-        "rs_score": 16.04,
-        "volatility": 108.17,
+        "price": 41.12,
+        "rs_score": 15.08,
+        "volatility": 108.3,
         "selected": false
       }
     ],
     "BTC": [
       {
         "ticker": "BTC",
-        "price": 68254.08,
-        "rs_score": -20.62,
-        "volatility": 55.97,
+        "price": 70509.12,
+        "rs_score": -17.81,
+        "volatility": 56.83,
         "selected": false
       }
     ],
     "ETH": [
       {
         "ticker": "ETH",
-        "price": 2058.8,
-        "rs_score": -28.87,
-        "volatility": 71.98,
+        "price": 2134.68,
+        "rs_score": -26.07,
+        "volatility": 72.79,
         "selected": false
       }
     ]
