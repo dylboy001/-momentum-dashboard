@@ -327,38 +327,38 @@ def generate_picks(growth_mode: bool = False) -> dict:
     date_str = str(latest_date.date()) if latest_date else datetime.now().strftime("%Y-%m-%d")
 
     # ------------------------------------------------------------------
-    # Preserve rebalance_next: only reset if themes changed or expired.
-    # This prevents the daily scanner run from resetting the countdown.
+    # Preserve rebalance_next across daily scanner runs.
+    # The strategy rebalances on a fixed N-day schedule regardless of
+    # whether holdings change. Keep the existing date if it's still in
+    # the future; when it expires, advance by one full period (not from
+    # today) to stay true to the backtest cadence.
     # ------------------------------------------------------------------
-    new_selected_keys = sorted([t for t, _ in selected])
     out_path_check = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
     out_path_check = os.path.normpath(out_path_check)
     existing_rebalance_next = None
-    existing_top_themes = None
     try:
         if os.path.exists(out_path_check):
             with open(out_path_check) as f:
-                existing = json.load(f)
-            existing_rebalance_next = existing.get("rebalance_next", "")
-            existing_top_themes = sorted(existing.get("top_themes", []))
+                existing_rebalance_next = json.load(f).get("rebalance_next", "")
     except Exception:
         pass
 
     today = datetime.now().date()
-    if (
-        existing_rebalance_next
-        and existing_top_themes is not None
-        and existing_top_themes == new_selected_keys
-        and datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date() > today
-    ):
-        # Same holdings, timer not yet expired — keep the existing target date
-        rebalance_next = existing_rebalance_next
-        print(f"  Rebalance  : no change — keeping {rebalance_next}")
+    if existing_rebalance_next:
+        try:
+            existing_date = datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date()
+            if existing_date > today:
+                rebalance_next = existing_rebalance_next
+                print(f"  Rebalance  : scheduled {rebalance_next} (unchanged)")
+            else:
+                # Advance by one period from the last scheduled date (not from today)
+                rebalance_next = str(existing_date + timedelta(days=rebalance_days))
+                print(f"  Rebalance  : period elapsed → next {rebalance_next}")
+        except ValueError:
+            rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
     else:
-        # New holdings or timer expired — start a fresh countdown from today's data date
         rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
-        reason = "expired" if existing_rebalance_next and datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date() <= today else "holdings changed"
-        print(f"  Rebalance  : {reason} → new target {rebalance_next}")
+        print(f"  Rebalance  : first run → {rebalance_next}")
 
     # ------------------------------------------------------------------
     # 4. Fetch constituent stock data for each theme (reference data)
