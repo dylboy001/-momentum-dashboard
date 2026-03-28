@@ -324,8 +324,41 @@ def generate_picks(growth_mode: bool = False) -> dict:
         spy_weekly   = to_weekly(spy_df["close"])
         spy_momentum = momentum_pct(spy_weekly, lookback_weeks)
 
-    date_str       = str(latest_date.date()) if latest_date else datetime.now().strftime("%Y-%m-%d")
-    rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
+    date_str = str(latest_date.date()) if latest_date else datetime.now().strftime("%Y-%m-%d")
+
+    # ------------------------------------------------------------------
+    # Preserve rebalance_next: only reset if themes changed or expired.
+    # This prevents the daily scanner run from resetting the countdown.
+    # ------------------------------------------------------------------
+    new_selected_keys = sorted([t for t, _ in selected])
+    out_path_check = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
+    out_path_check = os.path.normpath(out_path_check)
+    existing_rebalance_next = None
+    existing_top_themes = None
+    try:
+        if os.path.exists(out_path_check):
+            with open(out_path_check) as f:
+                existing = json.load(f)
+            existing_rebalance_next = existing.get("rebalance_next", "")
+            existing_top_themes = sorted(existing.get("top_themes", []))
+    except Exception:
+        pass
+
+    today = datetime.now().date()
+    if (
+        existing_rebalance_next
+        and existing_top_themes is not None
+        and existing_top_themes == new_selected_keys
+        and datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date() > today
+    ):
+        # Same holdings, timer not yet expired — keep the existing target date
+        rebalance_next = existing_rebalance_next
+        print(f"  Rebalance  : no change — keeping {rebalance_next}")
+    else:
+        # New holdings or timer expired — start a fresh countdown from today's data date
+        rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
+        reason = "expired" if existing_rebalance_next and datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date() <= today else "holdings changed"
+        print(f"  Rebalance  : {reason} → new target {rebalance_next}")
 
     # ------------------------------------------------------------------
     # 4. Fetch constituent stock data for each theme (reference data)
