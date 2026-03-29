@@ -18,6 +18,7 @@ import {
   Moon,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
+import { SignInButton, Show, UserButton } from '@clerk/nextjs'
 import { LogoMark } from '@/components/ui/logo'
 
 import type { ReactNode } from 'react'
@@ -100,6 +101,24 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
                   {rightContent}
                 </div>
               )}
+
+              {/* Auth controls */}
+              <Show when="signed-out">
+                <SignInButton mode="redirect">
+                  <button type="button" className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400 hover:text-white transition-colors duration-200 px-3 py-1.5 border border-zinc-700 rounded-lg hover:border-zinc-500">
+                    Sign In
+                  </button>
+                </SignInButton>
+              </Show>
+              <Show when="signed-in">
+                <UserButton
+                  appearance={{
+                    elements: {
+                      avatarBox: 'w-8 h-8',
+                    }
+                  }}
+                />
+              </Show>
 
               {/* Theme toggle */}
               <button
@@ -193,6 +212,23 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
           </div>
 
         </nav>
+
+        {/* Mobile auth */}
+        <div className="px-4 pt-4 pb-2 border-t border-zinc-200 dark:border-zinc-800 mt-2">
+          <Show when="signed-out">
+            <SignInButton mode="redirect">
+              <button type="button" className="w-full text-left font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-400 py-2">
+                Sign In
+              </button>
+            </SignInButton>
+          </Show>
+          <Show when="signed-in">
+            <div className="flex items-center gap-3 py-2">
+              <UserButton appearance={{ elements: { avatarBox: 'w-8 h-8' } }} />
+              <span className="text-sm text-zinc-400">Account</span>
+            </div>
+          </Show>
+        </div>
 
         {/* Drawer footer */}
         <div className="px-5 py-4 border-t border-zinc-200 dark:border-zinc-800">
