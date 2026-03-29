@@ -52,7 +52,7 @@ export function CTASection() {
 
         <div className="flex flex-col items-center justify-center gap-4 sm:flex-row pointer-events-auto">
           <motion.div whileHover={{ scale: 1.025 }} whileTap={{ scale: 0.97 }}>
-            <Link href="/rankings" className="btn-primary">
+            <Link href="/sign-up" className="btn-primary">
               View Live Rankings
             </Link>
           </motion.div>
