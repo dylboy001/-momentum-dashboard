@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useAuth } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ArrowUpRight, ArrowDownRight, Lock } from 'lucide-react';
@@ -16,6 +17,10 @@ interface PicksData {
 }
 
 export default function RankingsPage() {
+  const { isSignedIn, sessionClaims } = useAuth();
+  const metadata = (sessionClaims as Record<string, unknown> | null)?.metadata as { tier?: string } | undefined;
+  const isPro = isSignedIn === true && (metadata?.tier === 'pro' || metadata?.tier === 'premium');
+
   const [data, setData] = useState<PicksData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -125,11 +130,20 @@ export default function RankingsPage() {
                       </span>
                     </div>
 
-                    <div className={`font-mono font-semibold text-sm flex items-center gap-0.5 shrink-0 ${
-                      isPositive ? 'text-emerald-400' : 'text-red-400'
-                    }`}>
-                      {isPositive ? <ArrowUpRight size={13} /> : <ArrowDownRight size={13} />}
-                      {isPositive ? '+' : ''}{momentum.toFixed(2)}%
+                    <div className="shrink-0">
+                      {isPro ? (
+                        <span className={`font-mono font-semibold text-sm flex items-center gap-0.5 ${
+                          isPositive ? 'text-emerald-400' : 'text-red-400'
+                        }`}>
+                          {isPositive ? <ArrowUpRight size={13} /> : <ArrowDownRight size={13} />}
+                          {isPositive ? '+' : ''}{momentum.toFixed(2)}%
+                        </span>
+                      ) : (
+                        <span className="font-mono text-zinc-600 text-sm flex items-center gap-1">
+                          <Lock size={10} className="shrink-0" />
+                          <span>Pro</span>
+                        </span>
+                      )}
                     </div>
 
                     <div className="hidden md:block font-mono text-sm">
