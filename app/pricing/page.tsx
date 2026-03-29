@@ -1,4 +1,9 @@
+'use client'
+
+import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useAuth } from '@clerk/nextjs'
 import { NavBar } from '@/components/dashboard/NavBar'
 import { PageHeader } from '@/components/ui/page-header'
 import { GlassCard } from '@/components/ui/glass-card'
@@ -139,9 +144,56 @@ function FeatureRow({ text, included, soon }: Feature) {
   )
 }
 
+function ManageSubscriptionButton() {
+  const { isSignedIn, sessionClaims } = useAuth()
+  const metadata = (sessionClaims as Record<string, unknown> | null)?.metadata as { tier?: string } | undefined
+  const isPro = isSignedIn === true && (metadata?.tier === 'pro' || metadata?.tier === 'premium')
+
+  if (!isPro) return null
+
+  async function handlePortal() {
+    const res = await fetch('/api/portal', { method: 'POST' })
+    const { url } = await res.json() as { url: string }
+    if (url) window.location.href = url
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handlePortal}
+      className="text-xs text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-2 mt-2"
+    >
+      Manage subscription
+    </button>
+  )
+}
+
 // ─── Page ────────────────────────────────────────────────────────────────────
 
 export default function PricingPage() {
+  const { isSignedIn } = useAuth()
+  const router = useRouter()
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null)
+
+  async function handleSubscribe(plan: 'pro' | 'premium') {
+    if (!isSignedIn) {
+      router.push('/sign-up')
+      return
+    }
+    setLoadingPlan(plan)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan }),
+      })
+      const { url } = await res.json() as { url: string }
+      if (url) window.location.href = url
+    } finally {
+      setLoadingPlan(null)
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#080808] text-zinc-100">
 
@@ -210,16 +262,39 @@ export default function PricingPage() {
 
                   <p className="text-zinc-400 text-sm leading-relaxed">{tier.description}</p>
 
-                  <Link
-                    href={tier.ctaHref}
-                    className={`block w-full text-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors ${
-                      tier.recommended
-                        ? 'bg-violet-600 hover:bg-violet-500 text-white'
-                        : 'border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800'
-                    }`}
-                  >
-                    {tier.cta}
-                  </Link>
+                  {tier.id === 'free' && (
+                    <Link
+                      href={tier.ctaHref}
+                      className="block w-full text-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800"
+                    >
+                      {tier.cta}
+                    </Link>
+                  )}
+
+                  {tier.id === 'pro' && (
+                    <div className="flex flex-col items-center">
+                      <button
+                        type="button"
+                        onClick={() => handleSubscribe('pro')}
+                        disabled={loadingPlan === 'pro'}
+                        className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {loadingPlan === 'pro' ? 'Loading...' : 'Subscribe Now'}
+                      </button>
+                      <ManageSubscriptionButton />
+                    </div>
+                  )}
+
+                  {tier.id === 'premium' && (
+                    <button
+                      type="button"
+                      onClick={() => handleSubscribe('premium')}
+                      disabled={loadingPlan === 'premium'}
+                      className="btn-outline w-full disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      {loadingPlan === 'premium' ? 'Loading...' : 'Subscribe Now'}
+                    </button>
+                  )}
                 </div>
               </div>
 
