@@ -1,4 +1,4 @@
 {
-  "installCommand": "npm ci",
-  "buildCommand": "echo '=== Checking packages ===' && ls node_modules/@clerk/nextjs/package.json && ls node_modules/stripe/package.json && echo '=== Packages confirmed ===' && next build"
+  "installCommand": "npm ci --legacy-peer-deps",
+  "buildCommand": "next build"
 }
