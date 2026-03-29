@@ -8,6 +8,7 @@ import { ThemeRankings } from '@/components/dashboard/ThemeRankings'
 import { RebalanceTimer } from '@/components/dashboard/RebalanceTimer'
 import { PortfolioAllocation } from '@/components/dashboard/PortfolioAllocation'
 import { NavBar } from '@/components/dashboard/NavBar'
+import { ProLock } from '@/components/ui/pro-lock'
 import { RefreshCw, AlertTriangle, BarChart2 } from 'lucide-react'
 import { THEME_NAMES } from '@/lib/theme-data'
 import { GlassCard } from '@/components/ui/glass-card'
@@ -109,7 +110,8 @@ export default function DashboardPage() {
         </div>
       } />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-4 sm:space-y-5">
+      <ProLock>
+        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-4 sm:space-y-5">
 
         {/* ── Page header ───────────────────────────────────────────────── */}
         <div className="flex flex-wrap items-end justify-between gap-2">
@@ -288,7 +290,8 @@ export default function DashboardPage() {
           </Link>
         </div>
 
-      </main>
+        </main>
+      </ProLock>
     </div>
   )
 }
