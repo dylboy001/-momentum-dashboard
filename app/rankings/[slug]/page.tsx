@@ -8,6 +8,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip
 import { Skeleton } from '@/components/ui/skeleton';
 import { NavBar } from '@/components/dashboard/NavBar';
 import { GlassCard } from '@/components/ui/glass-card';
+import { ProLock } from '@/components/ui/pro-lock';
 import { ArrowUpRight, ArrowDownRight, ArrowLeft, ChevronUp, ChevronDown } from 'lucide-react';
 import { THEME_NAMES, THEME_CATEGORIES } from '@/lib/theme-data';
 
@@ -129,7 +130,8 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
 
       <NavBar />
 
-      <main className="relative z-10 max-w-7xl mx-auto px-6 py-10 space-y-8">
+      <ProLock>
+        <main className="relative z-10 max-w-7xl mx-auto px-6 py-10 space-y-8">
 
         {/* Breadcrumb + heading */}
         <div>
@@ -337,6 +339,7 @@ export default function ThemeDetailPage({ params }: { params: Promise<{ slug: st
         </GlassCard>
 
       </main>
+      </ProLock>
     </div>
   );
 }
