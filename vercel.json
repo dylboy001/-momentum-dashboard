@@ -1,4 +1,4 @@
 {
   "installCommand": "yarn install --ignore-engines",
-  "buildCommand": "next build"
+  "buildCommand": "echo '=== POST-INSTALL CHECK ===' && ls node_modules/@clerk/nextjs/package.json 2>&1 && ls node_modules/stripe/package.json 2>&1 && echo '=== PACKAGES OK, BUILDING ===' && next build"
 }
