@@ -177,7 +177,7 @@ export default function PricingPage() {
 
   async function handleSubscribe(plan: 'pro' | 'premium') {
     if (!isSignedIn) {
-      router.push('/sign-up')
+      router.push(`/sign-up?redirect_url=${encodeURIComponent('/pricing')}`)
       return
     }
     setLoadingPlan(plan)
@@ -187,8 +187,14 @@ export default function PricingPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ plan }),
       })
-      const { url } = await res.json() as { url: string }
-      if (url) window.location.href = url
+      const data = await res.json() as { url?: string; error?: string }
+      if (data.url) {
+        window.location.href = data.url
+      } else {
+        alert(data.error ?? 'Checkout failed. Please try again.')
+      }
+    } catch {
+      alert('Network error. Please try again.')
     } finally {
       setLoadingPlan(null)
     }

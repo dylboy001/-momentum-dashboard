@@ -87,7 +87,7 @@ export function HeroSection() {
           </p>
 
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center pointer-events-auto">
-            <Link href="/sign-up" className="btn-primary">
+            <Link href="/pricing" className="btn-primary">
               Start Free
             </Link>
             <Link href="/dashboard" className="btn-outline">
