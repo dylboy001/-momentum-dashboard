@@ -1,4 +1,4 @@
 {
-  "installCommand": "npm ci --legacy-peer-deps",
-  "buildCommand": "echo '=== @clerk check ===' && ls node_modules/@clerk/nextjs/dist/cjs/index.js 2>&1 && echo '=== stripe check ===' && ls node_modules/stripe/cjs/stripe.js 2>&1 && next build"
+  "installCommand": "rm -rf node_modules && npm install --legacy-peer-deps",
+  "buildCommand": "echo '@clerk:' && ls node_modules/@clerk/nextjs/dist 2>&1 | head -3 && next build"
 }
