@@ -14,7 +14,7 @@
 - Shows **19 theme momentum rankings** (ranked by 16–26 week price return, EMA 10/100 daily filter)
 - Presents **19-year backtest results** (2006–2025: 47.72% Balanced / 61.34% Growth CAGR vs SPY 10.80%)
 - Explains the strategy (How It Works, FAQ, Resources)
-- Lists subscription tiers (Free / Pro $49/mo / Premium $99/mo) — **not yet wired to Stripe**
+- Lists subscription tiers (Free / Pro $49/mo / Premium $99/mo) — **Stripe wired, Clerk auth live**
 
 ### Tech Stack
 | Layer | Tech |
@@ -27,6 +27,8 @@
 | Charts | recharts v3 |
 | Icons | lucide-react |
 | Fonts | Geist Sans + Geist Mono (next/font/google) |
+| Auth | @clerk/nextjs v7.0.7 |
+| Payments | stripe v21.0.1 |
 | Python (data) | pandas, numpy, requests, EODHD API |
 
 ### Dev Commands
@@ -59,9 +61,14 @@ npm run lint
 │   ├── resources/page.tsx     ← 5 educational articles (expand-in-place)
 │   ├── terms/page.tsx         ← Terms & Conditions
 │   ├── privacy/page.tsx       ← Privacy Policy
+│   ├── sign-in/[[...sign-in]]/page.tsx  ← Clerk sign-in page (centered card layout)
+│   ├── sign-up/[[...sign-up]]/page.tsx  ← Clerk sign-up page (centered card layout)
 │   └── api/
-│       ├── picks/route.ts     ← GET /api/picks → reads picks_raw.json
-│       └── equity-curve/route.ts ← GET /api/equity-curve → reads equity_curve_data.json
+│       ├── picks/route.ts              ← GET /api/picks → reads picks_raw.json
+│       ├── equity-curve/route.ts       ← GET /api/equity-curve → reads equity_curve_data.json
+│       ├── checkout/route.ts           ← POST /api/checkout → creates Stripe checkout session
+│       ├── portal/route.ts             ← POST /api/portal → creates Stripe billing portal session
+│       └── webhooks/stripe/route.ts    ← POST /api/webhooks/stripe → handles subscription events
 │
 ├── components/
 │   ├── Footer.tsx             ← 4-column footer (Product, Learn, Legal, Connect)
@@ -84,7 +91,7 @@ npm run lint
 │   └── ui/                    ← shadcn/ui primitives + custom UI
 │       ├── glass-card.tsx     ← GlassCard: backdrop-blur card used on dashboard + performance
 │       ├── page-header.tsx    ← Inner page header (title + optional sub, NO dot grid/tag/orb)
-│       ├── animated-waves-bg.tsx ← Wavy grid canvas background (hero + CTA)
+│       ├── animated-waves-bg.tsx ← Isometric grid background (hero + CTA). Mouse-hover colour squares DISABLED — `motion.div` changed to plain `div`, `framer-motion` + `COLORS` removed from background-boxes.tsx
 │       ├── accordion.tsx, badge.tsx, button.tsx, card.tsx
 │       ├── skeleton.tsx, table.tsx, tabs.tsx, tooltip.tsx
 │       └── (other shadcn primitives)
@@ -629,7 +636,13 @@ npm start         # Start production server on port 3000
 ### How It Works (`app/how-it-works/page.tsx`)
 - **Purpose**: Educational — explain the 5-step process
 - **No API calls** — static content
-- **Key sections**: Strategy overview → Universe Classification → 5-step selection process → Rebalancing cadence → Backtested results (metrics grid)
+- **Key sections**: The Strategy → Universe Classification → Selection Process (5-step) → Rebalancing Timeline → Backtested Results (metrics grid) → Getting Started
+- **NO intro/clarity section** — the "What this is / The analysis / You trade / Your edge" cards were removed (duplicate of homepage `ProductClaritySection`)
+- Page starts directly with "The Strategy" — no preamble
+- `main` uses `pt-2 pb-14` (not `py-14`) to avoid stacking with `PageHeader`'s `pb-14`
+- Step circles: `bg-violet-100 dark:bg-violet-950/60 border-violet-300 dark:border-violet-800/50 text-violet-600 dark:text-violet-400`
+- Connector lines: `bg-zinc-200 dark:bg-zinc-800`
+- Getting Started step 1 links to `/dashboard` (not `/`)
 
 ### FAQ (`app/faq/page.tsx`)
 - **Purpose**: Answer objections, explain concepts
@@ -781,6 +794,10 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **Light mode** — `next-themes` (v0.4.6) with `attribute="class"`, `defaultTheme="dark"`. `app/providers.tsx` wraps layout. Sun/Moon toggle in NavBar. Global CSS overrides in `globals.css` handle all pages without per-file edits. `HeroSection` + `CTASection` pass `light` prop to `AnimatedWavesBg` and compute dynamic clearance gradient. `dark:` variants on NavBar, Footer, GlassCard. Light mode bg: `#f8fafc`.
   - **AnimatedWavesBg theme init** — DO NOT use `mounted && resolvedTheme === 'light'` pattern for `isLight`. Use synchronous DOM check instead: `useState(() => typeof window !== 'undefined' && !document.documentElement.classList.contains('dark'))` + `useEffect(() => { setIsLight(resolvedTheme === 'light') }, [resolvedTheme])`. The `mounted` pattern caused a visible dark-waves-on-white-bg flash on mobile because `useEffect` fires after paint. The DOM check reads the class that next-themes sets before React hydrates, giving the correct value on first render with no flash.
 - **Sector language** — all user-facing "theme/themes" renamed to "sector/sectors" sitewide. Variable/prop/component names (THEME_NAMES, theme_rankings, ThemeRankings) unchanged. "signal/signals" marketing language removed — replaced with "analysis"/"research service"/"rotation analysis".
+- **AnimatedWavesBg hover squares disabled** — `background-boxes.tsx`: `motion.div` → plain `div`, `COLORS` array and `whileHover` removed. Grid lines still render; hover colour effect gone.
+- **HeroSection background logo restored** — 520px `LogoMark` in `motion.div`, desktop only. Animates `opacity [0→0.78→0.13]`, `scale [2.5→2.3→1.0]`, `y [0→0→-55]` over 7.5s.
+- **How It Works page overhauled** — removed duplicate intro section, fixed wrong strategy copy (no stock picking), fixed Getting Started link, fixed step circles light mode colours, eliminated header-to-content gap.
+- **FAQ + Resources sidebars** — both use violet active state: `bg-violet-100 dark:bg-violet-950/40 border border-violet-300 dark:border-violet-500/20`
 
 ### ✅ Deployment — LIVE
 - **GitHub**: https://github.com/dylboy001/-momentum-dashboard (**public repo** — required for raw URL fetching)
@@ -790,12 +807,31 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **Git user email must be** `dylan.ryan.97@hotmail.com` (GitHub account email) — Vercel blocks deploys from unrecognised committer emails
 - **No `gh` CLI available** in this environment — merge to main directly via git instead of creating PRs
 
+### ✅ Auth + Payments — LIVE (Mar 2026)
+- **Clerk** (`@clerk/nextjs@7.0.7`) — sign-up/sign-in working with email/password. Google OAuth configured but pending consent screen approval (Google takes up to a few hours to activate production mode).
+- **Stripe** (`stripe@21.0.1`) — checkout wired. Pro = $49/mo, Premium = $99/mo. Webhook live at `https://momentumcap.io/api/webhooks/stripe`.
+- **Subscription flow**: pricing page → `handleSubscribe()` → POST `/api/checkout` → Stripe hosted checkout → webhook sets `publicMetadata.tier` on Clerk user → `/dashboard?upgraded=true`
+- **Billing portal**: POST `/api/portal` → Stripe portal session. "Manage subscription" link shown on pricing page for Pro/Premium users.
+- **Tier stored in**: `user.publicMetadata.tier` (`'free'` | `'pro'` | `'premium'`) + `stripeCustomerId` + `stripeSubscriptionId`
+- **Webhook events handled**: `checkout.session.completed`, `customer.subscription.deleted`, `customer.subscription.updated`
+- **Vercel env vars required**:
+  - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`, `CLERK_SECRET_KEY`
+  - `NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in`, `NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up`
+  - `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRO_PRICE_ID`, `STRIPE_PREMIUM_PRICE_ID`
+- **Clerk DNS records** (all added to Cloudflare as DNS-only CNAMEs):
+  - `clerk` → `frontend-api.clerk.services`
+  - `accounts` → `accounts.clerk.services`
+  - `clkmail` → `mail.nybnc2a7icpc.clerk.services`
+  - `clk._domainkey` → `dkim1.nybnc2a7icpc.clerk.services`
+  - `clk2._domainkey` → `dkim2.nybnc2a7icpc.clerk.services`
+- **vercel.json**: `installCommand: "rm -rf node_modules && npm install --legacy-peer-deps"` — required to bypass stale Vercel build cache that was causing @clerk/nextjs and stripe to not be installed
+- **Homepage flow**: "Start Free" → `/pricing` (not `/sign-up`). "Subscribe Now" (unauthenticated) → `/sign-up?redirect_url=/pricing`.
+
 ### ❌ Not Yet Implemented (Known TODOs)
-- **Stripe integration** — pricing page CTAs all link to `#`
-- **Authentication** — no login/signup (plan: Clerk). Protected routes: `/dashboard`, `/rankings/[slug]`
-- **Feature gating** — all content currently visible; intended: Free = rankings list, Pro = dashboard + detail, Premium = API
-- **Email alerts** — no email system (Pro feature)
+- **Feature gating** — all content currently visible; intended: Free = rankings list only, Pro = dashboard + detail + timer, Premium = API
+- **Email alerts** — no email system yet (Pro feature)
 - **LinkedIn** — company page not created yet
+- **Google OAuth** — configured but consent screen pending production approval (try again after a few hours)
 
 ### Known Issues / Notes
 - `PicksTable.tsx` has its own `THEME_LABELS` constant that duplicates `lib/theme-data.ts` → ideally consolidate
@@ -809,6 +845,18 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 ```bash
 PICKS_JSON_PATH   # Optional: override default picks file location
                   # Default: data/picks_raw.json (then ../picks_raw.json as local dev fallback)
+
+# Clerk (set in Vercel)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+CLERK_SECRET_KEY
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+
+# Stripe (set in Vercel)
+STRIPE_SECRET_KEY
+STRIPE_WEBHOOK_SECRET       # from Stripe Dashboard → Webhooks → signing secret
+STRIPE_PRO_PRICE_ID         # Stripe price ID for $49/mo Pro plan
+STRIPE_PREMIUM_PRICE_ID     # Stripe price ID for $99/mo Premium plan
 ```
 
 ---
