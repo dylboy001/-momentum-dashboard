@@ -1,4 +1,4 @@
 {
   "installCommand": "npm install --legacy-peer-deps",
-  "buildCommand": "npm install --force --no-save @clerk/nextjs@7.0.7 stripe@21.0.1 --legacy-peer-deps && next build"
+  "buildCommand": "next build"
 }
