@@ -25,18 +25,22 @@ export async function POST(req: Request) {
   const user = await currentUser()
   const email = user?.emailAddresses?.[0]?.emailAddress
 
-  const session = await stripe.checkout.sessions.create({
-    mode: 'subscription',
-    payment_method_types: ['card'],
-    line_items: [{ price: priceId, quantity: 1 }],
-    customer_email: email,
-    client_reference_id: userId,
-    success_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://momentumcap.io'}/dashboard?upgraded=true`,
-    cancel_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://momentumcap.io'}/pricing`,
-    subscription_data: {
-      metadata: { clerkUserId: userId },
-    },
-  })
-
-  return Response.json({ url: session.url })
+  try {
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      payment_method_types: ['card'],
+      line_items: [{ price: priceId, quantity: 1 }],
+      customer_email: email,
+      client_reference_id: userId,
+      success_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://momentumcap.io'}/dashboard?upgraded=true`,
+      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL ?? 'https://momentumcap.io'}/pricing`,
+      subscription_data: {
+        metadata: { clerkUserId: userId },
+      },
+    })
+    return Response.json({ url: session.url })
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Stripe error'
+    return Response.json({ error: message }, { status: 500 })
+  }
 }
