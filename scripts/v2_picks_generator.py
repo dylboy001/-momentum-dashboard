@@ -344,6 +344,7 @@ def generate_picks(growth_mode: bool = False) -> dict:
         pass
 
     today = datetime.now().date()
+    rebalance_occurred = False  # True only if the period has elapsed this run
     if existing_rebalance_next:
         try:
             existing_date = datetime.strptime(existing_rebalance_next, "%Y-%m-%d").date()
@@ -353,12 +354,41 @@ def generate_picks(growth_mode: bool = False) -> dict:
             else:
                 # Advance by one period from the last scheduled date (not from today)
                 rebalance_next = str(existing_date + timedelta(days=rebalance_days))
+                rebalance_occurred = True
                 print(f"  Rebalance  : period elapsed → next {rebalance_next}")
         except ValueError:
             rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
+            rebalance_occurred = True
     else:
         rebalance_next = str((latest_date + timedelta(days=rebalance_days)).date()) if latest_date else ""
+        rebalance_occurred = True
         print(f"  Rebalance  : first run → {rebalance_next}")
+
+    # If no rebalance occurred, freeze picks/top_themes to the last saved values.
+    # Rankings update daily (live signal); holdings only change on rebalance day.
+    frozen_picks = []
+    frozen_top_themes = [t for t, _ in selected]  # default: use today's signal
+    if not rebalance_occurred:
+        try:
+            out_path_check2 = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
+            out_path_check2 = os.path.normpath(out_path_check2)
+            if os.path.exists(out_path_check2):
+                with open(out_path_check2) as f:
+                    existing_data = json.load(f)
+                frozen_picks = existing_data.get("picks", [])
+                frozen_top_themes = existing_data.get("top_themes", frozen_top_themes)
+                # Refresh prices in frozen picks to current values (price display only)
+                for p in frozen_picks:
+                    ticker = p.get("ticker")
+                    if ticker and ticker in prices:
+                        p["price"] = prices[ticker]
+                print(f"  Holdings   : frozen (no rebalance) — {frozen_top_themes}")
+        except Exception:
+            frozen_picks = picks  # fallback to recalculated if read fails
+            frozen_top_themes = [t for t, _ in selected]
+    else:
+        frozen_picks = picks
+        print(f"  Holdings   : rebalanced → {frozen_top_themes}")
 
     # ------------------------------------------------------------------
     # 4. Fetch constituent stock data for each theme (reference data)
@@ -425,8 +455,8 @@ def generate_picks(growth_mode: bool = False) -> dict:
         "date":              date_str,
         "rebalance_next":    rebalance_next,
         "theme_rankings":    theme_rankings,
-        "top_themes":        [t for t, _ in selected],
-        "picks":             picks,
+        "top_themes":        frozen_top_themes,
+        "picks":             frozen_picks,
         "spy_momentum":      spy_momentum,
         "universe_full_data": universe_full_data,
         "mode":              mode_label.lower(),
