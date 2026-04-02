@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useAuth } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
 import { Skeleton } from '@/components/ui/skeleton';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { ArrowUpRight, ArrowDownRight, Lock } from 'lucide-react';
@@ -12,14 +12,15 @@ import { GlassCard } from '@/components/ui/glass-card';
 
 interface PicksData {
   theme_rankings: [string, number][];
+  top_themes: string[];
   date: string;
   spy_momentum: number | null;
 }
 
 export default function RankingsPage() {
-  const { isSignedIn, sessionClaims } = useAuth();
-  const metadata = (sessionClaims as Record<string, unknown> | null)?.metadata as { tier?: string } | undefined;
-  const isPro = isSignedIn === true && (metadata?.tier === 'pro' || metadata?.tier === 'premium');
+  const { user, isSignedIn } = useUser();
+  const tier = (user?.publicMetadata as { tier?: string } | undefined)?.tier;
+  const isPro = isSignedIn === true && (tier === 'pro' || tier === 'premium');
 
   const [data, setData] = useState<PicksData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -157,9 +158,25 @@ export default function RankingsPage() {
                       })() : <span className="text-zinc-700">—</span>}
                     </div>
 
-                    <div className="flex items-center gap-1 text-zinc-600 shrink-0">
-                      <Lock size={10} className="shrink-0" />
-                      <span className="font-mono text-[10px] uppercase tracking-[0.12em]">Pro</span>
+                    <div className="flex items-center gap-1 shrink-0">
+                      {isPro ? (
+                        data.top_themes.includes(theme) ? (
+                          <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-emerald-400">
+                            <span className="relative flex h-1.5 w-1.5">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500" />
+                            </span>
+                            Active
+                          </span>
+                        ) : (
+                          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600">—</span>
+                        )
+                      ) : (
+                        <>
+                          <Lock size={10} className="shrink-0 text-zinc-600" />
+                          <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-zinc-600">Pro</span>
+                        </>
+                      )}
                     </div>
                   </Link>
                 );
