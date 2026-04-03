@@ -1,6 +1,6 @@
 {
-  "date": "2026-04-02",
-  "rebalance_next": "2026-04-03",
+  "date": "2026-04-03",
+  "rebalance_next": "2026-04-10",
   "theme_rankings": [
     [
       "XLE",
@@ -68,20 +68,20 @@
     ],
     [
       "BTC",
-      -24.3
+      -24.43
     ],
     [
       "BITO",
-      -26.51
+      -26.47
     ],
     [
       "ETH",
-      -32.36
+      -32.85
     ]
   ],
   "top_themes": [
     "XLB",
-    "ICLN"
+    "XLU"
   ],
   "picks": [
     {
@@ -89,17 +89,17 @@
       "name": "Materials",
       "theme": "XLB",
       "price": 50.41,
-      "rs_score": 12.84,
-      "volatility": 20.13,
+      "rs_score": 12.73,
+      "volatility": 19.77,
       "weight_pct": 50.0
     },
     {
-      "ticker": "ICLN",
-      "name": "Clean Energy",
-      "theme": "ICLN",
-      "price": 18.05,
-      "rs_score": 10.8,
-      "volatility": 30.29,
+      "ticker": "XLU",
+      "name": "Utilities",
+      "theme": "XLU",
+      "price": 46.34,
+      "rs_score": 9.77,
+      "volatility": 16.49,
       "weight_pct": 50.0
     }
   ],
@@ -237,8 +237,8 @@
       {
         "ticker": "AXP",
         "price": 300.18,
-        "rs_score": -12.28,
-        "volatility": 31.97,
+        "rs_score": -12.03,
+        "volatility": 32.06,
         "selected": false
       },
       {
@@ -616,8 +616,8 @@
       {
         "ticker": "SYY",
         "price": 71.16,
-        "rs_score": -8.09,
-        "volatility": 44.8,
+        "rs_score": -7.36,
+        "volatility": 43.85,
         "selected": false
       }
     ],
@@ -1097,8 +1097,8 @@
       {
         "ticker": "RGLD",
         "price": 262.63,
-        "rs_score": 11.73,
-        "volatility": 51.97,
+        "rs_score": 11.94,
+        "volatility": 51.96,
         "selected": false
       },
       {
@@ -1366,70 +1366,70 @@
       {
         "ticker": "COIN",
         "price": 171.46,
-        "rs_score": -9.38,
+        "rs_score": -9.42,
         "volatility": 86.21,
         "selected": false
       },
       {
         "ticker": "MSTR",
         "price": 119.83,
-        "rs_score": -5.58,
+        "rs_score": -5.62,
         "volatility": 93.75,
         "selected": false
       },
       {
         "ticker": "MARA",
         "price": 8.71,
-        "rs_score": 2.12,
+        "rs_score": 2.08,
         "volatility": 97.45,
         "selected": false
       },
       {
         "ticker": "RIOT",
         "price": 12.86,
-        "rs_score": 10.56,
+        "rs_score": 10.52,
         "volatility": 95.24,
         "selected": false
       },
       {
         "ticker": "CLSK",
         "price": 8.79,
-        "rs_score": -10.84,
+        "rs_score": -10.88,
         "volatility": 94.42,
         "selected": false
       },
       {
         "ticker": "HUT",
         "price": 48.11,
-        "rs_score": 42.97,
+        "rs_score": 42.93,
         "volatility": 102.15,
         "selected": false
       },
       {
         "ticker": "BITF",
         "price": 1.98,
-        "rs_score": -1.23,
+        "rs_score": -1.27,
         "volatility": 97.96,
         "selected": false
       },
       {
         "ticker": "CIFR",
         "price": 12.82,
-        "rs_score": 1.7,
+        "rs_score": 1.66,
         "volatility": 101.97,
         "selected": false
       },
       {
         "ticker": "CORZ",
         "price": 16.23,
-        "rs_score": 24.7,
+        "rs_score": 24.66,
         "volatility": 71.72,
         "selected": false
       },
       {
         "ticker": "IREN",
         "price": 34.77,
-        "rs_score": 13.15,
+        "rs_score": 13.11,
         "volatility": 106.54,
         "selected": false
       }
@@ -1437,18 +1437,18 @@
     "BTC": [
       {
         "ticker": "BTC",
-        "price": 66746.05,
-        "rs_score": -21.04,
-        "volatility": 55.1,
+        "price": 66634.58,
+        "rs_score": -21.17,
+        "volatility": 54.84,
         "selected": false
       }
     ],
     "ETH": [
       {
         "ticker": "ETH",
-        "price": 2070.08,
-        "rs_score": -29.1,
-        "volatility": 67.76,
+        "price": 2055.24,
+        "rs_score": -29.59,
+        "volatility": 67.51,
         "selected": false
       }
     ]
