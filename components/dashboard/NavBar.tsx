@@ -18,7 +18,7 @@ import {
   Moon,
 } from 'lucide-react'
 import { useTheme } from 'next-themes'
-import { SignInButton, Show, UserButton } from '@clerk/nextjs'
+import { SignInButton, Show, UserButton, useUser } from '@clerk/nextjs'
 import { LogoMark } from '@/components/ui/logo'
 
 import type { ReactNode } from 'react'
@@ -42,10 +42,17 @@ function isActive(href: string, pathname: string): boolean {
   return pathname === href || pathname.startsWith(href + '/')
 }
 
+const TIER_BADGE: Record<string, string> = {
+  pro:     'PRO',
+  premium: 'PREMIUM',
+}
+
 export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const { theme, setTheme } = useTheme()
+  const { user } = useUser()
+  const tier = (user?.publicMetadata as { tier?: string } | undefined)?.tier
 
   useEffect(() => { setOpen(false) }, [pathname])
 
@@ -111,13 +118,18 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
                 </SignInButton>
               </Show>
               <Show when="signed-in">
-                <UserButton
-                  appearance={{
-                    elements: {
-                      avatarBox: 'w-8 h-8',
-                    }
-                  }}
-                />
+                <div className="flex items-center gap-2">
+                  {tier && TIER_BADGE[tier] && (
+                    <span className={`font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded border ${
+                      tier === 'premium'
+                        ? 'text-amber-400 border-amber-500/30 bg-amber-500/[0.08]'
+                        : 'text-violet-400 border-violet-500/30 bg-violet-500/[0.08]'
+                    }`}>
+                      {TIER_BADGE[tier]}
+                    </span>
+                  )}
+                  <UserButton appearance={{ elements: { avatarBox: 'w-8 h-8' } }} />
+                </div>
               </Show>
 
               {/* Theme toggle */}
@@ -225,7 +237,16 @@ export function NavBar({ rightContent }: { rightContent?: ReactNode }) {
           <Show when="signed-in">
             <div className="flex items-center gap-3 py-2">
               <UserButton appearance={{ elements: { avatarBox: 'w-8 h-8' } }} />
-              <span className="text-sm text-zinc-400">Account</span>
+              <div className="flex flex-col gap-0.5">
+                <span className="text-sm text-zinc-400">Account</span>
+                {tier && TIER_BADGE[tier] && (
+                  <span className={`font-mono text-[10px] uppercase tracking-[0.18em] ${
+                    tier === 'premium' ? 'text-amber-400' : 'text-violet-400'
+                  }`}>
+                    {TIER_BADGE[tier]}
+                  </span>
+                )}
+              </div>
             </div>
           </Show>
         </div>
