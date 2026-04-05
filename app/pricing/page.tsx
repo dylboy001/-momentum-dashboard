@@ -252,22 +252,14 @@ export default function PricingPage() {
                   <p className="text-zinc-400 text-sm leading-relaxed">{tier.description}</p>
 
                   {tier.id === 'free' && (
-                    isSignedIn ? (
-                      <button
-                        type="button"
-                        disabled
-                        className="block w-full text-center rounded-lg px-4 py-2.5 text-sm font-medium border border-zinc-800 text-zinc-600 cursor-default"
-                      >
-                        Current Plan
-                      </button>
-                    ) : (
+                    !isSignedIn || userTier === 'free' ? (
                       <Link
                         href={tier.ctaHref}
                         className="block w-full text-center rounded-lg px-4 py-2.5 text-sm font-medium transition-colors border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-zinc-100 hover:bg-zinc-800"
                       >
                         {tier.cta}
                       </Link>
-                    )
+                    ) : null
                   )}
 
                   {tier.id === 'pro' && (
@@ -292,10 +284,10 @@ export default function PricingPage() {
                       ) : userTier === 'premium' ? (
                         <button
                           type="button"
-                          disabled
-                          className="btn-primary w-full opacity-30 cursor-default"
+                          onClick={handlePortal}
+                          className="btn-primary w-full"
                         >
-                          Included in Premium
+                          Change Plan
                         </button>
                       ) : (
                         <button
