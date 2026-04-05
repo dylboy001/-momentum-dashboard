@@ -500,7 +500,8 @@ if __name__ == "__main__":
     if result["spy_momentum"] is not None:
         print(f"  SPY 20w mom    : {result['spy_momentum']:+.1f}%")
 
-    out_path = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
+    filename = "picks_raw_growth.json" if growth_mode else "picks_raw.json"
+    out_path = os.path.join(os.path.dirname(__file__), "..", "data", filename)
     with open(out_path, "w") as f:
         json.dump(result, f, indent=2)
     print(f"\n  Saved: {out_path}")

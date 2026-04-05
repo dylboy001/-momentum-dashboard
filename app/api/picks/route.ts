@@ -1,19 +1,36 @@
 import { NextResponse } from 'next/server'
+import { auth, clerkClient } from '@clerk/nextjs/server'
 import fs from 'fs'
 import path from 'path'
 
-const GITHUB_RAW_URL =
-  'https://raw.githubusercontent.com/dylboy001/-momentum-dashboard/main/data/picks_raw.json'
+const GITHUB_RAW_BASE =
+  'https://raw.githubusercontent.com/dylboy001/-momentum-dashboard/main/data'
 
-function findPicksFile(): string | null {
+async function getUserTier(): Promise<string> {
+  try {
+    const { userId } = await auth()
+    if (!userId) return 'free'
+    const client = await clerkClient()
+    const user = await client.users.getUser(userId)
+    return (user.publicMetadata as { tier?: string })?.tier ?? 'free'
+  } catch {
+    return 'free'
+  }
+}
+
+function picksFilename(tier: string): string {
+  return tier === 'premium' ? 'picks_raw_growth.json' : 'picks_raw.json'
+}
+
+function findPicksFile(filename: string): string | null {
   if (process.env.PICKS_JSON_PATH) {
     return fs.existsSync(process.env.PICKS_JSON_PATH)
       ? process.env.PICKS_JSON_PATH
       : null
   }
   const candidates = [
-    path.join(process.cwd(), 'data', 'picks_raw.json'),
-    path.join(process.cwd(), '..', 'picks_raw.json'),
+    path.join(process.cwd(), 'data', filename),
+    path.join(process.cwd(), '..', filename),
   ]
   return candidates.find((p) => fs.existsSync(p)) ?? null
 }
@@ -55,16 +72,19 @@ function normalize(raw: Record<string, unknown>) {
 }
 
 export async function GET() {
+  const tier = await getUserTier()
+  const filename = picksFilename(tier)
+
   // In production, fetch live from GitHub so Vercel doesn't need to redeploy for data updates
   if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
     try {
-      const res = await fetch(GITHUB_RAW_URL, {
-        next: { revalidate: 300 }, // re-fetch from GitHub every 5 minutes
+      const res = await fetch(`${GITHUB_RAW_BASE}/${filename}`, {
+        next: { revalidate: 300 },
       })
       if (!res.ok) throw new Error(`GitHub fetch failed: ${res.status}`)
       const raw = await res.json()
       return NextResponse.json(
-        { ...normalize(raw), last_generated: raw.date, source_file: 'picks_raw.json' },
+        { ...normalize(raw), last_generated: raw.date, source_file: filename, mode: tier === 'premium' ? 'growth' : 'balanced' },
         { headers: { 'Cache-Control': 'no-store' } }
       )
     } catch (err) {
@@ -77,7 +97,7 @@ export async function GET() {
   }
 
   // Local dev — read from disk
-  const picksPath = findPicksFile()
+  const picksPath = findPicksFile(filename)
   if (!picksPath) {
     return NextResponse.json(
       { error: 'No picks file found', detail: 'Run v2_picks_generator.py first.' },
@@ -89,7 +109,7 @@ export async function GET() {
     const raw = JSON.parse(fs.readFileSync(picksPath, 'utf-8'))
     const stat = fs.statSync(picksPath)
     return NextResponse.json(
-      { ...normalize(raw), last_generated: stat.mtime.toISOString(), source_file: path.basename(picksPath) },
+      { ...normalize(raw), last_generated: stat.mtime.toISOString(), source_file: path.basename(picksPath), mode: tier === 'premium' ? 'growth' : 'balanced' },
       { headers: { 'Cache-Control': 'no-store' } }
     )
   } catch (err) {
