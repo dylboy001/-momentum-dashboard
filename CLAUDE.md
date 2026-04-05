@@ -807,9 +807,10 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **Git user email must be** `dylan.ryan.97@hotmail.com` (GitHub account email) — Vercel blocks deploys from unrecognised committer emails
 - **No `gh` CLI available** in this environment — merge to main directly via git instead of creating PRs
 
-### ✅ Auth + Payments — LIVE (Mar 2026)
-- **Clerk** (`@clerk/nextjs@7.0.7`) — sign-up/sign-in working with email/password. Google OAuth configured but pending consent screen approval (Google takes up to a few hours to activate production mode).
-- **Stripe** (`stripe@21.0.1`) — checkout wired. Pro = $49/mo, Premium = $99/mo. Webhook live at `https://momentumcap.io/api/webhooks/stripe`.
+### ✅ Auth + Payments — FULLY LIVE (Apr 2026)
+- **Clerk** (`@clerk/nextjs@7.0.7`) — sign-up/sign-in working with email/password + Google OAuth (fully working as of Mar 30 2026).
+- **Stripe** (`stripe@21.0.1`) — checkout + webhook fully working in **test mode** (end-to-end confirmed Apr 5 2026 — Pro and Premium both tested). Live mode fails with StripeConnectionError from Vercel (root cause TBD). Currently running test keys.
+- **Webhook**: endpoint `https://momentumcap.io/api/webhooks/stripe` — named "memorable-euphoria" in Stripe Dashboard. `STRIPE_WEBHOOK_SECRET` in Vercel matches the test signing secret.
 - **Subscription flow**: pricing page → `handleSubscribe()` → POST `/api/checkout` → Stripe hosted checkout → webhook sets `publicMetadata.tier` on Clerk user → `/dashboard?upgraded=true`
 - **Billing portal**: POST `/api/portal` → Stripe portal session. "Manage subscription" link shown on pricing page for Pro/Premium users.
 - **Tier stored in**: `user.publicMetadata.tier` (`'free'` | `'pro'` | `'premium'`) + `stripeCustomerId` + `stripeSubscriptionId`
@@ -827,11 +828,30 @@ The home directory scripts implement a more aggressive weekly rebalance version:
 - **vercel.json**: `installCommand: "rm -rf node_modules && npm install --legacy-peer-deps"` — required to bypass stale Vercel build cache that was causing @clerk/nextjs and stripe to not be installed
 - **Homepage flow**: "Start Free" → `/pricing` (not `/sign-up`). "Subscribe Now" (unauthenticated) → `/sign-up?redirect_url=/pricing`.
 
+### ✅ Feature Gating — LIVE (Apr 2026)
+- `ProLock` component (`components/ui/pro-lock.tsx`) gates `/dashboard` and `/rankings/[slug]` behind Pro tier
+- Uses `useUser()` + `user.publicMetadata.tier` — **do NOT use `useAuth()` + `sessionClaims?.metadata`**, that path is unreliable in Clerk v7
+- Free users see blurred content teaser + lock overlay with "Upgrade to Pro" CTA
+- Pro and Premium users see full content
+- Rankings list page (`/rankings`) remains free — only constituent stock detail is gated
+
+### ✅ Pro/Premium Data Split — LIVE (Apr 2026)
+- `/api/picks` serves `picks_raw.json` (balanced, top 2 themes 50/50) for Pro users
+- `/api/picks` serves `picks_raw_growth.json` (growth, top 1 theme 100%) for Premium users
+- Dashboard shows "BALANCED MODE" (violet) or "GROWTH MODE" (amber) badge based on `mode` field in response
+- NavBar shows "PRO" (violet) or "PREMIUM" (amber) tier badge next to UserButton
+- `scripts/v2_picks_generator.py` freeze logic uses `mode_filename` variable for all file references — do NOT hardcode `picks_raw.json` in growth mode paths
+
 ### ❌ Not Yet Implemented (Known TODOs)
-- **Feature gating** — all content currently visible; intended: Free = rankings list only, Pro = dashboard + detail + timer, Premium = API
+- **Stripe live mode** — checkout works in test mode; live mode StripeConnectionError from Vercel needs investigation
 - **Email alerts** — no email system yet (Pro feature)
 - **LinkedIn** — company page not created yet
-- **Google OAuth** — configured but consent screen pending production approval (try again after a few hours)
+- **Google OAuth** — WORKING. Setup notes for future reference:
+  - Google Cloud Console → OAuth consent screen must be **Published** (not Testing). Publishing is immediate for basic scopes.
+  - OAuth 2.0 Client ID needs **both** fields set: Authorized JavaScript origins (`https://momentumcap.io`, `https://clerk.momentumcap.io`) AND Authorized redirect URIs (`https://clerk.momentumcap.io/v1/oauth_callback`)
+  - Client ID + Secret must be copied exactly into Clerk Dashboard → Configure → SSO Connections → Google with "Use custom credentials" toggled ON
+  - `invalid_client` error = Client ID/Secret mismatch between Google and Clerk — re-copy credentials
+  - Hotmail/Microsoft accounts cannot be added as Google OAuth test users — use a Gmail address or just publish the app
 
 ### Known Issues / Notes
 - `PicksTable.tsx` has its own `THEME_LABELS` constant that duplicates `lib/theme-data.ts` → ideally consolidate
