@@ -333,7 +333,8 @@ def generate_picks(growth_mode: bool = False) -> dict:
     # the future; when it expires, advance by one full period (not from
     # today) to stay true to the backtest cadence.
     # ------------------------------------------------------------------
-    out_path_check = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
+    mode_filename  = "picks_raw_growth.json" if growth_mode else "picks_raw.json"
+    out_path_check = os.path.join(os.path.dirname(__file__), "..", "data", mode_filename)
     out_path_check = os.path.normpath(out_path_check)
     existing_rebalance_next = None
     try:
@@ -370,7 +371,7 @@ def generate_picks(growth_mode: bool = False) -> dict:
     frozen_top_themes = [t for t, _ in selected]  # default: use today's signal
     if not rebalance_occurred:
         try:
-            out_path_check2 = os.path.join(os.path.dirname(__file__), "..", "data", "picks_raw.json")
+            out_path_check2 = os.path.join(os.path.dirname(__file__), "..", "data", mode_filename)
             out_path_check2 = os.path.normpath(out_path_check2)
             if os.path.exists(out_path_check2):
                 with open(out_path_check2) as f:

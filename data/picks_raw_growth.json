@@ -1,6 +1,6 @@
 {
   "date": "2026-04-05",
-  "rebalance_next": "2026-04-10",
+  "rebalance_next": "2026-05-05",
   "theme_rankings": [
     [
       "SLV",
@@ -80,27 +80,17 @@
     ]
   ],
   "top_themes": [
-    "XLB",
-    "XLU"
+    "GLD"
   ],
   "picks": [
     {
-      "ticker": "XLB",
-      "name": "Materials",
-      "theme": "XLB",
-      "price": 50.41,
-      "rs_score": 12.73,
-      "volatility": 19.77,
-      "weight_pct": 50.0
-    },
-    {
-      "ticker": "XLU",
-      "name": "Utilities",
-      "theme": "XLU",
-      "price": 46.34,
-      "rs_score": 9.77,
-      "volatility": 16.49,
-      "weight_pct": 50.0
+      "ticker": "GLD",
+      "name": "Gold",
+      "theme": "GLD",
+      "price": 429.41,
+      "rs_score": 20.07,
+      "volatility": 42.28,
+      "weight_pct": 100.0
     }
   ],
   "spy_momentum": -1.44,
@@ -487,9 +477,9 @@
       },
       {
         "ticker": "BKNG",
-        "price": 4194.31,
-        "rs_score": -13.56,
-        "volatility": 43.01,
+        "price": 167.77,
+        "rs_score": -88.19,
+        "volatility": 200.46,
         "selected": false
       },
       {
