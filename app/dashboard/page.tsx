@@ -31,6 +31,7 @@ interface PicksData {
   top_themes: string[]
   picks: Pick[]
   last_generated: string
+  mode?: 'balanced' | 'growth'
   error?: string
   detail?: string
 }
@@ -116,7 +117,18 @@ export default function DashboardPage() {
         {/* ── Page header ───────────────────────────────────────────────── */}
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h1 className="text-3xl font-thin tracking-tight text-white">Dashboard</h1>
+            <div className="flex items-center gap-3">
+              <h1 className="text-3xl font-thin tracking-tight text-white">Dashboard</h1>
+              {data?.mode && (
+                <span className={`font-mono text-[10px] uppercase tracking-[0.18em] px-2 py-0.5 rounded border ${
+                  data.mode === 'growth'
+                    ? 'text-amber-400 border-amber-500/30 bg-amber-500/[0.08]'
+                    : 'text-violet-400 border-violet-500/30 bg-violet-500/[0.08]'
+                }`}>
+                  {data.mode === 'growth' ? 'Growth Mode' : 'Balanced Mode'}
+                </span>
+              )}
+            </div>
             <p className="text-zinc-400 text-sm mt-1">Real-time action hub · updated daily</p>
           </div>
           {data?.picks.length ? (
@@ -167,7 +179,9 @@ export default function DashboardPage() {
                   </span>
                 </span>
               )}
-              <span className="text-zinc-700">Weekly rotation</span>
+              <span className="text-zinc-700">
+                {data?.mode === 'growth' ? 'Monthly rotation' : 'Weekly rotation'}
+              </span>
             </div>
           </div>
           <div className="px-6 py-8">
