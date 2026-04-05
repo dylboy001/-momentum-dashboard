@@ -2,16 +2,16 @@
 
 import Link from 'next/link'
 import { Lock } from 'lucide-react'
-import { useAuth } from '@clerk/nextjs'
+import { useUser } from '@clerk/nextjs'
 
 interface ProLockProps {
   children: React.ReactNode
 }
 
 export function ProLock({ children }: ProLockProps) {
-  const { isSignedIn, sessionClaims } = useAuth()
-  const metadata = (sessionClaims as Record<string, unknown> | null)?.metadata as { tier?: string } | undefined
-  const hasPro = isSignedIn && (metadata?.tier === 'pro' || metadata?.tier === 'premium')
+  const { isSignedIn, user } = useUser()
+  const tier = (user?.publicMetadata as { tier?: string } | undefined)?.tier
+  const hasPro = isSignedIn && (tier === 'pro' || tier === 'premium')
 
   if (hasPro) {
     return <>{children}</>
